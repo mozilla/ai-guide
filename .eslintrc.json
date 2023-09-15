@@ -1,0 +1,21 @@
+{
+    "extends": ["eslint:recommended"],
+    "env": {
+      "es6": true,
+      "node": true
+    },
+    "overrides": [
+      {
+        "files": "scripts/**/*.js",
+        "env": {
+          "browser": true
+        }
+      }
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2023,
+      "impliedStrict": false,
+      "sourceType": "module"
+    }
+  }
+  

@@ -1,0 +1,83 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+$image-path: '/media/protocol/img';
+
+@import '~@mozilla-protocol/core/protocol/css/includes/lib';
+
+/* Protocol overrides */
+
+// * -------------------------------------------------------------------------- */
+// Footer social icon links
+// bedrock override until icons are added to protocol-assets
+// https://github.com/mozilla/protocol-assets/issues/84
+
+.mzp-c-footer-links-social {
+    li {
+        a {
+            &.linkedin {
+                background-image: url('/img/logos/social/linkedin-white.svg');
+            }
+
+            &.tiktok {
+                background-image: url('/img/logos/social/tiktok-white.svg');
+            }
+
+            &.spotify {
+                background-image: url('/img/logos/social/spotify-white.svg');
+            }
+
+            &.mastodon {
+                background-image: url('/img/logos/social/mastodon-white.svg');
+            }
+        }
+    }
+}
+
+// * -------------------------------------------------------------------------- */
+// Reset social icon styles for primary footer navigation on larger screens
+
+.mzp-c-footer .mzp-c-footer-links-social {
+    margin-bottom: $spacing-lg; // reduce spacing on mobile
+    @media #{$mq-md} {
+        margin-bottom: $spacing-2xl;
+        max-width: unset;
+        position: static;
+        text-align: unset;
+
+        li {
+            @include bidi(((margin, 0 $spacing-md 0 0, 0 0 0 $spacing-md),));
+            padding: unset;
+        }
+    }
+}
+
+// * -------------------------------------------------------------------------- */
+// Adjust hover/focus styles on social icons
+
+.mzp-c-footer {
+    .mzp-c-footer-links-social li a {
+        &:hover,
+        &:focus,
+        &:active {
+            outline: 1px dotted $color-white;
+            outline-offset: $spacing-xs;
+            border-bottom-color: transparent;
+        }
+    }
+}
+
+// * -------------------------------------------------------------------------- */
+// Keep .mzp-c-footer-heading styles on social headings
+// (social heading class altered to prevent Mzp Details styling/functionality)
+
+.mzp-c-footer-heading-social {
+    @include text-body-sm;
+    color: inherit;
+    font-family: inherit;
+    font-weight: 400;
+    margin-bottom: 0;
+    padding-bottom: $spacing-md;
+    padding-top: $spacing-md;
+}

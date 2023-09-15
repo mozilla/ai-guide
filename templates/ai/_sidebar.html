@@ -1,0 +1,23 @@
+<div class="drawer-side">
+    <label for="my-drawer-2" class="drawer-overlay"></label>
+    <!-- <button id="sidebar-close-btn" class="drawer-button">X</button> -->
+    
+    <ul class="menu">
+      <li><a href="index.html"><img alt="Mozilla logo" class="dark:[filter:invert(1)]" id='sidebar-logo' src="/img/mozilla-only.png"/></a></li>
+      {% include "content/introduction/_sidebar.html"%}
+      {% include "content/ai-basics/_sidebar.html"%}
+      {% include "content/llms-101/_sidebar.html"%}
+      {% include "content/_upcoming.html" %}
+    </ul>
+</div>
+
+<script type='text/javascript'>
+  var sidebarDrawer = document.getElementById('my-drawer-2');
+
+  document.querySelectorAll("ul.menu li a").forEach(function(item) {
+    item.addEventListener('click', function() {
+      sidebarDrawer.checked = false;
+      return true;
+    });
+  });
+</script>

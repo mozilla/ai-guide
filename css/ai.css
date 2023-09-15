@@ -1,0 +1,263 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "Space Grotesk";
+    src: url("../fonts/SpaceGrotesk-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("../fonts/Inter-VariableFont_slnt,wght.ttf")
+}
+
+@layer base {
+    html {
+        font-family: Inter, system-ui, sans-serif;
+    }
+
+    h1,h2,h3,h4,h5,h6 {
+        font-family: "Space Grotesk", system-ui, sans-serif;
+    }
+
+    body {
+        @apply dark:bg-base-100 my-0 top-0
+    }
+
+    div#mobile_banner {
+        @apply relative sm:static 
+    }
+
+    #hamburger-btn {
+        @apply fixed drawer-button lg:hidden z-0 bg-primary text-primary-content top-2 left-2 btn-square w-fit h-fit p-1 rounded-md !important
+    }
+
+    #header-bg {
+        width: 100%;
+        /* aspect-ratio: 3 / 1; */
+        height: 305px;
+        display: flex;
+        background: url('/img/ai/ai-header-bg.jpg') no-repeat center right;
+        background-size: cover;
+        align-items: center;
+    }
+
+    #header-content {
+        /* @apply max-h-full max-w-full sm:max-h-80 sm:mx-auto */
+        @apply sm:max-w-3xl mx-auto my-auto w-full pl-5 pr-5 md:pl-0 md:pr-0
+    }
+
+    #header-title {
+        font-size: 4rem;
+        color: white;
+        font-weight: 500;
+    }
+
+    main {
+        @apply sm:min-h-screen md:min-h-0
+    }
+
+    /* Sidebar */
+    #sidebar-close-btn {
+        @apply btn-square drawer-button z-20 bg-accent text-accent-content !important
+    }
+
+    .drawer-open .drawer-side {
+        @apply bg-white dark:bg-black 
+        /* @apply w-full */
+    }
+
+    .drawer-toggle:checked ~ .drawer-side > .drawer-overlay {
+        /* @apply bg-white bg-opacity-100 dark:bg-black dark:text-white text-black !important */
+        @apply dark:text-white text-black !important
+        /* @apply h-full  */
+    }
+
+    .drawer-toggle:checked ~  #sidebar-close-btn {
+        @apply z-50 mr-10 mt-10 !important 
+    }
+
+    img#sidebar-logo {
+        /* @apply w-32 mt-5 sm:mt-14 pl-5 sm:pl-6 !important */
+        @apply w-32 mt-5 sm:mt-14
+    }
+
+    ul.menu {
+        @apply bg-white dark:bg-black mt-12 sm:mt-0 w-full sm:w-72  min-h-full
+    }
+
+    ul.menu > li {
+        @apply leading-6 font-medium w-full
+    }
+
+    ul.menu details {
+        /* width: 100%; */
+        @apply w-full
+    }
+
+    ul.menu :where(li ul){
+        @apply ml-0 pl-0
+    }
+
+    ul.menu > li.upcoming, ul.menu > li.upcoming a {
+        /* @apply opacity-50 */
+        @apply text-gray-400 bg-transparent font-normal
+    }
+
+    ul.menu > li.upcoming:hover,
+    ul.menu > li.upcoming:hover a {
+        cursor: default;
+        @apply text-gray-400 bg-transparent
+    }
+
+    ul.menu > li.upcoming .badge, ul.menu > li.upcoming a .badge {
+        @apply p-10 text-secondary dark:text-accent border-2 border-secondary dark:border-accent p-3 rounded-md dark:bg-black
+        
+    }
+    /* MH - not sure why tailwind adds some weird HSL value that overrides "text-accent" */
+    @media (prefers-color-scheme: dark){
+        ul.menu > li.upcoming .badge, ul.menu > li.upcoming a .badge {
+        color: #73FDAF !important; 
+        }
+    }
+
+    ul.menu > li:hover {
+        /* @apply bg-primary dark:bg-secondary rounded-md */
+        
+    }
+
+    ul.menu > li a {
+        white-space: normal !important;
+        @apply text-black dark:text-white font-medium
+    }
+
+
+    ul.menu > li:hover summary  {
+        /* @apply text-white dark:text-secondary */
+        @apply dark:bg-neutral
+    }
+
+    ul.menu > li:hover summary a {
+        @apply dark:text-secondary
+    }
+
+    ul.menu > li:hover > details > summary::after {
+        @apply dark:text-secondary
+    }
+
+    ul.sub_menu {
+        @apply border-b-2 dark:border-neutral pb-2
+    }
+
+    ul.sub_menu > li {
+        @apply leading-3 w-full
+        /* @apply w-full */
+    }
+
+    ul.sub_menu > li:hover {
+        @apply bg-secondary dark:bg-neutral rounded-md
+    }
+    
+
+    ul.menu > li ul.sub_menu > li a {
+        /* @apply w-1/2 */
+        line-height: 1.5em;
+        white-space: normal !important;
+        @apply w-full pl-6 font-normal
+        
+    }
+
+    ul.menu > li ul.sub_menu li:hover {
+        @apply bg-secondary dark:bg-neutral rounded-md
+    }
+
+    ul.menu > li ul.sub_menu li:hover a {
+        @apply text-black dark:text-secondary
+    }
+
+    /* Articles */
+    div.prose {
+        @apply dark:text-white
+    }
+
+    .page-header {
+        @apply text-3xl font-medium mt-9 mb-0 
+    }
+
+    
+
+    footer {
+        @apply mt-10 p-4 pt-2 sm:pt-10 sm:pb-10 mx-auto my-auto bg-neutral text-neutral-content text-xs
+    }
+
+    footer nav {
+        @apply leading-6 columns-1 sm:columns-2 items-center sm:max-w-3xl sm:mx-auto sm:my-auto
+    }
+
+    footer nav div.container {
+        @apply mt-3 sm:h-36
+    }
+
+    footer ul {
+        @apply underline sm:max-w-3xl mx-auto my-auto
+    }
+}
+
+#content a.button-next-page {
+    @apply btn btn-primary text-primary-content font-medium shadow-md shadow-accent pt-0 pb-0 pr-8 pl-8 no-underline 
+}
+
+#content h4 {
+    @apply text-xl font-medium mt-6 mb-3 text-primary dark:text-secondary
+}
+
+#content p {
+    @apply leading-6 font-normal text-inherit
+}
+
+.inner {
+    @apply prose p-5 md:pl-0 md:pr-0 sm:max-w-3xl text-black dark:text-white bg-base-100 my-auto mx-auto dark:bg-base-100
+}
+
+#content h2 {
+    @apply text-3xl font-medium mt-9 mb-5 text-inherit
+}
+
+/* blue bar above the page headers*/
+#content h2::before {
+    content: '';
+    height: 0.3125rem;
+    @apply border-t-4 border-primary my-auto w-16 mb-2 block;
+    border-color: #4579FF; /* MH: not sure why tailwind adds some weird HSL value that overrides our primary color */
+}
+
+#newsletter-section {
+    @apply py-6;
+}
+
+
+.email-checkbox {
+    @apply w-6 h-6;
+}
+
+.email-submit {
+    /* MH: not sure why tailwind adds some weird HSL value that overrides our primary color */
+    @apply text-neutral;
+}
+
+#newsletter-thanks {
+    @apply hidden
+}
+
+#newsletter-details {
+    @apply hidden
+}
+
+.collaboration-description {
+    @apply hidden
+}
+
+.hidden {
+    display: none;
+}

@@ -1,0 +1,88 @@
+<!--
+    Mozilla AI Guide |
+    We need your help to make OSS AI best-in-class!  
+    Reach out to ai-guide@mozilla.com to contribute! 
+    
+    This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
+-->
+{% set page_title %}{% block page_title %}Mozilla AI Guide{% endblock %}{% endset %}
+{% set page_desc %}{{ striptags|e }}{% block page_desc %}A guide to OSS AI{% endblock %}{{ endfilter }}{% endset %}
+<!DOCTYPE html>
+<html lang="en" data-theme="moz_ai_guide_base"> 
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{{ page_title }}</title>
+    <meta name="description" content="{{ page_desc }}"/>
+
+    {% block social_meta %}
+    <meta property="og:type" content="website"> <meta property="og:site_name" content="Mozilla"/>
+    <meta property="og:image" content="{% block page_image %}/img/mozilla-256.jpg{% endblock %}"/>
+    <meta property="og:title" content="{{ striptags|e }}{% block og_page_title %}{{ page_title }}{% endblock %}{{ endfilter }}"/>
+    <meta property="og:description" content="{{ striptags|e }}{% block page_og_desc %}{{ page_desc }}{% endblock %}{{ endfilter }}"/>
+    <meta name="twitter:card" content="{% block twitter_card %}summary{% endblock %}">
+    <meta name="twitter:site" content="@{% block twitter_id %}mozilla{% endblock %}"/>
+    <meta name="twitter:domain" content="future.mozilla.org"/>
+    {% endblock social_meta %}
+
+    {% block page_css %}
+    <link rel="stylesheet" href="/css/ai.css"/>
+    {% endblock %}
+    {% block page_js %}
+    {% endblock %}
+    <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/img/favicons/apple-touch-icon.png"/>
+    <link rel="icon" type="image/png" sizes="196x196" href="/img/favicons/favicon-196x196.png"/>
+    <link rel="shortcut icon" href="/img/favicons/favicon.ico"/>
+    <script type="module" src="/scripts/analytics.js"></script>
+    <script type="text/javascript" src="/scripts/dark_mode.js"></script>
+    {% block header_js %}
+        <script type="text/javascript" src="/scripts/ai.js"></script>
+    {% endblock %}
+</head>
+<body>
+    <div class="drawer lg:drawer-open">
+        <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+        <!-- <div class="drawer-content flex flex-col items-center justify-center relative"> -->
+        <div class="drawer-content">
+            <div id='mobile_banner'>
+                <label id='hamburger-btn' class="" for="my-drawer-2">
+                    <svg viewBox="0 0 100 80" width="20" height="20" fill="currentColor">
+                        <rect width="100" height="10" rx="8"></rect>
+                        <rect y="30" width="80" height="10" rx="8"></rect>
+                        <rect y="60" width="60" height="10" rx="8"></rect>
+                    </svg>
+                </label>
+                {% block banner %}
+                <div id="header-bg">
+                    <div id="header-content">
+                        <a href="/ai/home.html">
+                            <h1 id="header-title">AI Guide</h1>
+                        </a>
+                    </div>
+                </div>
+                {% endblock %}
+            </div>
+            <main id="{% block main_id %}{% endblock %}" class="{% block main_class %}{% endblock %}">
+                <div class="inner">
+                    {% block content %}{% endblock %}
+                </div>
+                {% block email %}
+                    {% include "ai/_email_form.html" %}
+                {% endblock %}
+            </main>
+            
+            {% block footer %}
+                {% include "ai/_footer.html" %}
+            {% endblock %}
+        </div> 
+
+        {% block sidebar %}
+            {% include "ai/_sidebar.html" %}
+        {% endblock %}
+    </div>
+    {% block js %}
+    {% endblock %}
+    <script type="module" src="/scripts/email.js"></script>
+</body>
+</html>

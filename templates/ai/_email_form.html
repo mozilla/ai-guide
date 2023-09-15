@@ -1,0 +1,78 @@
+<!-- newsletter -->
+<section class="mzp-l-content c-innovation-newsletter content" id="newsletter-section">
+
+    <div class="mzp-c-newsletter inner">
+        <div class="newsletter-cta">
+            <h2>Keep the door to AI open</h2>
+            <p>Sign up to the Mozilla AI Guide newsletter and be the first to learn of updates, news and all things open source AI.</p>
+        </div>
+        <form id="newsletter-form" class="mzp-c-newsletter-form innovations-form" name="newsletter-form">
+            <fieldset class="mzp-c-newsletter-content">
+                <div class="mzp-c-form-errors hidden" id="newsletter-errors">
+                    <ul class="mzp-u-list-styled">
+                        <li class="error-email-invalid hidden">Please enter a valid email address with less than 120
+                            characters</li>
+                        <li class="error-privacy-policy hidden">You must agree to the privacy notice</li>
+                        <li class="error-newsletter hidden">Please check at least one of the newsletter options.</li>
+                        <li class="error-try-again-later hidden">We are sorry, but there was a problem with our system.
+                            Please try again later!</li>
+                    </ul>
+                </div>
+                <div class="form-control w-full max-w-sm">
+                    <label for="email" class="label"><span class="label-text">Your email address</span></label>
+                    <input type="email" class="mzp-js-email-field input input-bordered w-full" id="email" name="email" placeholder="Enter your email here" autocomplete="email"
+                    required aria-required="true">
+                </div>
+                <div id="newsletter-details" class="mzp-c-newsletter-details">
+                    <div class="form-control w-full max-w-sm mt-4">
+                        <label for="name" class="label"><span class="label-text">Name</span></label>
+                        <input type="text" class="name input input-bordered w-full" id="name" name="name" placeholder="Enter your name here" autocomplete="name">
+                    </div>
+                    <fieldset class="mzp-u-inline interests mt-8">
+                        <label>What are you interested in learning more about?</label>
+                        <div class="flex items-center">
+                            <input class="newsletter email-checkbox mr-2 inline-block" type="checkbox" name="interests" id="newsletter" value="newsletter"/>
+                            <label for="newsletter" class="mzp-u-inline">
+                                AI Guide Updates
+                            </label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" class="email-checkbox mr-2 inline-block" name="interests" id="collaboration" value="collaboration"/>
+                            <label for="collaboration" class="mzp-u-inline">
+                                Collaborate with us
+                            </label>
+                        </div>
+                        <div class="mzp-c-field collaboration-description description mt-4">
+                            <label class="label" for="description"><span class="label-text">Description</span></label>
+                            <textarea class="textarea w-full textarea-bordered" placeholder="How would you like to collaborate with us?" rows="5" cols="38"
+                                name="description" id="description" maxlength="750"></textarea>
+                                <label for="website" class="label"><span class="label-text">Website</span></label>
+                                <input class="input input-bordered w-full" type="text" id="website" name="website" placeholder="ex: mozilla.org">
+                        </div>
+
+                    </fieldset>
+                    <div class="flex items-center mt-8">
+                        <input type="checkbox" class="email-checkbox mr-2 inline-block" id="privacy" name="privacy" required aria-required="true">
+                        <label for="privacy" class="mzp-u-inline">
+                            I’m okay with Mozilla handling my info as explained in <a
+                                href="https://www.mozilla.org/privacy/websites/">this Privacy Notice</a>
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <span class="mzp-c-form-submit">
+                        <button type="submit" class="mzp-c-button btn btn-accent whitespace-nowrap mt-4 email-submit" id="newsletter-submit">Sign up</button>
+                    </span>
+                </div>
+                
+                
+            </fieldset>
+        </form>
+        <div id="newsletter-thanks" class="mzp-c-newsletter-thanks">
+            <h2>Thank you</h2>
+            <p>If you haven’t previously confirmed a subscription to a Mozilla-related newsletter, you may have to do so.</p>
+            <p>Please check your inbox or your spam filter for an email from us.</p>
+        </div>
+    </div>
+</section>
+

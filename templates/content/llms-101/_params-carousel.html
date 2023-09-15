@@ -1,0 +1,27 @@
+{% set slides = [
+  { "alt": "LLM Model Parameter Visualization",title": "Model", "description": "Different models are trained on different sets of data, which influences their response.", "image": "/img/ai/carousels/llm-01-model.png"},
+  { "alt": "Max Length Parameter Visualization",title": "Max Length", "description": "Setting a limit to the number of tokens.", "image": "/img/ai/carousels/llm-02-maxlength.png"},
+  { "alt": "Temperature Parameter Visualization",title": "Temperature", "description": "Degree of randomness. Setting a high temperature may lead to more creative responses. Setting a low temperature will result in responses that are more literal.", "image": "/img/ai/carousels/llm-03-temp.png"},
+  { "alt": "Top P Parameter Visualization",title": "Top P (Probability)", "description": "Include only the top tokens whose percentage likelihood adds up to the specified “Top P” (e.g. 15%).", "image": "/img/ai/carousels/llm-04-top-p.png"},
+  { "alt": "Frequency Parameter Visualization",title": "Frequency", "description": "The higher this is set, the more that repetition of tokens present in the context will be penalized in suggestions.", "image": "/img/ai/carousels/llm-05-frequency.png"}
+]
+%}
+
+<div class="carousel rounded-box carousel-center max-w-3xl mt-4 mb-4 p-4 space-x-4 rounded-box border-2 border-gray-900 shadow-md shadow-primary">
+  {% for slide in slides %}
+  <div id="item{{loop.index}}" class="carousel-item card card-compact bg-neutral w-72 p-4">
+      <figure class="card-figure">
+          <img src="{{ slide.image }}" alt="{{slide.alt}}" />
+      </figure>
+      <div class="card-body text-neutral-content">
+          <div class="font-semibold mb-0">{{ slide.title }}</div>
+          <p>{{ slide.description }}</p>
+      </div>
+  </div>
+  {% endfor %}
+</div>
+<div class="flex justify-center w-full py-2 gap-2">
+  {% for slide in slides %}
+  <a href="#item{{loop.index}}" class="btn btn-xs">{{loop.index}}</a>
+  {% endfor %}
+</div>

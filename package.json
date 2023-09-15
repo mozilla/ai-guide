@@ -1,0 +1,48 @@
+{
+  "name": "ai-guide",
+  "version": "1.0.1",
+  "description": "Static webpage for the Mozilla AI Guide",
+  "scripts": {
+    "start": "export NODE_ENV=development && webpack serve",
+    "build": "export NODE_ENV=production && webpack",
+    "watch": "export NODE_ENV=development && webpack watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mozilla/ai-guide.git"
+  },
+  "author": "mozmeao",
+  "license": "MPL",
+  "bugs": {
+    "url": "https://github.com/mozilla/ai-guide/issues"
+  },
+  "homepage": "https://github.com/mozilla/ai-guide#readme",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.3",
+    "@tailwindcss/typography": "^0.5.9",
+    "autoprefixer": "^10.4.14",
+    "babel-loader": "^9.1.2",
+    "css-loader": "^6.7.3",
+    "daisyui": "^3.5.0",
+    "eslint": "^8.47.0",
+    "html-bundler-webpack-plugin": "^1.17.1",
+    "nunjucks": "^3.2.4",
+    "postcss": "^8.4.27",
+    "sass-loader": "^13.2.2",
+    "tailwindcss": "^3.3.3",
+    "webpack": "^5.80.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.13.2"
+  },
+  "dependencies": {
+    "@mozilla-protocol/core": "^16.1.0",
+    "@mozmeao/dnt-helper": "^1.0.0",
+    "markdown": "^0.5.0",
+    "marked": "^6.0.0",
+    "marked-gfm-heading-id": "^3.0.5",
+    "marked-mangle": "^1.1.1",
+    "nunjucks-markdown": "^2.0.1",
+    "postcss-loader": "^7.3.3",
+    "tailwindcss-typography": "^3.1.0"
+  }
+}
