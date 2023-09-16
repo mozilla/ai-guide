@@ -1,0 +1,50 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Cache-Control = "public,max-age=3600"
+    Content-Security-Policy = '''
+    style-src 'self' 'unsafe-inline';
+    default-src 'self' www.google-analytics.com;
+    child-src 'self' www.youtube.com www.youtube-nocookie.com www.google-analytics.com;
+    connect-src 'self' *.mozilla.org www.google-analytics.com;
+    img-src 'self' data: www.google-analytics.com;
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' s.ytimg.com www.youtube.com www.googletagmanager.com;
+    '''
+
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    # Temporary cache header change until we can get immutable files back
+    # Cache-Control = "max-age=31536000,public,immutable"
+    Cache-Control = "public,max-age=3600"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    # Cache-Control = "max-age=31536000,public,immutable"
+    Cache-Control = "public,max-age=3600"
+
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    # Cache-Control = "max-age=31536000,public,immutable"
+    Cache-Control = "public,max-age=3600"
+
+[[headers]]
+  for = "/scripts/*"
+  [headers.values]
+    # Cache-Control = "max-age=31536000,public,immutable"
+    Cache-Control = "public,max-age=3600"
+
+[[headers]]
+  for = "/content/*"
+  [headers.values]
+    # Cache-Control = "max-age=31536000,public,immutable"
+    Cache-Control = "public,max-age=3600"
