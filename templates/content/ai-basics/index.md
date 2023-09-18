@@ -82,5 +82,5 @@ Large Language Models (LLMs) have unlocked a plethora of new behaviors that were
 Each step in this process involves complex mathematical operations and transformations. But at a high-level, the goal is to convert text into a form that the model can understand, let the model process and generate a response, and then convert that response back into human-readable text.
 
 <div class="text-right">
-    <a class="button-next-page" href="/ai/content/llms-101/index.html">LLMs 101 &rarr;</a>
+    <a class="button-next-page" href="/content/llms-101/index.html">LLMs 101 &rarr;</a>
 </div>
