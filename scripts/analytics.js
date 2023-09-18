@@ -19,10 +19,10 @@ if(!dntEnabled()) {
     const gaScript = document.createElement('script');
     gaScript.async = 'true';
     gaScript.type = 'text/javascript';
-    gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-74DYP283GP';
+    gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-Y4SS9F26BD';
     const pageHead = document.getElementsByTagName('head')[0];
     pageHead.append(gaScript);
 
     window.gtag('js', new Date());
-    window.gtag('config', 'G-74DYP283GP');
+    window.gtag('config', 'G-Y4SS9F26BD');
 }
