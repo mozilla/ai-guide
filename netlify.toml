@@ -15,7 +15,7 @@
     child-src 'self' www.youtube.com www.youtube-nocookie.com www.google-analytics.com;
     connect-src 'self' *.mozilla.org www.google-analytics.com;
     img-src 'self' data: www.google-analytics.com;
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' s.ytimg.com www.youtube.com www.googletagmanager.com;
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' s.ytimg.com www.youtube.com www.googletagmanager.com gist.github.com;
     '''
 
 [[headers]]
