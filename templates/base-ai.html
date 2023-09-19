@@ -15,14 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>{{ page_title }}</title>
     <meta name="description" content="{{ page_desc }}"/>
-    <meta http-equiv="Content-Security-Policy" 
-        content="default-src 'self' data: gap: 'unsafe-eval' ws: ; 
-        style-src 'self' 'unsafe-inline'; 
-        script-src https: gist.github.com ;
-        media-src 'none'; 
-        font-src *;
-        connect-src *;
-        img-src 'self' data: content:;">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://gist.github.com; object-src 'self'"/>
 
     {% block social_meta %}
     <meta property="og:type" content="website"> <meta property="og:site_name" content="Mozilla"/>
