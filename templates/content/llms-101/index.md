@@ -66,3 +66,8 @@ Lower temperatures result in more conservative and predictable output, while hig
 Top-k sampling is a method used in language generation where, instead of considering all possible next words in the vocabulary, the model only considers the top 'k' most probable next words. 
 
 This technique helps to focus the model on likely continuations and reduces the chances of generating irrelevant or nonsensical text. It strikes a balance between creativity and coherence by limiting the pool of next word choices, but not so much that the output becomes deterministic.
+
+### What is 'top_p' sampling?
+Top-p sampling, also known as nucleus sampling, is a strategy where the model considers only the smallest set of top words whose cumulative probability exceeds a threshold 'p'. 
+
+Unlike top-k which considers a fixed number of words, top-p adapts based on the distribution of probabilities for the next word. This makes it more dynamic and flexible. It helps create diverse and sensible text by allowing less probable words to be selected when the most probable ones don't add up to 'p'.
