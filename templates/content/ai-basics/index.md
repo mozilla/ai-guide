@@ -26,6 +26,26 @@ At Mozilla, we believe that developers should take these risks seriously and cul
 
 At its heart, a Transformer-based Large Language Model (LLM) is essentially a computer program designed to generate text that resembles human-written content. It leverages machine learning techniques, specifically a type of neural network called a Transformer. At a high-level, a Transformer encodes linguistic patterns in the form of statistical relationships between words, and then uses those patterns to generate text. Transformers encode these semantic patterns by ingesting examples of existing text. Now let’s dig a little deeper.
 
+<code>
+{% set slides = [
+  { "alt": "Tokenization Visualization","title": "Tokenization", "description": "The LLM starts by breaking down the input text, or 'prompt', into smaller pieces known as tokens.", "image": "/img/ai/carousels/how-llm-works/tokenization.png"},
+  { "alt": "Embedding Visualization","title": "Embedding", "description": "Next, each token is converted into a numerical representation through a process called embedding.", "image": "/img/ai/carousels/how-llm-works/embedding.png"},
+  { "alt": "Self-attention Visualization","title": "Self-attention", "description": "The model then adds additional information to these vectors to account for the order of words in the input. Self attention mechanisms allow the model to create context-aware representations of each word.", "image": "/img/ai/carousels/how-llm-works/self-attention.png"},
+  { "alt": "Decoding Visualization","title": "Decoding", "description": "The LLM Decoder will take the output and use it to predict the next token in the sequence.", "image": "/img/ai/carousels/how-llm-works/decoding.png"},
+  { "alt": "Output Visualization","title": "Output", "description": "Finally, the model generates a response.", "image": "/img/ai/carousels/how-llm-works/output.png"}
+]
+%}
+
+<div class="image-cards flex flex-wrap justify-between py-6 ff-inter">
+{% for slide in slides %}
+{% import "partials/image-cards/image-card.html" as imageCard %}
+{{imageCard.imageCard(slide.image, slide.alt, slide.title, slide.description,"image-top") }}
+{% endfor %}
+</div>
+
+
+</code>
+
 **Here's how it works:**
 
 The LLM starts by breaking down the input text, or "prompt," into smaller pieces known as tokens. These could be as small as one character or as large as one word. 

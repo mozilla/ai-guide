@@ -1,0 +1,13 @@
+{# layout options: 'image-top', 'image-left' #}
+
+{% macro imageCard(image,alt,title,description,layout='image-top') %}
+<div class="card {{layout}} card-compact shrink-0 grow-0 mt-10">
+  <figure class="card-figure !mt-0 !mb-0">
+      <img src="{{ image }}" alt="{{alt}}" class="w-full {{layout}}" />
+  </figure>
+  <div class="card-body !px-0 text-base-100-content whitespace-normal w-full">
+      <div class="font-semibold mb-0">{{ title }}</div>
+      <p>{{ description }}</p>
+  </div>
+</div>
+{% endmacro %}

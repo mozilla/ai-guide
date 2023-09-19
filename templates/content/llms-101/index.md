@@ -1,10 +1,29 @@
 ## LLMs 101
 
-#### What do these numbers mean in the names of models? 
+#### What do these numbers mean in the names of models?
 
 For example: "Vicuna-13B". The name of the model is Vicuna, and it has 13 billion parameters.
 
-#### What is a parameter? 
+#### What is a parameter?
+
+<code>
+{% set slides = [
+  { "alt": "LLM Model Parameter Visualization","title": "Model", "description": "Different models are trained on different sets of data, which influences their response.", "image": "/img/ai/carousels/parameters/llm-01-model.jpg"},
+  { "alt": "Max Length Parameter Visualization","title": "Max Length", "description": "Setting a limit to the number of tokens.", "image": "/img/ai/carousels/parameters/llm-02-maxlength.jpg"},
+  { "alt": "Temperature Parameter Visualization","title": "Temperature", "description": "Degree of randomness. Setting a high temperature may lead to more creative responses. Setting a low temperature will result in responses that are more literal.", "image": "/img/ai/carousels/parameters/llm-03-temp.jpg"},
+  { "alt": "Top P Parameter Visualization","title": "Top P (Probability)", "description": "Include only the top tokens whose percentage likelihood adds up to the specified “Top P” (e.g. 15%).", "image": "/img/ai/carousels/parameters/llm-04-top-p.jpg"},
+  { "alt": "Frequency Parameter Visualization","title": "Frequency", "description": "The higher this is set, the more that repetition of tokens present in the context will be penalized in suggestions.", "image": "/img/ai/carousels/parameters/llm-05-frequency.jpg"}
+]
+%}
+
+<div class="image-cards flex flex-wrap justify-between py-6 ff-inter">
+{% for slide in slides %}
+{% import "partials/image-cards/image-card.html" as imageCard %}
+{{imageCard.imageCard(slide.image, slide.alt, slide.title, slide.description,"image-top") }}
+{% endfor %}
+</div>
+
+</code>
 
 An LLM parameter is a value that the model learns during training. These values are adjusted through a process called backpropagation, which involves calculating the error between the model's predictions and the actual output and adjusting the parameters to minimize this error. The number of parameters in an LLM is typically very large, often numbering in the millions or even billions. These parameters capture the relationships between different words and phrases in language, allowing the model to generate human-like output and make accurate predictions. Without these parameters, an LLM would not be able to perform natural language processing tasks at a high level of accuracy.
 
@@ -14,17 +33,17 @@ Training an LLM involves exposing it to large amounts of data so that it can lea
 
 #### How does a typical training run work?
 
-During a typical training run, the LLM is fed with a large amount of text data and corresponding targets. The model then uses these inputs to update its parameters through an optimization algorithm like stochastic gradient descent (SGD) or Adam. 
+During a typical training run, the LLM is fed with a large amount of text data and corresponding targets. The model then uses these inputs to update its parameters through an optimization algorithm like stochastic gradient descent (SGD) or Adam.
 
 During training, the network makes predictions on a batch of input data and calculates the loss, which is a measure of how well the predictions match the actual output. The optimizer then adjusts the weights of the network using backpropagation to minimize the loss. This process is repeated iteratively for a fixed number of epochs or until a convergence criterion is met. The process of updating the model's parameters continues iteratively until the model reaches a satisfactory level of accuracy on the training set.
 
-It's worth noting that training an LLM can be a resource-intensive process, requiring significant computational power and time. 
+It's worth noting that training an LLM can be a resource-intensive process, requiring significant computational power and time.
 
 #### What is backpropagation?
 
-Backpropagation is a process used to adjust the parameters of an LLM during training. It involves calculating the error between the model's predictions and the actual output and adjusting the parameters to minimize this error. 
+Backpropagation is a process used to adjust the parameters of an LLM during training. It involves calculating the error between the model's predictions and the actual output and adjusting the parameters to minimize this error.
 
-The process starts by making a forward pass through the neural network, where input data is fed into the model, and output data is generated. The difference between the predicted output and the actual output is then calculated using a loss function. This loss value is then backpropagated through the network, starting from the last layer and moving backward towards the first layer. 
+The process starts by making a forward pass through the neural network, where input data is fed into the model, and output data is generated. The difference between the predicted output and the actual output is then calculated using a loss function. This loss value is then backpropagated through the network, starting from the last layer and moving backward towards the first layer.
 
 As it moves backward, each layer updates its weights based on how much it contributed to the final loss value. This process continues until all layers have updated their weights, resulting in a new set of parameters that hopefully improve the model's performance on future inputs.
 
@@ -58,6 +77,6 @@ Sampling is another algorithm used to generate output sequences from an LLM duri
 
 #### What is temperature?
 
-Temperature is a technique used in LLMs to control the level of randomness and creativity in the generated output during inference. It works by scaling the predicted probability distribution over possible tokens at each step by a temperature parameter, which controls how much the probabilities are "softened" or spread out. 
+Temperature is a technique used in LLMs to control the level of randomness and creativity in the generated output during inference. It works by scaling the predicted probability distribution over possible tokens at each step by a temperature parameter, which controls how much the probabilities are "softened" or spread out.
 
 Lower temperatures result in more conservative and predictable output, while higher temperatures lead to more diverse and creative output. However, setting the temperature too high can also lead to nonsensical or ungrammatical sentences. Finding the optimal temperature for a given task or application often requires experimentation and fine-tuning.
