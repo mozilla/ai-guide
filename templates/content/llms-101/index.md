@@ -7,6 +7,8 @@ For example: "Vicuna-13B". The name of the model is Vicuna, and it has 13 billio
 #### What is a parameter?
 
 <code>
+{% from "partials/image-cards/image-cards.html" import imageCards %}
+{% set orientation = "image-top" %}
 {% set slides = [
   { "alt": "LLM Model Parameter Visualization","title": "Model", "description": "Different models are trained on different sets of data, which influences their response.", "image": "/img/ai/carousels/parameters/llm-01-model.jpg"},
   { "alt": "Max Length Parameter Visualization","title": "Max Length", "description": "Setting a limit to the number of tokens.", "image": "/img/ai/carousels/parameters/llm-02-maxlength.jpg"},
@@ -15,14 +17,7 @@ For example: "Vicuna-13B". The name of the model is Vicuna, and it has 13 billio
   { "alt": "Frequency Parameter Visualization","title": "Frequency", "description": "The higher this is set, the more that repetition of tokens present in the context will be penalized in suggestions.", "image": "/img/ai/carousels/parameters/llm-05-frequency.jpg"}
 ]
 %}
-
-<div class="image-cards flex flex-wrap justify-between py-6 ff-inter">
-{% for slide in slides %}
-{% import "partials/image-cards/image-card.html" as imageCard %}
-{{imageCard.imageCard(slide.image, slide.alt, slide.title, slide.description,"image-top") }}
-{% endfor %}
-</div>
-
+{{imageCards(slides,orientation)}}
 </code>
 
 An LLM parameter is a value that the model learns during training. These values are adjusted through a process called backpropagation, which involves calculating the error between the model's predictions and the actual output and adjusting the parameters to minimize this error. The number of parameters in an LLM is typically very large, often numbering in the millions or even billions. These parameters capture the relationships between different words and phrases in language, allowing the model to generate human-like output and make accurate predictions. Without these parameters, an LLM would not be able to perform natural language processing tasks at a high level of accuracy.
