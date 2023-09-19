@@ -91,7 +91,7 @@ module.exports = {
   plugins: [
     new HtmlBundlerPlugin({
       entry: "pages/",
-      globals: {
+      data: {
         env: process.env
       },
       js: {
