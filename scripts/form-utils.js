@@ -127,7 +127,7 @@ function postToEmailServer(params, successCallback, errorCallback) {
 function serialize(params) {
     const email = encodeURIComponent(params.email);
     const newsletters = encodeURIComponent(params.newsletters);
-    const sourceUrl = encodeURIComponent("https://future.mozilla.org");
+    const sourceUrl = encodeURIComponent("https://ai-guide.future.mozilla.org");
 
     return `email=${email}&format=H&lang=en&source_url=${sourceUrl}&newsletters=${newsletters}`
 }
