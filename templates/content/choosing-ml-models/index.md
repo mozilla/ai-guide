@@ -5,10 +5,10 @@
 #### First Steps With Language Models 
 
 <code>
-    <script src="https://gist.github.com/skyfallsin/3553585c3753ab95591c452e17bbc54a.js"></script>
+    <script src="https://gist.github.com/skyfallsin/58457dd4c9f6b8c6aad4604fdefa1f37.js"></script>
 </code>
 
 #### Evaluating ML Model Results
 <code>
-    <script src="https://gist.github.com/skyfallsin/63cda68f9cbcec97986b016dfa6f7d56.js"></script>
+    <script src="https://gist.github.com/skyfallsin/9b518516b4d06fb544ccb5c43d982855.js"></script>
 </code>
