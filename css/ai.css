@@ -7,9 +7,17 @@
     src: url("../fonts/SpaceGrotesk-VariableFont_wght.ttf");
 }
 
+.ff-sg {
+    font-family: "Space Grotesk";
+}
+
 @font-face {
     font-family: "Inter";
     src: url("../fonts/Inter-VariableFont_slnt,wght.ttf")
+}
+
+.ff-inter {
+    font-family: inter;
 }
 
 @layer base {
@@ -260,4 +268,40 @@
 
 .hidden {
     display: none;
+}
+
+.card {
+    border-radius: 0;
+}
+
+.card.image-top {
+    @apply w-full md:w-[45%]
+}
+
+.card.image-left, .card.image-right {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.card.image-left {
+    @apply flex-col md:flex-row;
+}
+
+.card.image-right {
+    @apply flex-col md:flex-row-reverse;
+}
+
+.card.image-left .card-figure, .card.image-right .card-figure {
+    @apply w-full md:w-[45%];
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.card.image-left .card-body {
+    @apply md:ml-[5%];
+}
+
+.card.image-right .card-body {
+    @apply md:mr-[5%];
 }

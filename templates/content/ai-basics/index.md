@@ -2,7 +2,7 @@
 
 #### What is AI in 2023?
 
-Artificial intelligence (AI), machine learning (ML), large language models (LLMs) and related technologies and techniques have crossed the chasm from science fiction and niche research domains into widespread awareness and widely adopted products, services, and systems in 2023. 
+Artificial intelligence (AI), machine learning (ML), large language models (LLMs) and related technologies and techniques have crossed the chasm from science fiction and niche research domains into widespread awareness and widely adopted products, services, and systems in 2023.
 
 Although the history of AI research reaches back to the 1950s, the current widespread awareness of AI can be traced to a recent set of products and services using generative AI such as ChatGPT, Stable Diffusion, and the like. In particular, OpenAI's ChatGPT captured the imagination of many by removing many technical barriers to interacting with AI through “natural language” text conversations. As such, ChatGPT allowed individuals to see the power, promise, and pitfalls of such systems, and many heralded the moment as a new epoch in the history of computing.
 
@@ -28,7 +28,21 @@ At its heart, a Transformer-based Large Language Model (LLM) is essentially a co
 
 **Here's how it works:**
 
-The LLM starts by breaking down the input text, or "prompt," into smaller pieces known as tokens. These could be as small as one character or as large as one word. 
+<code>
+{% from "partials/image-cards/image-cards.html" import imageCards %}
+{% set orientation = "image-top" %}
+{% set slides = [
+  { "alt": "Tokenization Visualization","title": "Tokenization", "description": "The LLM starts by breaking down the input text, or 'prompt', into smaller pieces known as tokens.", "image": "/img/ai/carousels/how-llm-works/tokenization.jpg"},
+  { "alt": "Embedding Visualization","title": "Embedding", "description": "Next, each token is converted into a numerical representation through a process called embedding.", "image": "/img/ai/carousels/how-llm-works/embedding.jpg"},
+  { "alt": "Self-attention Visualization","title": "Self-attention", "description": "The model then adds additional information to these vectors to account for the order of words in the input. Self attention mechanisms allow the model to create context-aware representations of each word.", "image": "/img/ai/carousels/how-llm-works/self-attention.jpg"},
+  { "alt": "Decoding Visualization","title": "Decoding", "description": "The LLM Decoder will take the output and use it to predict the next token in the sequence.", "image": "/img/ai/carousels/how-llm-works/decoding.jpg"},
+  { "alt": "Output Visualization","title": "Output", "description": "Finally, the model generates a response.", "image": "/img/ai/carousels/how-llm-works/output.jpg"}
+]
+%}
+{{imageCards(slides,orientation)}}
+</code>
+
+The LLM starts by breaking down the input text, or "prompt," into smaller pieces known as tokens. These could be as small as one character or as large as one word.
 
 Next, each token is converted into a numerical representation through a process called embedding. This transformation turns each word into a high-dimensional vector in order to capture the semantic relationship of words.
 
@@ -38,7 +52,7 @@ Now comes the real magic of the Transformer architecture: self-attention mechani
 
 If the LLM includes a decoder component, it will take the output from the encoder and use it, along with the previously generated tokens, to predict the next token in the sequence.
 
-Finally, the model generates a response, one token at a time, until it reaches a certain length or produces a termination token. 
+Finally, the model generates a response, one token at a time, until it reaches a certain length or produces a termination token.
 
 All these steps involve complex mathematical operations and transformations. But fundamentally, what the model is doing is learning patterns in the data it was trained on, and using those patterns to generate new text that fits within the same patterns.
 
@@ -46,19 +60,19 @@ So, in essence, a Transformer-based LLM is a cleverly designed pattern recogniti
 
 #### What are the pros & cons of using an LLM?
 
-Although LLMs have made it possible for computers to process human language  ways that have been previously difficult, if not impossible, they are not without trade-offs: 
+Although LLMs have made it possible for computers to process human language ways that have been previously difficult, if not impossible, they are not without trade-offs:
 
 - Pros
-	- **Improved Accuracy**: LLMs are trained on large amounts of human-readable data (e.g. written text, code, and audio) and rely on state-of-the-art techniques to determine patterns within those data. The size and pattern recognition techniques (e.g. Transformers) improve the accuracy of predictions over previous systems.
-	- **Efficiency**: With LLMs, tasks such as language translation and chatbots can be automated, freeing up time for humans to focus on more complex tasks.
-	- **Language Generation**: LLMs can generate human-like language output, making them applicable for tasks such as content creation and copywriting.
+  - **Improved Accuracy**: LLMs are trained on large amounts of human-readable data (e.g. written text, code, and audio) and rely on state-of-the-art techniques to determine patterns within those data. The size and pattern recognition techniques (e.g. Transformers) improve the accuracy of predictions over previous systems.
+  - **Efficiency**: With LLMs, tasks such as language translation and chatbots can be automated, freeing up time for humans to focus on more complex tasks.
+  - **Language Generation**: LLMs can generate human-like language output, making them applicable for tasks such as content creation and copywriting.
 - Cons
-	- **Computational Power Requirements**: Training an LLM requires significant computational power, which can be expensive and time-consuming.
-	- **Data Bias**: Because LLMs are trained on massive amounts of data, they can perpetuate biases that exist in the training data.
-	- **Lack of Transparency**: The inner workings of an LLM can be difficult to understand, which makes it challenging to identify how it arrived at a particular decision or prediction.
-	- **LLM hallucinations**: One of the most interesting and controversial aspects of LLMs is their ability to generate realistic language output that they have never been trained on. This phenomenon is known as LLM hallucination, and it has raised concerns about the potential misuse of these models. 
+  - **Computational Power Requirements**: Training an LLM requires significant computational power, which can be expensive and time-consuming.
+  - **Data Bias**: Because LLMs are trained on massive amounts of data, they can perpetuate biases that exist in the training data.
+  - **Lack of Transparency**: The inner workings of an LLM can be difficult to understand, which makes it challenging to identify how it arrived at a particular decision or prediction.
+  - **LLM hallucinations**: One of the most interesting and controversial aspects of LLMs is their ability to generate realistic language output that they have never been trained on. This phenomenon is known as LLM hallucination, and it has raised concerns about the potential misuse of these models.
 
-#### What new behaviors do LLMs unlock? 
+#### What new behaviors do LLMs unlock?
 
 Large Language Models (LLMs) have unlocked a plethora of new behaviors that were previously impossible for computers to achieve. For example, LLMs can now generate highly convincing human-like text, which has led to the development of more advanced chatbots and virtual assistants. Additionally, LLMs have revolutionized the field of natural language processing by enabling machines to understand and interpret complex human language in ways that were previously impossible. This has opened up new possibilities for automated language translation, content creation, code generation, and even sentiment analysis. With continued advancements in LLM technology, we can expect to see even more exciting developments in the near future.
 
@@ -72,6 +86,7 @@ Large Language Models (LLMs) have unlocked a plethora of new behaviors that were
 - **Pre-training and Fine-tuning**: LLMs often start with a pre-trained language model, which have been trained on vast amounts of text data. These models are then fine-tuned for specific tasks. During fine-tuning, the model learns task-specific patterns on top of the general language understanding it gained during pre-training.
 
 #### When I send a Transformer-based LLM a “prompt”, what happens internally in more technical terms?
+
 1. **Tokenization**: The prompt is first converted into tokens (smaller units of text) using a process called tokenization. This could be as small as words, or even subwords in some cases.
 2. **Embedding**: Each token is then mapped to a high-dimensional vector using a pre-trained embedding layer. This representation, known as a word vector, captures semantic information about the token in its dimensions.
 3. **Positional Encoding**: Since transformer models do not inherently understand the order of tokens, positional encoding is added to give sequence information to the model. This involves adding a vector to the embedding which represents the position of each token within the sequence.

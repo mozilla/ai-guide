@@ -1,0 +1,8 @@
+{% from "./image-card.html" import imageCard %}
+{% macro imageCards(slides, orientation) %}
+<div class="image-cards flex flex-wrap justify-between py-6 ff-inter {{orientation}}">
+  {% for slide in slides %}
+    {{ imageCard(slide, orientation) }}
+  {% endfor %}
+  </div>
+{% endmacro %}
