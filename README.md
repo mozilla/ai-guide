@@ -26,7 +26,7 @@ npm start
 
 That will run the webpack dev server.
 
-View the site at http://localhost:8000/ai
+View the site at http://localhost:8000/
 
 ## Build static HTML files
 
@@ -50,7 +50,7 @@ To run the server:
 `npx tailwindcss -w` 
 `npm run start`
 
-Go to `/ai/index.html`
+Go to `/index.html`
 
 ## Folder Hierarchy  
 
