@@ -1,3 +1,5 @@
+<section id="projects-we-love">
+
 ## Projects We Love
 
 #### Complete LLM Solutions
@@ -160,3 +162,9 @@ https://github.com/mckaywrigley/chatbot-ui
 License: MIT
 
 This project is an excellent carbon copy of the ChatGPT Web interface. It implements the OpenAI API, which means you can easily point it at most of the interference runtimes mentioned earlier in this document.
+
+<div class="text-right">
+    <a class="button-next-page" href="/content/ai-basics">AI Basics</a>
+</div>
+
+</section>

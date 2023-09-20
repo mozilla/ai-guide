@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --btn-blue: #0060DF;
+    --btn-blue-hover: #170696;
+    --newsletter-bg: #1E2329;
+    --btn-green-hover: #2AC3A2;
+}
+
 @font-face {
     font-family: "Space Grotesk";
     src: url("../fonts/SpaceGrotesk-VariableFont_wght.ttf");
@@ -120,7 +127,7 @@
     }
 
     ul.menu > li.upcoming .badge, ul.menu > li.upcoming a .badge {
-        @apply p-10 text-secondary dark:text-accent border-2 border-secondary dark:border-accent p-3 rounded-md dark:bg-black
+        @apply p-10 text-secondary border-2 border-secondary p-3 rounded-md dark:bg-black
         
     }
     /* MH - not sure why tailwind adds some weird HSL value that overrides "text-accent" */
@@ -196,7 +203,7 @@
     
 
     footer {
-        @apply mt-10 p-4 pt-2 sm:pt-10 sm:pb-10 mx-auto my-auto bg-neutral text-neutral-content text-xs
+        @apply p-4 pt-2 sm:pt-10 sm:pb-10 mx-auto my-auto bg-neutral text-neutral-content text-xs
     }
 
     footer nav {
@@ -212,21 +219,8 @@
     }
 }
 
-#content a.button-next-page {
-    @apply btn btn-primary text-primary-content font-medium shadow-md shadow-accent pt-0 pb-0 pr-8 pl-8 no-underline 
-}
+/* GENERAL */
 
-#content h4 {
-    @apply text-xl font-medium mt-6 mb-3 text-primary dark:text-secondary
-}
-
-#content p {
-    @apply leading-6 font-normal text-inherit
-}
-
-.inner {
-    @apply prose p-5 md:pl-0 md:pr-0 sm:max-w-3xl text-black dark:text-white bg-base-100 my-auto mx-auto dark:bg-base-100
-}
 
 #content h2 {
     @apply text-3xl font-medium mt-9 mb-5 text-inherit
@@ -240,35 +234,34 @@
     border-color: #4579FF; /* MH: not sure why tailwind adds some weird HSL value that overrides our primary color */
 }
 
-#newsletter-section {
-    @apply py-6;
+#content h4 {
+    @apply text-xl font-medium mt-6 mb-3 text-primary
+}
+
+#content h5, #content h5 a {
+    @apply text-lg font-medium mt-6 mb-3 text-secondary
+}
+
+#content p {
+    @apply leading-6 font-normal text-inherit
+}
+
+#content a.button-next-page {
+    @apply btn text-white font-medium pt-0 pb-0 pr-8 pl-8 no-underline;
+    background-color: var(--btn-blue);
+}
+
+#content a.button-next-page:hover {
+    background-color: var(--btn-blue-hover);
+}
+
+.inner {
+    @apply prose p-5 md:pl-0 md:pr-0 sm:max-w-3xl text-black dark:text-white bg-base-100 my-auto mx-auto dark:bg-base-100
 }
 
 
-.email-checkbox {
-    @apply w-6 h-6;
-}
 
-.email-submit {
-    /* MH: not sure why tailwind adds some weird HSL value that overrides our primary color */
-    @apply text-neutral;
-}
-
-#newsletter-thanks {
-    @apply hidden
-}
-
-#newsletter-details {
-    @apply hidden
-}
-
-.collaboration-description {
-    @apply hidden
-}
-
-.hidden {
-    display: none;
-}
+/* cards */
 
 .card {
     border-radius: 0;
@@ -304,4 +297,49 @@
 
 .card.image-right .card-body {
     @apply md:mr-[5%];
+}
+
+/* state classes */
+
+.hidden {
+    display: none;
+}
+
+/* PAGE SPECIFIC */
+
+/* newsletter */
+#newsletter-section {
+    @apply py-6;
+    background-color: var(--newsletter-bg)
+}
+
+#newsletter-section .inner {
+    background-color: transparent;
+    @apply text-white
+}
+
+#newsletter-thanks {
+    @apply hidden
+}
+
+#newsletter-details {
+    @apply hidden
+}
+
+
+.collaboration-description {
+    @apply hidden
+}
+
+.email-checkbox {
+    @apply w-6 h-6;
+}
+
+.email-submit {
+    border: none;
+    @apply text-neutral bg-secondary;
+}
+
+.email-submit:hover {
+    background-color: var(--btn-green-hover);
 }
