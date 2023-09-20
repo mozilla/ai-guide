@@ -1,16 +1,16 @@
-<h2>AI Basics</h2>
-<h4>What is AI in 2023?</h4>
+<h2 id="ai-basics">AI Basics</h2>
+<h4 id="what-is-ai-in-2023">What is AI in 2023?</h4>
 <p>Artificial intelligence (AI), machine learning (ML), large language models (LLMs) and related technologies and techniques have crossed the chasm from science fiction and niche research domains into widespread awareness and widely adopted products, services, and systems in 2023. </p>
 <p>Although the history of AI research reaches back to the 1950s, the current widespread awareness of AI can be traced to a recent set of products and services using generative AI such as ChatGPT, Stable Diffusion, and the like. In particular, OpenAI&#39;s ChatGPT captured the imagination of many by removing many technical barriers to interacting with AI through “natural language” text conversations. As such, ChatGPT allowed individuals to see the power, promise, and pitfalls of such systems, and many heralded the moment as a new epoch in the history of computing.</p>
 <p>The rapid popularity of ChatGPT and other systems meant new attention and investment in the domain. Almost overnight, new applications and companies emerged that sought to make use of these technologies in new ways and new domains. As a result, a myriad of industries are finding new ways to use this technology for better decision-making, automation, and innovation.</p>
 <p>Alongside this expansion in interest and development is the need for individuals in a variety of roles to quickly ramp up their understanding of AI. However, with the increasing complexity of these models, the substantial amount of new things to learn and the extensive list of new libraries being added every single day, onboarding into the state-of-the-art AI world has become challenging for new engineers. While resources exist, many of these resources (and increasingly so) depend on proprietary technologies. Moreover, the state of knowledge is rapidly changing, and existing resources are quickly out-of-date.</p>
-<h4>Why are people excited about LLMs?</h4>
+<h4 id="why-are-people-excited-about-llms">Why are people excited about LLMs?</h4>
 <p>Large Language Models (LLMs) are AI models that use deep learning techniques to process and understand natural language text. These models have millions or even billions of parameters that allow them to generate human-like language output, making them ideal for tasks such as language translation, natural-sounding chatbots, document and code generation, and more. LLMs have been trained on massive amounts of data, allowing them to identify patterns in language that were previously difficult for computers to comprehend. This has led to breakthroughs in natural language processing, generated output and improved communication between humans and machines.</p>
-<h4>Why are people concerned about LLMs?</h4>
+<h4 id="why-are-people-concerned-about-llms">Why are people concerned about LLMs?</h4>
 <p>LLMs are currently used to power chatbots and a wide variety of content tools that can generate text, images, video, and even code. But the very traits that make LLMs so powerful and useful also present important questions that technologists need to consider when developing and deploying them.</p>
 <p>By mimicking human language and creativity, LLMs have the potential to transform or even automate certain tasks or jobs. The mass harvesting of data to train these systems presents largely unresolved challenges to the principles of copyright, fair use, and fair compensation. The tendency of users to view LLM-powered tools as “officious oracles” can lead humans to make flawed or harmful decisions based on the biases and misinformation these systems can produce.</p>
 <p>At Mozilla, we believe that developers should take these risks seriously and cultivate both an understanding and awareness of how their chosen AI technologies behave and impact the world. By their very nature, open source LLMs offer a greater chance to achieve those goals.</p>
-<h4>What exactly is an LLM?</h4>
+<h4 id="what-exactly-is-an-llm">What exactly is an LLM?</h4>
 <p>At its heart, a Transformer-based Large Language Model (LLM) is essentially a computer program designed to generate text that resembles human-written content. It leverages machine learning techniques, specifically a type of neural network called a Transformer. At a high-level, a Transformer encodes linguistic patterns in the form of statistical relationships between words, and then uses those patterns to generate text. Transformers encode these semantic patterns by ingesting examples of existing text. Now let’s dig a little deeper.</p>
 <p><strong>Here&#39;s how it works:</strong></p>
 <p>The LLM starts by breaking down the input text, or &quot;prompt,&quot; into smaller pieces known as tokens. These could be as small as one character or as large as one word. </p>
@@ -21,7 +21,7 @@
 <p>Finally, the model generates a response, one token at a time, until it reaches a certain length or produces a termination token. </p>
 <p>All these steps involve complex mathematical operations and transformations. But fundamentally, what the model is doing is learning patterns in the data it was trained on, and using those patterns to generate new text that fits within the same patterns.</p>
 <p>So, in essence, a Transformer-based LLM is a cleverly designed pattern recognition system that uses learned associations between words to generate human-like text. It&#39;s like having a scribe who has read everything ever written and can produce text on any topic in a style that mirrors the content it was trained on.</p>
-<h4>What are the pros &amp; cons of using an LLM?</h4>
+<h4 id="what-are-the-pros--cons-of-using-an-llm">What are the pros &amp; cons of using an LLM?</h4>
 <p>Although LLMs have made it possible for computers to process human language  ways that have been previously difficult, if not impossible, they are not without trade-offs: </p>
 <ul>
 <li>Pros<ul>
@@ -38,9 +38,9 @@
 </ul>
 </li>
 </ul>
-<h4>What new behaviors do LLMs unlock?</h4>
+<h4 id="what-new-behaviors-do-llms-unlock">What new behaviors do LLMs unlock?</h4>
 <p>Large Language Models (LLMs) have unlocked a plethora of new behaviors that were previously impossible for computers to achieve. For example, LLMs can now generate highly convincing human-like text, which has led to the development of more advanced chatbots and virtual assistants. Additionally, LLMs have revolutionized the field of natural language processing by enabling machines to understand and interpret complex human language in ways that were previously impossible. This has opened up new possibilities for automated language translation, content creation, code generation, and even sentiment analysis. With continued advancements in LLM technology, we can expect to see even more exciting developments in the near future.</p>
-<h4>What are the components of Transformer-based, pre-trained LLMs?</h4>
+<h4 id="what-are-the-components-of-transformer-based-pre-trained-llms">What are the components of Transformer-based, pre-trained LLMs?</h4>
 <ul>
 <li><strong>Tokenizer</strong>: This is the first step in processing text data. The tokenizer converts raw text into chunks known as &#39;tokens&#39;. These tokens can represent words, subwords, or even characters depending on the granularity of the tokenization process. For instance, a word-level tokenizer will convert the sentence &quot;I love coding&quot; into &#39;I&#39;, &#39;love&#39;, &#39;coding&#39;.</li>
 <li><strong>Embedding Layer</strong>: Once the text is tokenized, these tokens are transformed into dense vectors of fixed size in a high-dimensional space through the embedding layer. These embeddings capture semantic information about the words. For example, in this space, &#39;king&#39; and &#39;queen&#39; would be closer to each other than &#39;king&#39; and &#39;apple&#39;.</li>
@@ -49,7 +49,7 @@
 <li><strong>Attention Mechanism</strong>: This is a key part of both the encoder and decoder in a Transformer. It helps the model dynamically focus on different parts of the input sequence as it processes the data. It computes a weighted sum of input values (or &#39;query&#39;) based on their relevance (or &#39;attention scores&#39;) to the current &#39;key&#39; value.</li>
 <li><strong>Pre-training and Fine-tuning</strong>: LLMs often start with a pre-trained language model, which have been trained on vast amounts of text data. These models are then fine-tuned for specific tasks. During fine-tuning, the model learns task-specific patterns on top of the general language understanding it gained during pre-training.</li>
 </ul>
-<h4>When I send a Transformer-based LLM a “prompt”, what happens internally in more technical terms?</h4>
+<h4 id="when-i-send-a-transformer-based-llm-a-prompt-what-happens-internally-in-more-technical-terms">When I send a Transformer-based LLM a “prompt”, what happens internally in more technical terms?</h4>
 <ol>
 <li><strong>Tokenization</strong>: The prompt is first converted into tokens (smaller units of text) using a process called tokenization. This could be as small as words, or even subwords in some cases.</li>
 <li><strong>Embedding</strong>: Each token is then mapped to a high-dimensional vector using a pre-trained embedding layer. This representation, known as a word vector, captures semantic information about the token in its dimensions.</li>

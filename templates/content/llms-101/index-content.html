@@ -1,40 +1,40 @@
-<h2>Language Models 101</h2>
-<h4>What do these numbers mean in the names of models?</h4>
+<h2 id="language-models-101">Language Models 101</h2>
+<h4 id="what-do-these-numbers-mean-in-the-names-of-models">What do these numbers mean in the names of models?</h4>
 <p>For example: &quot;Vicuna-13B&quot;. The name of the model is Vicuna, and it has 13 billion parameters.</p>
-<h4>What is the difference between a language model and a LLM?</h4>
+<h4 id="what-is-the-difference-between-a-language-model-and-a-llm">What is the difference between a language model and a LLM?</h4>
 <p>They&#39;re both the same thing, except a LLM is a &quot;Large Language Model&quot; trained on many millions or billions of parameters.</p>
-<h4>What is a parameter?</h4>
+<h4 id="what-is-a-parameter">What is a parameter?</h4>
 <p>A parameter is a value that the model learns during training. These values are adjusted through a process called backpropagation, which involves calculating the error between the model&#39;s predictions and the actual output and adjusting the parameters to minimize this error. The number of parameters in an LLM is typically very large, often numbering in the millions or even billions. These parameters capture the relationships between different words and phrases in language, allowing the model to generate human-like output and make accurate predictions. Without these parameters, a language model  would not be able to perform natural language processing tasks at a high level of accuracy.</p>
-<h4>What does “training” a ML model mean?</h4>
+<h4 id="what-does-training-a-ml-model-mean">What does “training” a ML model mean?</h4>
 <p>Training an model involves exposing it to large amounts of data so that it can learn patterns and make accurate predictions. During training, the parameters of the model are adjusted based on the input data and desired output. This process can take a significant amount of time and computational resources, but it is essential for achieving high levels of accuracy in natural language processing tasks.</p>
-<h4>How does a typical training run work?</h4>
+<h4 id="how-does-a-typical-training-run-work">How does a typical training run work?</h4>
 <p>During a typical training run, the language model is fed with a large amount of text data and corresponding targets. The model then uses these inputs to update its parameters through an optimization algorithm like stochastic gradient descent (SGD) or Adam. </p>
 <p>During training, the network makes predictions on a batch of input data and calculates the loss, which is a measure of how well the predictions match the actual output. The optimizer then adjusts the weights of the network using backpropagation to minimize the loss. This process is repeated iteratively for a fixed number of epochs or until a convergence criterion is met. The process of updating the model&#39;s parameters continues iteratively until the model reaches a satisfactory level of accuracy on the training set.</p>
 <p>It&#39;s worth noting that training a language model (especially a LLM) can be a resource-intensive process, requiring significant computational power and time. </p>
-<h4>What is backpropagation?</h4>
+<h4 id="what-is-backpropagation">What is backpropagation?</h4>
 <p>Backpropagation is a process used to adjust the parameters of a model during training. It involves calculating the error between the model&#39;s predictions and the actual output and adjusting the parameters to minimize this error. </p>
 <p>The process starts by making a forward pass through the neural network, where input data is fed into the model, and output data is generated. The difference between the predicted output and the actual output is then calculated using a loss function. This loss value is then backpropagated through the network, starting from the last layer and moving backward towards the first layer. </p>
 <p>As it moves backward, each layer updates its weights based on how much it contributed to the final loss value. This process continues until all layers have updated their weights, resulting in a new set of parameters that hopefully improve the model&#39;s performance on future inputs.</p>
-<h4>What does “fine-tuning” a language model mean?</h4>
+<h4 id="what-does-fine-tuning-a-language-model-mean">What does “fine-tuning” a language model mean?</h4>
 <p>Fine-tuning a language model involves taking a pre-trained language model and providing additional training using task-specific data sets. This process typically requires less data than training a model from scratch and can be done relatively quickly. Fine-tuning has become increasingly popular in recent years as more pre-trained models have become available.</p>
-<h4>“Human in the loop” approach</h4>
+<h4 id="human-in-the-loop-approach">“Human in the loop” approach</h4>
 <p>The &quot;human in the loop&quot; approach involves incorporating human feedback into machine learning models to improve their accuracy and performance. In the context of natural language processing, this might involve having humans review text generated by a model and provide feedback on its quality, which can then be used to fine-tune the model. Human in the loop approach is valuable because it can be used to reduce bias and errors and make usage of AI more trustworthy.</p>
-<h4>What does &quot;inference&quot; mean?</h4>
+<h4 id="what-does-inference-mean">What does &quot;inference&quot; mean?</h4>
 <p>Inference refers to the process of using a trained machine learning model to make predictions or decisions based on new input data. In other words, it&#39;s the application of a trained model to real-world data in order to obtain useful insights or take action based on those insights. When performing inference with a language model, the model takes in new text as input and generates output text based on what it has learned during training and fine-tuning. Inference is a critical step in the machine learning workflow, as it allows models to be used for practical applications such as chatbots, language translation, and sentiment analysis.</p>
-<h4>Is inference computationally expensive?</h4>
+<h4 id="is-inference-computationally-expensive">Is inference computationally expensive?</h4>
 <p>YES, especially for larger models with more parameters. To address this, some models use techniques such as beam search or sampling to generate output text more efficiently. Additionally, some cloud providers offer pre-trained language models that can be accessed via APIs for a fee, which can help reduce the computational burden of running them locally.</p>
-<h4>What is a vector?</h4>
+<h4 id="what-is-a-vector">What is a vector?</h4>
 <p>A vector is a mathematical object that has both magnitude and direction. In the context of natural language processing, vectors are often used to represent words or phrases in a way that captures their meaning and relationship to other words. This is typically done using techniques such as word embeddings, which map each word to a high-dimensional vector based on its co-occurrence with other words in a large corpus of text.</p>
-<h4>What is beam search?</h4>
+<h4 id="what-is-beam-search">What is beam search?</h4>
 <p>Beam search is an algorithm used to generate output sequences from a model during inference. It works by maintaining a set of the top k most likely sequences at each step of the generation process, where k is known as the beam width. The algorithm then continues generating new tokens for each sequence in the set until all sequences have reached an end-of-sequence token or a maximum length has been reached. At each step, the set of possible sequences is pruned based on their likelihood according to the model&#39;s predictions, resulting in a final set of top-k output sequences.</p>
-<h4>What is sampling?</h4>
+<h4 id="what-is-sampling">What is sampling?</h4>
 <p>Sampling is another algorithm used to generate output sequences from a model during inference. Unlike beam search, which generates only the top-k most likely sequences at each step, sampling generates output tokens probabilistically based on the model&#39;s predicted probability distribution over all possible tokens at that step. This can lead to more diverse and creative output compared to beam search, but it can also result in less coherent or grammatical sentences if not properly controlled through techniques such as temperature scaling or nucleus sampling.</p>
-<h4>What is temperature?</h4>
+<h4 id="what-is-temperature">What is temperature?</h4>
 <p>Temperature is a technique used in language models to control the level of randomness and creativity in the generated output during inference. It works by scaling the predicted probability distribution over possible tokens at each step by a temperature parameter, which controls how much the probabilities are &quot;softened&quot; or spread out. </p>
 <p>Lower temperatures result in more conservative and predictable output, while higher temperatures lead to more diverse and creative output. However, setting the temperature too high can also lead to nonsensical or ungrammatical sentences. Finding the optimal temperature for a given task or application often requires experimentation and fine-tuning.</p>
-<h4>What is &#39;top_k&#39; sampling?</h4>
+<h4 id="what-is-top_k-sampling">What is &#39;top_k&#39; sampling?</h4>
 <p>Top-k sampling is a method used in language generation where, instead of considering all possible next words in the vocabulary, the model only considers the top &#39;k&#39; most probable next words. </p>
 <p>This technique helps to focus the model on likely continuations and reduces the chances of generating irrelevant or nonsensical text. It strikes a balance between creativity and coherence by limiting the pool of next word choices, but not so much that the output becomes deterministic.</p>
-<h4>What is &#39;top_p&#39; sampling?</h4>
+<h4 id="what-is-top_p-sampling">What is &#39;top_p&#39; sampling?</h4>
 <p>Top-p sampling, also known as nucleus sampling, is a strategy where the model considers only the smallest set of top words whose cumulative probability exceeds a threshold &#39;p&#39;. </p>
 <p>Unlike top-k which considers a fixed number of words, top-p adapts based on the distribution of probabilities for the next word. This makes it more dynamic and flexible. It helps create diverse and sensible text by allowing less probable words to be selected when the most probable ones don&#39;t add up to &#39;p&#39;.</p>
