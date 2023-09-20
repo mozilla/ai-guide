@@ -87,3 +87,7 @@ This technique helps to focus the model on likely continuations and reduces the 
 Top-p sampling, also known as nucleus sampling, is a strategy where the model considers only the smallest set of top words whose cumulative probability exceeds a threshold 'p'.
 
 Unlike top-k which considers a fixed number of words, top-p adapts based on the distribution of probabilities for the next word. This makes it more dynamic and flexible. It helps create diverse and sensible text by allowing less probable words to be selected when the most probable ones don't add up to 'p'.
+
+<div class="text-right">
+    <a class="button-next-page" href="/content/choosing-ml-models">Choosing ML Models</a>
+</div>
