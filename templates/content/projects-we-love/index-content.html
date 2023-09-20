@@ -10,96 +10,77 @@
 <p>License: Apache 2.0 | 
 Built with: gpt4all, llama.cpp, langchain, sentence-transformers, chroma</p>
 <p>privateGPT is a chatbot project focused on retrieval augmented generation. It runs from the command line, easily ingests a wide variety of local document formats, and supports a variety of model architecture (by building on top of the gpt4all project).</p>
-<h5 id="ollama">Ollama</h5>
-<p><a href="https://github.com/jmorganca/ollama">https://github.com/jmorganca/ollama</a>
-License: MIT
+<h5 id="ollama"><a href="https://github.com/jmorganca/ollama">Ollama</a></h5>
+<p>License: MIT | 
 Built with: llama.cpp, and a bunch of original Go code</p>
 <p>Ollama provides a one-click chatbot installer for MacOS, with version for Windows and Linux expected in the future. It runs from the command line and lacks a built-in native GUI interface (although one is available). It also lacks many of the features offered by GPT4All. But it’s extremely easy to get working, and it runs quite well on consumer-grade Apple Silicon-based MacBooks. Ultimately, it’s similar to running llama.cpp yourself, just easier.</p>
-<h5 id="text-generation-webui">text-generation-webui</h5>
-<p><a href="https://github.com/oobabooga/text-generation-webui">https://github.com/oobabooga/text-generation-webui</a>
-License: AGPL 3.0</p>
+<h5 id="text-generation-webui"><a href="https://github.com/oobabooga/text-generation-webui">text-generation-webui</a></h5>
+<p>License: AGPL 3.0</p>
 <p>This project is probably the most popular open source Web-based chatbot front-end, and comes paired with most of the major inference runtimes.  It provides most of the user-facing functionality found in the ChatGPT client, although with a different UI metaphor. This project has quite a lot of users and quite a number of forks, so it’s one to keep an eye on.</p>
 <h4 id="inference-runtimes">Inference runtimes</h4>
 <p>These projects provide tools for running LLMs for text inference activities. They roughly bifurcate on a “LLaMA vs. Hugging Face Transformers” axis. Some are command line tools, whereas others are meant to be used in a server capacity.</p>
-<h5 id="llamacpp">llama.cpp</h5>
-<p><a href="https://github.com/ggerganov/llama.cpp">https://github.com/ggerganov/llama.cpp</a>
-License: MIT
+<h5 id="llamacpp"><a href="https://github.com/ggerganov/llama.cpp">llama.cpp</a></h5>
+<p>License: MIT | 
 Built with: GGML, a model quantization framework, recently replaced by GGUF</p>
 <p>llama.cpp is perhaps the most noteworthy and impactful project in open source LLM tooling to date. It enables users to do inference generation with LLaMA-architecture models in a way that is performant on consumer-grade hardware. It accomplishes this by quantizing model weights files, reducing their size and thus their memory and computational requirements. This, along with other tricks, makes it possible to run these models just with a CPU. Originally optimized for Apple Silicon, llama.cpp has grown to support Intel, as well as GPUs from Nvidia and Apple. As the underpinning of many other OSS LLM projects, this project remains highly influential. As evidence, the project maintainer recently made a major breaking change (from GGML- to GGUF-format weights) and most developers opted to come along for the ride. </p>
-<h5 id="llama-cpp-python">llama-cpp-python</h5>
-<p><a href="https://github.com/abetlen/llama-cpp-python">https://github.com/abetlen/llama-cpp-python</a>
-License: MIT
+<h5 id="llama-cpp-python"><a href="https://github.com/abetlen/llama-cpp-python">llama-cpp-python</a></h5>
+<p>License: MIT | 
 Built with: llama.cpp</p>
 <p>This project wraps llama.cpp to provide Python bindings. Perhaps even more significantly, it exposes an API endpoint that mimics the OpenAI API signature. This neat trick makes it relatively easy to take any software that integrates w/ the OpenAI API and “swap it out” for a locally-running open source LLM. </p>
-<h5 id="transformers">transformers</h5>
-<p><a href="https://github.com/huggingface/transformers">https://github.com/huggingface/transformers</a>
-License: Apache 2.0
+<h5 id="transformers"><a href="https://github.com/huggingface/transformers">transformers</a></h5>
+<p>License: Apache 2.0 | 
 Built with: Hugging Face Transformers</p>
 <p>Hugging Face’s implementation of Transformers has proven to be a critical enabling technology for open source machine learning developers. It makes it easy to, often with just a few lines of code, execute a huge variety of models. HF’s site features literally thousands of models, many of which are useful in cases beyond the content of generative chatbots. With the transformers library, they are all within easy reach. However, transformers is a GPU-centric library; it does not offer the kind of CPU-based computational frugality of something like llama.cpp.</p>
-<h5 id="text-generation-inference">Text-generation-inference</h5>
-<p><a href="https://github.com/huggingface/text-generation-inference">https://github.com/huggingface/text-generation-inference</a>
-License: Apache 2.0
+<h5 id="text-generation-inference"><a href="https://github.com/huggingface/text-generation-inference">Text-generation-inference</a></h5>
+<p>License: Apache 2.0 |
 Built with: transformers</p>
 <p>This project is the open source version of the software that powers Hugging Face’s Inference Endpoints service. As such, it’s a production-ready inference-as-a-service API that can be used to run any transformers-compatible model.</p>
-<h5 id="vllm">VLLM</h5>
-<p><a href="https://github.com/vllm-project/vllm">https://github.com/vllm-project/vllm</a>
-License: Apache 2.0
+<h5 id="vllm"><a href="https://github.com/vllm-project/vllm">VLLM</a></h5>
+<p>License: Apache 2.0 | 
 Built with: transformers</p>
 <p>This recent project essentially offers a higher-performance take on text-generation-inference. That is, it provides an inference engine that is considerably faster than regular old transformers. It can also act as a server by exposing an OpenAI-compatible API (much like llama-cpp-python does). There’s been a fair amount of buzz about this project lately because it offers a relatively plug-and-play means of improving performance within the Hugging Face ecosystem.</p>
-<h5 id="llm">llm</h5>
-<p><a href="https://github.com/simonw/llm">https://github.com/simonw/llm</a>
-License: Apache 2.0</p>
+<h5 id="llm"><a href="https://github.com/simonw/llm">llm</a></h5>
+<p>License: Apache 2.0</p>
 <p>This is a command line tool that makes it easy to experiment with a variety of open source LLMS and OpenAI tools, both via the same tool. </p>
-<h5 id="mlc">MLC</h5>
-<p><a href="https://github.com/mlc-ai/mlc-llm">https://github.com/mlc-ai/mlc-llm</a>
-License: Apache 2.0</p>
+<h5 id="mlc"><a href="https://github.com/mlc-ai/mlc-llm">MLC</a></h5>
+<p>License: Apache 2.0</p>
 <p>MLC is a relatively recent development that could merit ongoing attention. This project aims to enable “native deployment” of LLMs; this means running LLMs in a manner optimized to a wide variety of hardware platforms, including desktop/laptops, phones, and environments that lack GPUs. It’s still in its early days, but it’s already seeing some uses, including as a plug-in for llm.</p>
-<h5 id="gpt4all-backend-and-gpt4all-api">gpt4all-backend and gpt4all-api</h5>
-<p><a href="https://github.com/nomic-ai/gpt4all/tree/main/gpt4all-backend">https://github.com/nomic-ai/gpt4all/tree/main/gpt4all-backend</a>
-<a href="https://github.com/nomic-ai/gpt4all/tree/main/gpt4all-api">https://github.com/nomic-ai/gpt4all/tree/main/gpt4all-api</a>
-License: MIT</p>
+<h5 id="gpt4all-backend-and-gpt4all-api"><a href="https://github.com/nomic-ai/gpt4all/tree/main/gpt4all-backend">gpt4all-backend</a> and <a href="https://github.com/nomic-ai/gpt4all/tree/main/gpt4all-api">gpt4all-api</a></h5>
+<p>License: MIT</p>
 <p>Note that the GPT4All one-click installer is based on underlying libraries that can be used to power an inference server. It can even expose an OpenAI-compatible API endpoint. A number of OSS projects embed these libraries as a way to easily get multi-architecture LLM support.</p>
 <h4 id="retrieval-augmented-generation">Retrieval augmented generation</h4>
 <p>These projects support retrieval augmented generation use cases for chatbots, wherein custom external documents can be used to augment a chatbot’s responses. This often requires the use of similarity searches across vector embedding databases.</p>
-<h5 id="faiss">FAISS</h5>
-<p><a href="https://github.com/facebookresearch/faiss">https://github.com/facebookresearch/faiss</a>
-License: MIT</p>
+<h5 id="faiss"><a href="https://github.com/facebookresearch/faiss">FAISS</a></h5>
+<p>License: MIT</p>
 <p>This project comes from Facebook and provides an easy-to-use mechanism for storing vector embeddings and then searching across them. It has proven popular with many open source developers and is rather commonly found in tutorials explaining how to do retrieval augmented generation.</p>
-<h5 id="chroma">Chroma</h5>
-<p><a href="https://github.com/chroma-core/chroma">https://github.com/chroma-core/chroma</a>
-License: Apache 2.0</p>
+<h5 id="chroma"><a href="https://github.com/chroma-core/chroma">Chroma</a></h5>
+<p>License: Apache 2.0</p>
 <p>Probably the most popular open source vector database, Chroma is used by a wide variety of opens source and commercial AI products. It has a robust feature set, is easy to use and deploy, and integrates with other popular tools (like LangChain; see below).</p>
-<h5 id="weviate">Weviate</h5>
-<p><a href="https://github.com/weaviate/weaviate">https://github.com/weaviate/weaviate</a>
-License: BSD 3-Clause</p>
+<h5 id="weviate"><a href="https://github.com/weaviate/weaviate">Weviate</a></h5>
+<p>License: BSD 3-Clause</p>
 <p>Weviate is an alternative to Chroma that is written primarily in Go (vs. Python for Chroma) and may offer better performance while boasting similar integrations.</p>
-<h5 id="pgvector">pgvector</h5>
-<p><a href="https://github.com/pgvector/pgvector">https://github.com/pgvector/pgvector</a>
-License: PostgreSQL license?</p>
+<h5 id="pgvector"><a href="https://github.com/pgvector/pgvector">pgvector</a></h5>
+<p>License: PostgreSQL license?</p>
 <p>This project enables you to use the mature and beloved PostgreSQL database as a vector embeddings solution. This is included in the list not because we have much experience working with it, but simply because it represents an interesting alternative solution for developers who prefer to stick with tools they already know and have deployed in production.</p>
-<h5 id="llama_index">llama_index</h5>
-<p><a href="https://github.com/jerryjliu/llama_index">https://github.com/jerryjliu/llama_index</a>
-Licensed: MIT
+<h5 id="llama_index"><a href="https://github.com/jerryjliu/llama_index">llama_index</a></h5>
+<p>Licensed: MIT | 
 Built with: langchain</p>
 <p>LlamaIndex offers a robust set of integrations to data sources. This makes it easier to harvest the data that you want to provide to your chatbot, and to keep it updated. This project is built on top of LangChain (see below).</p>
 <h4 id="orchestration">Orchestration</h4>
 <p>Orchestration tools help developers compose LLM-based applications by integrating and coordinating multiple tools and models.</p>
-<h5 id="langchain">LangChain</h5>
-<p><a href="https://github.com/langchain-ai/langchain">https://github.com/langchain-ai/langchain</a>
-License: MIT</p>
+<h5 id="langchain"><a href="https://github.com/langchain-ai/langchain">LangChain</a></h5>
+<p>License: MIT</p>
 <p>LangChain is the leading open source LLM orchestration tool. A number of open source AI projects utilize LangChain under the covers, so its influence has grown steadily over the past year. There is a growing faction of open source developers who believe that LangChain is overly complex and attempts to do too much. But even if one subscribes to that belief, LangChain remains a useful resource as a way to learn and understand a variety of LLM development best practices for common use cases.</p>
-<h5 id="simpleaichat">simpleaichat</h5>
-<p><a href="https://github.com/minimaxir/simpleaichat">https://github.com/minimaxir/simpleaichat</a>
-License: MIT</p>
+<h5 id="simpleaichat"><a href="https://github.com/minimaxir/simpleaichat">simpleaichat</a></h5>
+<p>License: MIT</p>
 <p>Created by a frustrated LangChain user as a simpler alternative, this project has some early buzz and is worth watching. It doesn’t offer nearly as much functionality as LangChain, but it’s arguably much easier to learn and use.</p>
 <h4 id="front-ends">Front-ends</h4>
 <p>These projects provide chatbot-style user interfaces on top of LLM inference engines.</p>
-<h5 id="chatbot-ui">chatbot-ui</h5>
-<p><a href="https://github.com/mckaywrigley/chatbot-ui">https://github.com/mckaywrigley/chatbot-ui</a>
-License: MIT</p>
+<h5 id="chatbot-ui"><a href="https://github.com/mckaywrigley/chatbot-ui">chatbot-ui</a></h5>
+<p>License: MIT</p>
 <p>This project is an excellent carbon copy of the ChatGPT Web interface. It implements the OpenAI API, which means you can easily point it at most of the interference runtimes mentioned earlier in this document.</p>
 <div class="text-right">
-    <a class="button-next-page" href="/content/ai-basics">AI Basics</a>
+    <a class="button-next-page" href="/content/ai-basics">AI Basics &rarr;</a>
 </div>
 
 </section>
