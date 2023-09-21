@@ -196,6 +196,8 @@
         @apply bg-secondary dark:bg-neutral
     }
 
+    
+
     /* Articles */
     div.prose {
         @apply dark:text-white
@@ -270,7 +272,9 @@
     padding: 0;
 }
 
-
+.inner .btn-colab {
+    max-width: 211px;
+}
 
 /* cards */
 
