@@ -6,20 +6,6 @@ For example: "Vicuna-13B". The name of the model is Vicuna, and it has 13 billio
 
 #### What is a parameter?
 
-<code>
-{% from "partials/image-cards/image-cards.html" import imageCards %}
-{% set orientation = "image-top" %}
-{% set slides = [
-  { "alt": "LLM Model Parameter Visualization","title": "Model", "description": "Different models are trained on different sets of data, which influences their response.", "image": "/img/ai/carousels/parameters/llm-01-model.jpg"},
-  { "alt": "Max Length Parameter Visualization","title": "Max Length", "description": "Setting a limit to the number of tokens.", "image": "/img/ai/carousels/parameters/llm-02-maxlength.jpg"},
-  { "alt": "Temperature Parameter Visualization","title": "Temperature", "description": "Degree of randomness. Setting a high temperature may lead to more creative responses. Setting a low temperature will result in responses that are more literal.", "image": "/img/ai/carousels/parameters/llm-03-temp.jpg"},
-  { "alt": "Top P Parameter Visualization","title": "Top P (Probability)", "description": "Include only the top tokens whose percentage likelihood adds up to the specified “Top P” (e.g. 15%).", "image": "/img/ai/carousels/parameters/llm-04-top-p.jpg"},
-  { "alt": "Frequency Parameter Visualization","title": "Frequency", "description": "The higher this is set, the more that repetition of tokens present in the context will be penalized in suggestions.", "image": "/img/ai/carousels/parameters/llm-05-frequency.jpg"}
-]
-%}
-{{imageCards(slides,orientation)}}
-</code>
-
 A parameter is a value that the model learns during training. These values are adjusted through a process called backpropagation, which involves calculating the error between the model's predictions and the actual output and adjusting the parameters to minimize this error. The number of parameters in an LLM is typically very large, often numbering in the millions or even billions. These parameters capture the relationships between different words and phrases in language, allowing the model to generate human-like output and make accurate predictions. Without these parameters, a language model would not be able to perform natural language processing tasks at a high level of accuracy.
 
 #### What does “training” a ML model mean?
@@ -66,15 +52,27 @@ A vector is a mathematical object that has both magnitude and direction. In the 
 
 Beam search is an algorithm used to generate output sequences from a model during inference. It works by maintaining a set of the top k most likely sequences at each step of the generation process, where k is known as the beam width. The algorithm then continues generating new tokens for each sequence in the set until all sequences have reached an end-of-sequence token or a maximum length has been reached. At each step, the set of possible sequences is pruned based on their likelihood according to the model's predictions, resulting in a final set of top-k output sequences.
 
-#### What is sampling?
+#### What is frequency?
 
-Sampling is another algorithm used to generate output sequences from a model during inference. Unlike beam search, which generates only the top-k most likely sequences at each step, sampling generates output tokens probabilistically based on the model's predicted probability distribution over all possible tokens at that step. This can lead to more diverse and creative output compared to beam search, but it can also result in less coherent or grammatical sentences if not properly controlled through techniques such as temperature scaling or nucleus sampling.
+<code>
+{% set slide = { "alt": "Frequency Parameter Visualization","title": "Frequency", "description": "<p>Frequency is a parameter used in language models to control how often a token can be repeated in the generated output. It works by penalizing the model for repeating tokens that have already been used, preventing the model from generating repetitive or nonsensical text. The higher this is set, the more that repetition of tokens present in the context will be penalized in suggestions.</p>", "image": "/img/ai/carousels/parameters/llm-05-frequency.jpg"}%}
+{% from "partials/image-cards/image-card.html" import imageCard %}
+{% set orientation = "image-right" %}
+{{ imageCard(slide, orientation,false) }}
+</code>
 
 #### What is temperature?
 
-Temperature is a technique used in language models to control the level of randomness and creativity in the generated output during inference. It works by scaling the predicted probability distribution over possible tokens at each step by a temperature parameter, which controls how much the probabilities are "softened" or spread out.
+<code>
+{% set slide = { "alt": "Temperature Parameter Visualization","title": "Temperature", "description": "<p>Temperature is a technique used in language models to control the level of randomness and creativity in the generated output during inference. It works by scaling the predicted probability distribution over possible tokens at each step by a temperature parameter, which controls how much the probabilities are 'softened' or spread out.</p><p>Lower temperatures result in more conservative and predictable output, while higher temperatures lead to more diverse and creative output. However, setting the temperature too high can also lead to nonsensical or ungrammatical sentences. Finding the optimal temperature for a given task or application often requires experimentation and fine-tuning.</p>", "image": "/img/ai/carousels/parameters/llm-03-temp.jpg"}%}
+{% from "partials/image-cards/image-card.html" import imageCard %}
+{% set orientation = "image-left" %}
+{{ imageCard(slide, orientation,false) }}
+</code>
 
-Lower temperatures result in more conservative and predictable output, while higher temperatures lead to more diverse and creative output. However, setting the temperature too high can also lead to nonsensical or ungrammatical sentences. Finding the optimal temperature for a given task or application often requires experimentation and fine-tuning.
+#### What is sampling?
+
+Sampling is another algorithm used to generate output sequences from a model during inference. Unlike beam search, which generates only the top-k most likely sequences at each step, sampling generates output tokens probabilistically based on the model's predicted probability distribution over all possible tokens at that step. This can lead to more diverse and creative output compared to beam search, but it can also result in less coherent or grammatical sentences if not properly controlled through techniques such as temperature scaling or nucleus sampling.
 
 #### What is 'top_k' sampling?
 
@@ -84,10 +82,13 @@ This technique helps to focus the model on likely continuations and reduces the 
 
 #### What is 'top_p' sampling?
 
-Top-p sampling, also known as nucleus sampling, is a strategy where the model considers only the smallest set of top words whose cumulative probability exceeds a threshold 'p'.
+<code>
+{% set slide = { "alt": "Top P Parameter Visualization","title": "Top P (Probability)", "description": "<p>Top-p sampling, also known as nucleus sampling, is a strategy where the model considers only the smallest set of top words whose cumulative probability exceeds a threshold 'p'. </p><p>Unlike top-k which considers a fixed number of words, top-p adapts based on the distribution of probabilities for the next word. This makes it more dynamic and flexible. It helps create diverse and sensible text by allowing less probable words to be selected when the most probable ones don't add up to 'p'.</p>", "image": "/img/ai/carousels/parameters/llm-04-top-p.jpg"}%}
+{% from "partials/image-cards/image-card.html" import imageCard %}
+{% set orientation = "image-right" %}
+{{ imageCard(slide, orientation,false) }}
+</code>
 
-Unlike top-k which considers a fixed number of words, top-p adapts based on the distribution of probabilities for the next word. This makes it more dynamic and flexible. It helps create diverse and sensible text by allowing less probable words to be selected when the most probable ones don't add up to 'p'.
-
-<div class="text-right">
-    <a class="button-next-page" href="/content/choosing-ml-models">Choosing ML Models</a>
+<div class="text-right mt-10">
+    <a class="button-next-page" href="/content/choosing-ml-models">Choosing ML Models →</a>
 </div>

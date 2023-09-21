@@ -17,11 +17,11 @@
 {% from "partials/image-cards/image-cards.html" import imageCards %}
 {% set orientation = "image-top" %}
 {% set slides = [
-  { "alt": "Tokenization Visualization","title": "Tokenization", "description": "The LLM starts by breaking down the input text, or 'prompt', into smaller pieces known as tokens.", "image": "/img/ai/carousels/how-llm-works/tokenization.jpg"},
-  { "alt": "Embedding Visualization","title": "Embedding", "description": "Next, each token is converted into a numerical representation through a process called embedding.", "image": "/img/ai/carousels/how-llm-works/embedding.jpg"},
-  { "alt": "Self-attention Visualization","title": "Self-attention", "description": "The model then adds additional information to these vectors to account for the order of words in the input. Self attention mechanisms allow the model to create context-aware representations of each word.", "image": "/img/ai/carousels/how-llm-works/self-attention.jpg"},
-  { "alt": "Decoding Visualization","title": "Decoding", "description": "The LLM Decoder will take the output and use it to predict the next token in the sequence.", "image": "/img/ai/carousels/how-llm-works/decoding.jpg"},
-  { "alt": "Output Visualization","title": "Output", "description": "Finally, the model generates a response.", "image": "/img/ai/carousels/how-llm-works/output.jpg"}
+  { "alt": "Tokenization Visualization","title": "Tokenization", "description": "<p>The LLM starts by breaking down the input text, or 'prompt', into smaller pieces known as tokens.</p>", "image": "/img/ai/carousels/how-llm-works/tokenization.jpg"},
+  { "alt": "Embedding Visualization","title": "Embedding", "description": "<p>Next, each token is converted into a numerical representation through a process called embedding.</p>", "image": "/img/ai/carousels/how-llm-works/embedding.jpg"},
+  { "alt": "Self-attention Visualization","title": "Self-attention", "description": "<p>The model then adds additional information to these vectors to account for the order of words in the input. Self attention mechanisms allow the model to create context-aware representations of each word.</p>", "image": "/img/ai/carousels/how-llm-works/self-attention.jpg"},
+  { "alt": "Decoding Visualization","title": "Decoding", "description": "<p>The LLM Decoder will take the output and use it to predict the next token in the sequence.</p>", "image": "/img/ai/carousels/how-llm-works/decoding.jpg"},
+  { "alt": "Output Visualization","title": "Output", "description": "<p>Finally, the model generates a response.</p>", "image": "/img/ai/carousels/how-llm-works/output.jpg"}
 ]
 %}
 {{imageCards(slides,orientation)}}

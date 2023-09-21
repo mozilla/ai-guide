@@ -44,6 +44,7 @@ module.exports = {
           "neutral-content": "#fff",
           "base-100": "#fff",
           "base-100-content": "#000",
+          "base-200": "#fff", //medium gray
           info: "#00B6F3", // light blue
           success: "#00CD91", // turqouise
           warning: "#FFB637", //dark yellow
@@ -57,6 +58,7 @@ module.exports = {
           "neutral-content": "#fff",
           "base-100": "#141414",
           "base-100-content": "#fff",
+          "base-200": "#363F4A", //medium gray
           info: "#00B6F3",
           success: "#00CD91",
           warning: "#FFB637",
