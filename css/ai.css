@@ -7,6 +7,7 @@
     --btn-blue-hover: #170696;
     --newsletter-bg: #1E2329;
     --btn-green-hover: #2AC3A2;
+    --bg-content-gray: #363F4A;
 }
 
 @font-face {
@@ -191,6 +192,12 @@
         @apply text-black dark:text-secondary
     }
 
+    ul.menu li > details > summary:active {
+        @apply bg-secondary dark:bg-neutral
+    }
+
+    
+
     /* Articles */
     div.prose {
         @apply dark:text-white
@@ -220,7 +227,9 @@
 }
 
 /* GENERAL */
-
+#content {
+    @apply bg-white dark:bg-base-200 
+}
 
 #content h2 {
     @apply text-3xl font-medium mt-9 mb-5 text-inherit
@@ -256,15 +265,25 @@
 }
 
 .inner {
-    @apply prose p-5 md:pl-0 md:pr-0 sm:max-w-3xl text-black dark:text-white bg-base-100 my-auto mx-auto dark:bg-base-100
+    @apply prose p-5 md:pl-0 md:pr-0 sm:max-w-3xl text-black dark:text-white my-auto mx-auto
 }
 
+.inner code {
+    padding: 0;
+}
 
+.inner .btn-colab {
+    max-width: 211px;
+}
 
 /* cards */
 
 .card {
     border-radius: 0;
+}
+
+.card-body, .card-compact .card-body {
+    @apply text-black dark:text-white text-base;
 }
 
 .card.image-top {
@@ -292,11 +311,11 @@
 }
 
 .card.image-left .card-body {
-    @apply md:ml-[5%];
+    @apply md:ml-[5%] p-0;
 }
 
 .card.image-right .card-body {
-    @apply md:mr-[5%];
+    @apply md:mr-[5%] p-0;
 }
 
 /* state classes */
