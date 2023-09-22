@@ -1,6 +1,6 @@
-<section id="projects-we-love">
+<section id="notable-projects">
 
-## Projects We Love
+## Notable Projects 
 
 #### Complete LLM Solutions
 These projects offer a full-stack chatbot solution, meaning that there is at least an inference run-time and a UI for interacting with it. Actual feature sets may vary rather wildly beyond that.
