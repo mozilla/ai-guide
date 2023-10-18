@@ -3,11 +3,7 @@
 @tailwind utilities;
 
 :root {
-    --btn-blue: #0060DF;
-    --btn-blue-hover: #170696;
-    --newsletter-bg: #1E2329;
-    --btn-green-hover: #2AC3A2;
-    --bg-content-gray: #363F4A;
+    --blue-base: #0F253A;
 }
 
 @font-face {
@@ -29,16 +25,51 @@
 }
 
 @layer base {
+    /* this hash is problematic - consider omitting */
+    .hash {
+        @apply text-base-300;
+        position: absolute;
+        display: inline-block;
+        transform: translateX(-1rem);
+        font-weight: normal;
+        /* TODO: margins too small for this currently */
+    }
+
+    input[type="checkbox"] {
+        @apply accent-primary
+    }
+
     html {
         font-family: Inter, system-ui, sans-serif;
+        @apply bg-base-100
     }
 
     h1,h2,h3,h4,h5,h6 {
         font-family: "Space Grotesk", system-ui, sans-serif;
+        @apply text-primary
     }
 
     body {
-        @apply dark:bg-base-100 my-0 top-0
+        @apply my-0 top-0
+    }
+
+    .btn {
+        box-shadow: 5px 5px 4px 0px rgba(0, 0, 0, 0.10);
+    }
+
+    .btn.btn-base {
+        @apply bg-primary text-primary-content hover:bg-primary-focus rounded-none
+    }
+
+    .btn::after {
+        content: '→';
+    }
+
+    div.inner {
+        color: var(--blue-base) !important; /* MH TODO: don't know why I can't use apply text-primary here... */
+        @apply prose p-5 sm:max-w-3xl my-auto mx-auto;
+        border: 1px solid var(--blue-base);
+        box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.20);
     }
 
     div#mobile_banner {
@@ -50,13 +81,15 @@
     }
 
     #header-bg {
+        @apply bg-primary;
         width: 100%;
-        /* aspect-ratio: 3 / 1; */
-        height: 305px;
         display: flex;
-        background: url('/img/ai/ai-header-bg.jpg') no-repeat center right;
-        background-size: cover;
         align-items: center;
+        padding: 40px 0;
+    }
+
+    #header-bg h1 {
+        text-transform: uppercase;
     }
 
     #header-content {
@@ -97,6 +130,11 @@
     img#sidebar-logo {
         /* @apply w-32 mt-5 sm:mt-14 pl-5 sm:pl-6 !important */
         @apply w-32 mt-5 sm:mt-14
+    }
+
+    img#footer-logo {
+        /* @apply w-32 mt-5 sm:mt-14 pl-5 sm:pl-6 !important */
+        @apply w-32
     }
 
     ul.menu {
@@ -210,7 +248,7 @@
     
 
     footer {
-        @apply p-4 pt-2 sm:pt-10 sm:pb-10 mx-auto my-auto bg-neutral text-neutral-content text-xs
+        @apply p-4 pt-2 sm:pt-10 sm:pb-10 mx-auto my-auto bg-primary text-primary-content text-xs
     }
 
     footer nav {
@@ -224,27 +262,56 @@
     footer ul {
         @apply underline sm:max-w-3xl mx-auto my-auto
     }
+    #content a.button-next-page {
+        @apply btn rounded-none text-white font-medium pt-0 pb-0 pr-8 pl-8 no-underline bg-primary hover:bg-primary-focus
+    }
+
+    /* newsletter */
+    #newsletter-section {
+        @apply py-6;
+    }
+
+    #newsletter-section .inner {
+        background-color: transparent;
+        @apply text-white
+    }
+
+    #newsletter-thanks {
+        @apply hidden
+    }
+
+    #newsletter-details {
+        @apply hidden
+    }
+
+    .email-checkbox {
+        @apply w-6 h-6;
+    }
+    
+    .email-submit {
+        border: none;
+    }
+
 }
 
-/* GENERAL */
-#content {
-    @apply bg-white dark:bg-base-200 
-}
+
 
 #content h2 {
-    @apply text-3xl font-medium mt-9 mb-5 text-inherit
+    @apply text-3xl font-medium mt-9 mb-5;
+    text-transform: uppercase;
 }
 
-/* blue bar above the page headers*/
-#content h2::before {
+/* blue bar above the section headers*/
+h4 {
+    text-transform: uppercase;
+    @apply text-xl font-medium mt-6 mb-3 text-primary
+}
+
+h4::before {
     content: '';
     height: 0.3125rem;
     @apply border-t-4 border-primary my-auto w-16 mb-2 block;
-    border-color: #4579FF; /* MH: not sure why tailwind adds some weird HSL value that overrides our primary color */
-}
-
-#content h4 {
-    @apply text-xl font-medium mt-6 mb-3 text-primary
+    border-color: var(--blue-base);
 }
 
 #content h5, #content h5 a {
@@ -255,17 +322,11 @@
     @apply leading-6 font-normal text-inherit
 }
 
-#content a.button-next-page {
-    @apply btn text-white font-medium pt-0 pb-0 pr-8 pl-8 no-underline;
-    background-color: var(--btn-blue);
-}
 
-#content a.button-next-page:hover {
-    background-color: var(--btn-blue-hover);
-}
 
 .inner {
-    @apply prose p-5 md:pl-0 md:pr-0 sm:max-w-3xl text-black dark:text-white my-auto mx-auto
+    color: var(--blue-base);
+    @apply prose p-5 md:pl-0 md:pr-0 sm:max-w-3xl my-auto mx-auto dark:text-inherit
 }
 
 .inner code {
@@ -326,39 +387,9 @@
 
 /* PAGE SPECIFIC */
 
-/* newsletter */
-#newsletter-section {
-    @apply py-6;
-    background-color: var(--newsletter-bg)
-}
-
-#newsletter-section .inner {
-    background-color: transparent;
-    @apply text-white
-}
-
-#newsletter-thanks {
-    @apply hidden
-}
-
-#newsletter-details {
-    @apply hidden
-}
 
 
 .collaboration-description {
     @apply hidden
 }
 
-.email-checkbox {
-    @apply w-6 h-6;
-}
-
-.email-submit {
-    border: none;
-    @apply text-neutral bg-secondary;
-}
-
-.email-submit:hover {
-    background-color: var(--btn-green-hover);
-}

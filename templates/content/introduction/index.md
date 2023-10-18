@@ -1,6 +1,6 @@
 ## Introduction
 
-#### Why this guide? 
+#### <span class="hash">#</span>Why this guide? 
 Large language and image/video generation models are opening up new ways to create, plan and execute the things we do at work and home every day. 
 
 So far, onboarding into the state-of-the-art within AI has been challenging for new engineers. Current onboarding options require piecing-together various solutions in disjointed ways. Most of these solutions are also not default open source, and there are vast amounts of new terminology, entities and libraries to learn.
@@ -14,6 +14,6 @@ But like many others, we also see the risk of real-world harm. We don’t have t
 
 Much will depend on how this technology is developed and deployed, but it will also depend on who does it. We believe that the open source community has a critical role to play in ensuring that AI develops in a way that is responsible, trustworthy, equitable, and safe. We hope that this guide contributes to mobilizing the open source community to join us in this important work.
 
-<div class="text-right">
-    <a class="button-next-page" href="/content/ai-basics">AI Basics &rarr;</a>
+<div>
+    <a class="button-next-page" href="/content/ai-basics">AI Basics</a>
 </div>
