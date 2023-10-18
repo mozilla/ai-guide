@@ -80,8 +80,16 @@
     }
 
     .drawer-open .drawer-side {
-        @apply bg-white dark:bg-black 
-        /* @apply w-full */
+        box-shadow: 10px 10px 4px 0px rgba(0, 0, 0, 0.05);
+        display: flex;
+        width: 19.4375rem;
+        height: 120.5rem;
+        padding: 2rem 1.5rem 2rem 2rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.25rem;
+        flex-shrink: 0;
+        @apply bg-base-100 dark:bg-black border-r border-r-base-content
     }
 
     .drawer-toggle:checked ~ .drawer-side > .drawer-overlay {
@@ -101,10 +109,20 @@
 
     ul.menu {
         @apply bg-white dark:bg-black mt-12 sm:mt-0 w-full sm:w-72  min-h-full
+        /* @apply mt-12 sm:mt-0 w-full sm:w-72  min-h-full */
     }
 
     ul.menu > li {
-        @apply leading-6 font-medium w-full
+        display: flex;
+        height: 2.5rem;
+        padding: 0.25rem 0rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 0.75rem;
+        flex-shrink: 0;
+        align-self: stretch;
+        @apply leading-6 font-medium w-full border border-base-content
     }
 
     ul.menu details {
@@ -265,7 +283,20 @@
 }
 
 .inner {
-    @apply prose p-5 md:pl-0 md:pr-0 sm:max-w-3xl text-black dark:text-white my-auto mx-auto
+    display: flex;
+    width: 60.1875rem;
+    height: 56.1875rem;
+    padding: 4.0625rem 6.0625rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3.625rem;
+    flex-shrink: 0;
+
+    border: 1px solid var(--Text-on-Light, #0F253A);
+    background: var(--Creme, #FCFBF6);
+    box-shadow: 10px 10px 4px 0px rgba(0, 0, 0, 0.10);
+
+    /* @apply prose p-5 md:pl-0 md:pr-0 sm:max-w-3xl text-black dark:text-white my-auto mx-auto */
 }
 
 .inner code {

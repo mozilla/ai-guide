@@ -34,6 +34,25 @@ module.exports = {
     themes: [
       {
         moz_ai_guide_base: {
+          primary: "0F253A",
+          "primary-hover": "14314D",
+          "primary-focus": "204D79",
+          "primary-content": "#ffffff",
+          "base-content": "0F253A",
+          "base-100": "FCFBF6",
+          "base-200": "6E7B85",
+          "base-300": "6E7B85",
+          "info": "3AC0F8",
+          "info-content": "000000",
+          "warning": "FCBC23",
+          "warning-content": "000000",
+          "success": "37D399",
+          "success-content": "000000",
+          "error": "F87272",
+          "interaction-inactive": "A9B2B2",
+          "border": "A7ACB9",
+        },
+        moz_ai_guide_old_base: {
           primary: "#BC41BC", // pink
           "primary-focus": "#BC41BC", // purple
           "primary-content": "#fff",
@@ -66,7 +85,6 @@ module.exports = {
         },
       },
       "dark",
-      "cyberpunk",
     ],
   },
 };
