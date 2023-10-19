@@ -189,21 +189,13 @@
         @apply text-gray-400 bg-transparent font-normal
     }
 
-    ul.menu > li.upcoming:hover,
-    ul.menu > li.upcoming:hover a {
-        cursor: default;
-        @apply text-gray-400 bg-transparent
+    ul.menu > li.upcoming {
+        @apply border-[1px] border-gray-400 mt-2
     }
 
-    ul.menu > li.upcoming .badge, ul.menu > li.upcoming a .badge {
-        @apply p-10 text-secondary border-2 border-secondary p-3 rounded-md dark:bg-black
-        
-    }
-    /* MH - not sure why tailwind adds some weird HSL value that overrides "text-accent" */
-    @media (prefers-color-scheme: dark){
-        ul.menu > li.upcoming .badge, ul.menu > li.upcoming a .badge {
-        color: #73FDAF !important; 
-        }
+
+    .menu :where(li ul):before {
+        @apply bg-transparent !important;
     }
 
     ul.menu > li:hover {
@@ -213,34 +205,21 @@
 
     ul.menu > li a {
         white-space: normal !important;
-        @apply text-black dark:text-white font-medium
-    }
-
-
-    ul.menu > li:hover summary  {
-        /* @apply text-white dark:text-secondary */
-        @apply dark:bg-neutral
-    }
-
-    ul.menu > li:hover summary a {
-        @apply dark:text-secondary
-    }
-
-    ul.menu > li:hover > details > summary::after {
-        @apply dark:text-secondary
     }
 
     ul.sub_menu {
-        @apply border-b-2 dark:border-neutral pb-2
+        @apply pb-2;
+        list-style-type: square !important;
+        /* MH TODO: list bullets not showing up, not sure why */
     }
 
     ul.sub_menu > li {
-        @apply leading-3 w-full
+        @apply leading-3;
         /* @apply w-full */
     }
 
-    ul.sub_menu > li:hover {
-        @apply bg-secondary dark:bg-neutral rounded-md
+    ul.sub_menu > li a:before {
+        content: "▪";
     }
     
 
@@ -248,21 +227,29 @@
         /* @apply w-1/2 */
         line-height: 1.5em;
         white-space: normal !important;
-        @apply w-full pl-6 font-normal
+        @apply w-full font-normal
         
     }
 
     ul.menu > li ul.sub_menu li:hover {
-        @apply bg-secondary dark:bg-neutral rounded-md
+        @apply bg-info rounded-none
     }
 
     ul.menu > li ul.sub_menu li:hover a {
-        @apply text-black dark:text-secondary
+        background-color: inherit;
     }
 
-    ul.menu li > details > summary:active {
-        @apply bg-secondary dark:bg-neutral
+    ul.menu li > details > summary {
+        @apply border-[1px] mt-2 border-primary rounded-none;
     }
+
+    ul.menu li > details > summary:hover {
+        @apply bg-info
+    }
+
+    /* ul.menu li > details > summary:active {
+        @apply bg-secondary dark:bg-neutral
+    } */
 
     
 

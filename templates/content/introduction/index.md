@@ -7,7 +7,7 @@
     <a href="" class="boxlink">Language Models 101</a>
 </div>
 
-#### <span class="hash">#</span>Why this guide? 
+#### Why this guide? 
 Large language and image/video generation models are opening up new ways to create, plan and execute the things we do at work and home every day. 
 
 So far, onboarding into the state-of-the-art within AI has been challenging for new engineers. Current onboarding options require piecing-together various solutions in disjointed ways. Most of these solutions are also not default open source, and there are vast amounts of new terminology, entities and libraries to learn.
