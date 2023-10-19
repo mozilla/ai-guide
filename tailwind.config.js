@@ -23,9 +23,10 @@ module.exports = {
     // base
     plugin(function ({ addBase, theme }) {
       addBase({
-        h1: { fontFamily: theme("Space Grotesk") },
-        h2: { fontFamily: theme("Space Grotesk") },
-        h3: { fontFamily: theme("Space Grotesk") },
+        p: { fontFamily: theme("Cabin") },
+        h1: { fontFamily: theme("Montserrat") },
+        h2: { fontFamily: theme("Montserrat") },
+        h3: { fontFamily: theme("Montserrat") },
       });
       return true;
     }),

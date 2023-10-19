@@ -8,21 +8,21 @@
 }
 
 @font-face {
-    font-family: "Space Grotesk";
-    src: url("../fonts/SpaceGrotesk-VariableFont_wght.ttf");
+    font-family: "Cabin";
+    src: url("../fonts/Cabin-VariableFont_wdth,wght.ttf");
 }
 
-.ff-sg {
-    font-family: "Space Grotesk";
+.ff-cabin {
+    font-family: "Cabin", system-ui, sans-serif;
 }
 
 @font-face {
-    font-family: "Inter";
-    src: url("../fonts/Inter-VariableFont_slnt,wght.ttf")
+    font-family: "Montserrat";
+    src: url("../fonts/Montserrat-VariableFont_wght.ttf")
 }
 
-.ff-inter {
-    font-family: inter;
+.ff-montserrat {
+    font-family: "Montserrat", system-ui, sans-serif;
 }
 
 @layer base {
@@ -41,7 +41,7 @@
     }
 
     html {
-        font-family: Inter, system-ui, sans-serif;
+        font-family: "Cabin", system-ui, sans-serif;
         @apply bg-base-100
     }
 
