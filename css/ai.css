@@ -5,6 +5,7 @@
 :root {
     --blue-base: #0F253A;
     --shadow-std: 4px 4px 4px 0px rgba(0, 0, 0, 0.20);
+    --shadow-figure: 9.90625px 9.90625px 1.98125px 0px rgba(0, 0, 0, 0.15);
     --border-std: 1px solid var(--blue-base);
 }
 
@@ -410,6 +411,19 @@ h4::before {
 
 .card.image-right .card-body {
     @apply md:mr-[5%] p-0;
+}
+
+.image-cards {
+    @apply bg-info-content p-12;
+    box-shadow: 20px 20px 4px 0px rgba(0, 0, 0, 0.15) inset;
+}
+
+.image-cards figure {
+    box-shadow: var(--shadow-figure);
+}
+
+.image-cards .card-body p {
+    margin-top: 0;
 }
 
 /* state classes */

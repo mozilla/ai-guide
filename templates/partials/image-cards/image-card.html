@@ -3,7 +3,7 @@
 {% macro imageCard(slide, layout='image-top', renderTitle=true) %}
 <div class="card {{ layout }} card-compact shrink-0 grow-0">
   <figure class="card-figure !m-0">
-      <img src="{{ slide.image }}" alt="{{ slide.alt }}" class="w-full {{ layout }}" />
+      <img src="{{ slide.image }}" alt="{{ slide.alt }}" class="image-card w-full {{ layout }}" />
   </figure>
   <div class="card-body !px-0 !base-100-content whitespace-normal w-full ff-montserrat">
     {% if renderTitle %}

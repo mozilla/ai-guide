@@ -7,6 +7,12 @@
     <a href="" class="boxlink">Language Models 101</a>
 </div>
 
+#### Getting started with code
+
+<div class="boxlinks">
+    <a href="" class="boxlink">Choosing ML Models</a>
+</div>
+
 #### Why this guide? 
 Large language and image/video generation models are opening up new ways to create, plan and execute the things we do at work and home every day. 
 
