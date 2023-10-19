@@ -5,6 +5,7 @@
 :root {
     --blue-base: #0F253A;
     --shadow-std: 4px 4px 4px 0px rgba(0, 0, 0, 0.20);
+    --border-std: 1px solid var(--blue-base);
 }
 
 @font-face {
@@ -46,7 +47,7 @@
     }
 
     h1,h2,h3,h4,h5,h6 {
-        font-family: "Space Grotesk", system-ui, sans-serif;
+        font-family: "Montserrat", system-ui, sans-serif;
         @apply text-primary
     }
 
@@ -66,6 +67,15 @@
         content: '→';
     }
 
+    div.inner .boxlinks {
+        @apply my-8
+    }
+
+    div.inner a.boxlink {
+        @apply bg-info border-primary border-2 py-2 px-4 no-underline ml-4 first:ml-0;
+        box-shadow: var(--shadow-std);
+    }
+
     div.inner {
         color: var(--blue-base) !important; /* MH TODO: don't know why I can't use apply text-primary here... */
         @apply prose p-5 sm:max-w-3xl my-auto mx-auto;
@@ -83,6 +93,7 @@
 
     #linkbar {
         box-shadow: var(--shadow-std);
+        border-bottom: var(--border-std);
     }
     
     #linkbar .inner {
@@ -105,19 +116,17 @@
         box-shadow: var(--shadow-std)
     }
 
-    #header-bg h1 {
-        text-transform: uppercase;
-    }
-
     #header-content {
         /* @apply max-h-full max-w-full sm:max-h-80 sm:mx-auto */
         @apply sm:max-w-3xl mx-auto my-auto w-full pl-5 pr-5 md:pl-0 md:pr-0
     }
 
     #header-title {
-        font-size: 4rem;
-        color: white;
-        font-weight: 500;
+        @apply uppercase font-medium text-4xl md:text-5xl lg:text-6xl xl:text-8xl text-primary-content;
+    }
+
+    #header-subtitle {
+        @apply text-lg md:text-2xl normal-case text-primary-content mt-0
     }
 
     main {
@@ -130,14 +139,14 @@
     }
 
     .drawer-open .drawer-side {
-        @apply bg-white dark:bg-black 
+        box-shadow: var(--shadow-std);
+        border-right: var(--border-std);
         /* @apply w-full */
     }
 
     .drawer-toggle:checked ~ .drawer-side > .drawer-overlay {
-        /* @apply bg-white bg-opacity-100 dark:bg-black dark:text-white text-black !important */
-        @apply dark:text-white text-black !important
-        /* @apply h-full  */
+        /* MH TODO: if we apply a non-standard background here it covers the button. We would need to add another perfectly overlaying button within the drawer and give it the same functionality as the base (unopened) layer */
+        /* @apply bg-primary-content !important */
     }
 
     .drawer-toggle:checked ~  #sidebar-close-btn {
@@ -146,7 +155,11 @@
 
     img#sidebar-logo {
         /* @apply w-32 mt-5 sm:mt-14 pl-5 sm:pl-6 !important */
-        @apply w-32 mt-5 sm:mt-14
+        @apply w-32 mt-5 sm:mt-2
+    }
+
+    .sidebar-title {
+        @apply uppercase text-4xl font-normal
     }
 
     img#footer-logo {
@@ -155,7 +168,7 @@
     }
 
     ul.menu {
-        @apply bg-white dark:bg-black mt-12 sm:mt-0 w-full sm:w-72  min-h-full
+        @apply bg-primary-content mt-12 sm:mt-0 w-full sm:w-72  min-h-full;
     }
 
     ul.menu > li {
@@ -327,7 +340,7 @@ h4 {
 h4::before {
     content: '';
     height: 0.3125rem;
-    @apply border-t-4 border-primary my-auto w-16 mb-2 block;
+    @apply border-t-4 border-primary my-auto w-16 block;
     border-color: var(--blue-base);
 }
 

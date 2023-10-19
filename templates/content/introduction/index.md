@@ -1,5 +1,12 @@
 ## Introduction
 
+#### If you're new to AI
+
+<div class="boxlinks">
+    <a href="" class="boxlink">AI Basics</a>
+    <a href="" class="boxlink">Language Models 101</a>
+</div>
+
 #### <span class="hash">#</span>Why this guide? 
 Large language and image/video generation models are opening up new ways to create, plan and execute the things we do at work and home every day. 
 
