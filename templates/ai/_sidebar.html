@@ -1,7 +1,14 @@
+
 <div class="drawer-side">
+  
     <label for="my-drawer-2" class="drawer-overlay"></label>
-    <!-- <button id="sidebar-close-btn" class="drawer-button">X</button> -->
-    
+    <!-- TODO: adding a div here is needed to provide a solid background color over underlying content, but this throws off alignment and layout of button -->
+    <label id='hamburger-btn-2' class="hamburger-btn" for="my-drawer-2">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>        
+    </label>
     <ul class="menu">
       <li><a href="index.html"><img alt="Mozilla logo" class="dark:[filter:invert(1)]" id='sidebar-logo' src="/img/mozilla-only.png"/></a></li>
       <li><h2 class="sidebar-title">AI Guide</h2></li>

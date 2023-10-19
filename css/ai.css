@@ -87,8 +87,24 @@
         @apply relative sm:static 
     }
 
+    #hamburger-btn, #hamburger-btn-2 {
+        @apply drawer-button lg:hidden bg-primary text-primary-content top-2 left-2 btn-square w-fit h-fit p-1 rounded-md !important
+    }
+
     #hamburger-btn {
-        @apply fixed drawer-button lg:hidden z-0 bg-primary text-primary-content top-2 left-2 btn-square w-fit h-fit p-1 rounded-md !important
+        @apply fixed z-0;
+    }
+
+    .drawer-toggle ~ .drawer-side #hamburger-btn-2 {
+        display: none;
+    }
+
+    .drawer-toggle:checked ~ .drawer-side #hamburger-btn-2 {
+        display: block !important;
+    }
+
+    #hamburger-btn-2 {
+        @apply fixed z-[999];
     }
 
     #linkbar {
@@ -146,7 +162,7 @@
 
     .drawer-toggle:checked ~ .drawer-side > .drawer-overlay {
         /* MH TODO: if we apply a non-standard background here it covers the button. We would need to add another perfectly overlaying button within the drawer and give it the same functionality as the base (unopened) layer */
-        /* @apply bg-primary-content !important */
+        @apply bg-primary-content !important;
     }
 
     .drawer-toggle:checked ~  #sidebar-close-btn {
