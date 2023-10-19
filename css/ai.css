@@ -4,6 +4,7 @@
 
 :root {
     --blue-base: #0F253A;
+    --shadow-std: 4px 4px 4px 0px rgba(0, 0, 0, 0.20);
 }
 
 @font-face {
@@ -69,7 +70,7 @@
         color: var(--blue-base) !important; /* MH TODO: don't know why I can't use apply text-primary here... */
         @apply prose p-5 sm:max-w-3xl my-auto mx-auto;
         border: 1px solid var(--blue-base);
-        box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.20);
+        box-shadow: var(--shadow-std)
     }
 
     div#mobile_banner {
@@ -80,12 +81,28 @@
         @apply fixed drawer-button lg:hidden z-0 bg-primary text-primary-content top-2 left-2 btn-square w-fit h-fit p-1 rounded-md !important
     }
 
+    #linkbar {
+        box-shadow: var(--shadow-std);
+    }
+    
+    #linkbar .inner {
+        box-shadow: none;
+        border: 0;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    #linkbar div.inner a {
+        @apply no-underline uppercase bg-primary text-primary-content hover:bg-primary-focus pl-4 pr-4 py-2 ml-4 first:ml-0;
+    }
+
     #header-bg {
-        @apply bg-primary;
         width: 100%;
+        @apply bg-primary xl:w-[calc(100%-4rem)];
         display: flex;
         align-items: center;
         padding: 40px 0;
+        box-shadow: var(--shadow-std)
     }
 
     #header-bg h1 {
@@ -268,7 +285,7 @@
 
     /* newsletter */
     #newsletter-section {
-        @apply py-6;
+        @apply pt-6;
     }
 
     #newsletter-section .inner {

@@ -53,6 +53,15 @@
                         <rect y="60" width="60" height="10" rx="8"></rect>
                     </svg>
                 </label>
+                {% block linkbar %}
+                <div id="linkbar">
+                    <div class="inner">
+                        <a href="" class="linkbar-link">Link</a>
+                        <a href="" class="linkbar-link">Link</a>
+                        <a href="" class="linkbar-link">Link</a>
+                    </div>
+                </div>
+                {% endblock %}
                 {% block banner %}
                 <div id="header-bg">
                     <div id="header-content">
