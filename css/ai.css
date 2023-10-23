@@ -413,12 +413,14 @@ h4::before {
     @apply md:mr-[5%] p-0;
 }
 
-.image-cards {
+.image-cards, .card.image-single figure {
     @apply bg-info-content p-12;
     box-shadow: 20px 20px 4px 0px rgba(0, 0, 0, 0.15) inset;
+    border: 1px solid black;
 }
 
-.image-cards figure {
+.image-cards .card:not(.image-single) figure, .card.image-single figure img {
+    border: 1px solid black;
     box-shadow: var(--shadow-figure);
 }
 

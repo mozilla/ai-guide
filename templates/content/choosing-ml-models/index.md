@@ -12,5 +12,5 @@
 <script src="https://gist.github.com/skyfallsin/7f11871fba50f2b50b5f361e4b43d114.js"></script>
 
 <div class="text-right mt-10">
-    <a class="button-next-page" href="https://forms.gle/eYJ2s6avtCBXMUQH9">❤️ Share Your Feedback ></a>
+    <a class="button-next-page" href="https://forms.gle/eYJ2s6avtCBXMUQH9">❤️ Share Your Feedback</a>
 </div>
