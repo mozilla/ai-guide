@@ -100,7 +100,12 @@
         text-transform: uppercase;
         line-height: normal;
         text-align: center;
+        transition: filter .25s;
         @apply w-full text-lg flex mt-8 md:mt-0 md:w-[calc(50%-12px)] justify-center items-center md:text-2xl py-8 px-16
+    }
+
+    div.inner a.imagelink:hover {
+        filter: brightness(105%);
     }
 
     div.inner {
@@ -404,7 +409,7 @@ h4::before {
 }
 
 .card-body, .card-compact .card-body {
-    @apply text-black dark:text-white text-base;
+    @apply text-black;
 }
 
 .card.image-top {
@@ -449,10 +454,15 @@ h4::before {
     z-index: -1; /* MH - menu button shows up behind figure otherwise */
 }
 
+.card.image-single img {
+    max-width: 480px;
+}
+
 .image-cards .card:not(.image-single) figure, .card.image-single figure img {
     border: 1px solid black;
     box-shadow: var(--shadow-figure);
 }
+
 
 .image-cards .card-body p {
     margin-top: 0;

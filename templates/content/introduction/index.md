@@ -3,8 +3,8 @@
 #### If you're new to AI
 
 <div class="imagelinks">
-    <a href="" class="imagelink">AI Basics</a>
-    <a href="" class="imagelink">Language Models 101</a>
+    <a href="/content/ai-basics/" class="imagelink">AI Basics</a>
+    <a href="/content/llms-101/" class="imagelink">Language Models 101</a>
 </div>
 
 #### Getting started with code
