@@ -89,6 +89,6 @@ This technique helps to focus the model on likely continuations and reduces the 
 {{ imageCard(slide, orientation,false) }}
 </code>
 
-<div class="text-right mt-10">
-    <a class="button-next-page" href="/content/choosing-ml-models">Choosing ML Models →</a>
+<div class="mt-10">
+    <a class="button-next-page" href="/content/choosing-ml-models">Choosing ML Models</a>
 </div>

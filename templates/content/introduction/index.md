@@ -2,9 +2,9 @@
 
 #### If you're new to AI
 
-<div class="boxlinks">
-    <a href="" class="boxlink">AI Basics</a>
-    <a href="" class="boxlink">Language Models 101</a>
+<div class="imagelinks">
+    <a href="" class="imagelink">AI Basics</a>
+    <a href="" class="imagelink">Language Models 101</a>
 </div>
 
 #### Getting started with code

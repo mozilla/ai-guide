@@ -7,6 +7,8 @@
     --shadow-std: 4px 4px 4px 0px rgba(0, 0, 0, 0.20);
     --shadow-figure: 9.90625px 9.90625px 1.98125px 0px rgba(0, 0, 0, 0.15);
     --border-std: 1px solid var(--blue-base);
+    --ff-montserrat: "Montserrat", system-ui, sans-serif;
+    --ff-cabin: "Cabin", system-ui, sans-serif;
 }
 
 @font-face {
@@ -15,7 +17,7 @@
 }
 
 .ff-cabin {
-    font-family: "Cabin", system-ui, sans-serif;
+    font-family: var(--ff-cabin);
 }
 
 @font-face {
@@ -24,7 +26,7 @@
 }
 
 .ff-montserrat {
-    font-family: "Montserrat", system-ui, sans-serif;
+    font-family: var(--ff-montserrat);
 }
 
 @layer base {
@@ -68,13 +70,37 @@
         content: '→';
     }
 
-    div.inner .boxlinks {
+    div.inner .boxlinks, div.inner .imagelinks {
         @apply my-8
     }
 
     div.inner a.boxlink {
-        @apply bg-info border-primary border-2 py-2 px-4 no-underline ml-4 first:ml-0;
+        @apply bg-success-content border-primary border-2 py-2 px-4 no-underline ml-4 first:ml-0;
         box-shadow: var(--shadow-std);
+    }
+
+    div.inner .imagelinks {
+        /*
+        need this css via tailwind:
+        gap: 24px;
+        display: flex;
+        justify-content: space-between;
+        */
+        @apply md:flex md:justify-between md:gap-8
+    }
+
+    div.inner a.imagelink {
+        box-shadow: var(--shadow-std);
+        background: no-repeat url("../img/ai/ui/btn-section-lg.jpg");
+        background-size: cover;
+        border: 1px solid black;
+        font-family: var(--ff-montserrat);
+        font-weight: normal;
+        text-decoration: none;
+        text-transform: uppercase;
+        line-height: normal;
+        text-align: center;
+        @apply w-full text-lg flex mt-8 md:mt-0 md:w-[calc(50%-12px)] justify-center items-center md:text-2xl py-8 px-16
     }
 
     div.inner {
@@ -249,7 +275,7 @@
     }
 
     ul.menu > li ul.sub_menu li:hover {
-        @apply bg-info rounded-none
+        @apply bg-success-content rounded-none
     }
 
     ul.menu > li ul.sub_menu li:hover a {
@@ -261,7 +287,7 @@
     }
 
     ul.menu li > details > summary:hover {
-        @apply bg-info
+        @apply bg-success-content
     }
 
     /* ul.menu li > details > summary:active {
@@ -417,6 +443,10 @@ h4::before {
     @apply bg-info-content p-12;
     box-shadow: 20px 20px 4px 0px rgba(0, 0, 0, 0.15) inset;
     border: 1px solid black;
+}
+
+.card.image-single figure {
+    z-index: -1; /* MH - menu button shows up behind figure otherwise */
 }
 
 .image-cards .card:not(.image-single) figure, .card.image-single figure img {
