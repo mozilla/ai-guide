@@ -176,11 +176,16 @@
 
     #header-bg {
         width: 100%;
-        @apply bg-primary xl:w-[calc(100%-4rem)];
+        background-position: bottom right;
+        background-repeat: no-repeat;
+        background-size: contain;
+        @apply bg-primary xl:w-[calc(100%-4rem)] md:bg-[url('../img/ai/ai-header-nodes.png')];
         display: flex;
         align-items: center;
         padding: 40px 0;
-        box-shadow: var(--shadow-std)
+        box-shadow: var(--shadow-std);
+        
+        
     }
 
     #header-content {
