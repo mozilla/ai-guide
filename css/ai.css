@@ -46,16 +46,21 @@
 
     html {
         font-family: "Cabin", system-ui, sans-serif;
-        @apply bg-base-100
+        @apply bg-base-100 !important
     }
 
     .jp-RenderedMarkdown p, ul, li {
         font-size: 1rem;
+        font-weight: normal; 
         font-family: "Cabin", system-ui, sans-serif;
     }
 
     .jp-RenderedMarkdown strong {
-        font-weight: 600 
+        font-weight: 550 
+    }
+
+    .jp-Editor {
+        @apply shadow-md
     }
 
     .jp-RenderedText, .jp-OutputArea-output {
