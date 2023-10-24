@@ -10,7 +10,7 @@
 #### Getting started with code
 
 <div class="boxlinks">
-    <a href="" class="boxlink">Choosing ML Models</a>
+    <a href="" class="boxlink">Choosing ML Models ></a>
 </div>
 
 #### Why this guide? 
