@@ -1,5 +1,5 @@
 ## Contribution Guide
-
+The AI Guide will be kickstarted by Mozilla's team but powered by community contributions. Here's how you can help! 
 
 ### Why contribute to AI Guide?
 Mozilla champions an open, accessible Internet where people have the reins. We welcome these amazing new AI breakthroughs.
@@ -12,6 +12,7 @@ Our AI Guide is an always-evolving beacon for emerging trends and a hub for expe
 
 
 ### How do I contribute?
+Where the Guide needs your help:
 1. [Submit content changes](https://github.com/mozilla/ai-guide/issues) to existing pages
 2. Create [new content](https://github.com/mozilla/ai-guide) via Python notebooks and submit a Github PR for review
 3. [Provide feedback](https://github.com/mozilla/ai-guide/issues) on audience, tone and other content suggestions
