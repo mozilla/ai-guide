@@ -49,6 +49,20 @@
         @apply bg-base-100
     }
 
+    .jp-RenderedMarkdown p, ul, li {
+        font-size: 1rem;
+        font-family: "Cabin", system-ui, sans-serif;
+    }
+
+    .jp-RenderedMarkdown strong {
+        font-weight: 600 
+    }
+
+    .jp-RenderedText, .jp-OutputArea-output {
+        @apply bg-slate-300
+    }
+
+
     h1,h2,h3,h4,h5,h6 {
         font-family: "Montserrat", system-ui, sans-serif;
         @apply text-primary
@@ -481,4 +495,3 @@ h4::before {
 .collaboration-description {
     @apply hidden
 }
-
