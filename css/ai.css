@@ -505,3 +505,7 @@ h4::before {
 .collaboration-description {
     @apply hidden
 }
+
+body.jp-Notebook {
+    @apply bg-primary-content p-0 !important;
+}
