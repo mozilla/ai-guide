@@ -1,4 +1,4 @@
-#### Contribution Guide
+## Contribution Guide
 
 
 ### Why contribute to AI Guide?
