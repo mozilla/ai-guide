@@ -18,7 +18,7 @@ Large Language Models (LLMs) are AI models that use deep learning techniques to 
 
 LLMs are currently used to power chatbots and a wide variety of content tools that can generate text, images, video, and even code. But the very traits that make LLMs so powerful and useful also present important questions that technologists need to consider when developing and deploying them.
 
-By mimicking human language and creativity, LLMs have the potential to transform or even automate certain tasks or jobs. The mass harvesting of data to train these systems presents largely unresolved challenges to the principles of copyright, fair use, and fair compensation. The tendency of users to view LLM-powered tools as “officious oracles” can lead humans to make flawed or harmful decisions based on the biases and misinformation these systems can produce.
+By mimicking human language and creativity, LLMs have the potential to transform or even automate certain tasks or jobs. The mass harvesting of data to train these systems presents largely unresolved challenges to the principles of copyright, fair use, and fair compensation. The tendency of users to view LLM-powered tools as “officious oracles” can lead humans to make flawed or harmful decisions based on the biases and misinformation these systems can produce. LLMs can generate high quality prose that naturally invites consumers to forget that LLMs offer no guarantees of communicating factual or accurate information.
 
 At Mozilla, we believe that developers should take these risks seriously and cultivate both an understanding and awareness of how their chosen AI technologies behave and impact the world. By their very nature, open source LLMs offer a greater chance to achieve those goals.
 
@@ -34,9 +34,9 @@ At its heart, a Transformer-based Large Language Model (LLM) is essentially a co
 {% set slides = [
   { "alt": "Tokenization Visualization","title": "Tokenization", "description": "<p>The LLM starts by breaking down the input text, or 'prompt', into smaller pieces known as tokens.</p>", "image": "/img/ai/carousels/how-llm-works/tokenization.jpg"},
   { "alt": "Embedding Visualization","title": "Embedding", "description": "<p>Next, each token is converted into a numerical representation through a process called embedding.</p>", "image": "/img/ai/carousels/how-llm-works/embedding.jpg"},
-  { "alt": "Self-attention Visualization","title": "Self-attention", "description": "<p>The model then adds additional information to these vectors to account for the order of words in the input. Self attention mechanisms allow the model to create context-aware representations of each word.</p>", "image": "/img/ai/carousels/how-llm-works/self-attention.jpg"},
-  { "alt": "Decoding Visualization","title": "Decoding", "description": "<p>The LLM Decoder will take the output and use it to predict the next token in the sequence.</p>", "image": "/img/ai/carousels/how-llm-works/decoding.jpg"},
-  { "alt": "Output Visualization","title": "Output", "description": "<p>Finally, the model generates a response.</p>", "image": "/img/ai/carousels/how-llm-works/output.jpg"}
+  { "alt": "Self-attention Visualization","title": "Self-attention", "description": "<p>The model then adds information to these vectors to account for the order of words in the input. Self attention mechanisms allow the model to create context-aware representations of each word.</p>", "image": "/img/ai/carousels/how-llm-works/self-attention.jpg"},
+  { "alt": "Decoding Visualization","title": "Decoding", "description": "<p>The LLM Decoder will take the prior word sequence and contextual representation and use it to predict the next token in the sequence.</p>", "image": "/img/ai/carousels/how-llm-works/decoding.jpg"},
+  { "alt": "Output Visualization","title": "Output", "description": "<p>Finally, the model generates new tokens, and repeats until final response back.</p>", "image": "/img/ai/carousels/how-llm-works/output.jpg"}
 ]
 %}
 {{imageCards(slides,orientation)}}
@@ -64,11 +64,11 @@ Although LLMs have made it possible for computers to process human language ways
 
 - Pros
   - **Improved Token Prediction Accuracy**: LLMs are trained on large amounts of human-readable data (e.g. written text, code, and audio) and rely on state-of-the-art techniques to determine patterns within those data. The size and pattern recognition techniques (e.g. Transformers) improve the accuracy of predictions over previous systems.
-  - **Efficiency**: With LLMs, tasks such as language translation and chatbots can be automated, freeing up time for humans to focus on more complex tasks.
+  - **Efficiency**: With LLMs, tasks such as language translation and chatbots can be automated, potentially freeing up time for humans to focus on more complex tasks.
   - **Language Generation**: LLMs can generate human-like language output, making them applicable for tasks such as content creation and copywriting.
 - Cons
   - **Computational Power Requirements**: Training an LLM requires significant computational power, which can be expensive and time-consuming.
-  - **Data Bias**: Because LLMs are trained on massive amounts of data, they can perpetuate biases that exist in the training data.
+  - **Reproducing problematic training data**: Because LLMs are trained on massive amounts of data, they can perpetuate biases and toxicity (like hate speech) that exist in the training data.
   - **Lack of Transparency**: The inner workings of an LLM can be difficult to understand, which makes it challenging to identify how it arrived at a particular decision or prediction.
   - **LLM hallucinations**: One of the most interesting and controversial aspects of LLMs is their ability to generate realistic language output that they have never been trained on. This phenomenon is known as LLM hallucination, and it has raised concerns about the potential misuse of these models.
 
@@ -81,7 +81,7 @@ Large Language Models (LLMs) have unlocked a plethora of new behaviors that were
 - **Tokenizer**: This is the first step in processing text data. The tokenizer converts raw text into chunks known as 'tokens'. These tokens can represent words, subwords, or even characters depending on the granularity of the tokenization process. For instance, a word-level tokenizer will convert the sentence "I love coding" into 'I', 'love', 'coding'.
 - **Embedding Layer**: Once the text is tokenized, these tokens are transformed into dense vectors of fixed size in a high-dimensional space through the embedding layer. These embeddings capture semantic information about the words. For example, in this space, 'king' and 'queen' would be closer to each other than 'king' and 'apple'.
 - **Encoder**: The encoder processes the input sequence into a context-dependent representation that captures the meaning of the text. It uses a Transformer architecture which allows it to pay varying levels of 'attention' to different parts of the input sequence at each step of the encoding process. The output of the encoder is a series of hidden states.
-- **Decoder**: The decoder generates output text word by word based on the hidden states from the encoder. In some models like GPT-3, the decoder is essentially the entire model. It also uses a Transformer architecture and attention mechanism to focus on the relevant parts of the input.
+- **Decoder**: The decoder generates output text token by token based on the hidden states from the encoder. In some models like GPT-3, the decoder is essentially the entire model. It also uses a Transformer architecture and attention mechanism to focus on the relevant parts of the input.
 - **Attention Mechanism**: This is a key part of both the encoder and decoder in a Transformer. It helps the model dynamically focus on different parts of the input sequence as it processes the data. It computes a weighted sum of input values (or 'query') based on their relevance (or 'attention scores') to the current 'key' value.
 - **Pre-training and Fine-tuning**: LLMs often start with a pre-trained language model, which have been trained on vast amounts of text data. These models are then fine-tuned for specific tasks. During fine-tuning, the model learns task-specific patterns on top of the general language understanding it gained during pre-training.
 

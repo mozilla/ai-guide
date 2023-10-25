@@ -14,13 +14,13 @@ A parameter is a value that the model learns during training. These values are a
 
 #### What does “training” a ML model mean?
 
-Training an model involves exposing it to large amounts of data so that it can learn patterns and make accurate predictions. During training, the parameters of the model are adjusted based on the input data and desired output. This process can take a significant amount of time and computational resources, but it is essential for achieving high levels of accuracy in natural language processing tasks.
+Training a model involves exposing it to large amounts of data so that it can learn patterns and make accurate predictions. During training, the parameters of the model are adjusted based on the input data and desired output. This process can take a significant amount of time and computational resources, but it is essential for achieving high levels of accuracy in natural language processing tasks.
 
 #### How does a typical training run work?
 
-During a typical training run, the language model is fed with a large amount of text data and corresponding targets. The model then uses these inputs to update its parameters through an optimization algorithm like stochastic gradient descent (SGD) or Adam.
+During a typical training run, the language model is fed with a large amount of text data and corresponding targets. Generally, the targets are “masked” words within a training sequence that the model needs to predict.  The model then uses its prediction errors these inputs to repeatedly update its parameters through an optimization algorithm like stochastic gradient descent (SGD) or Adam.
 
-During training, the network makes predictions on a batch of input data and calculates the loss, which is a measure of how well the predictions match the actual output. The optimizer then adjusts the weights of the network using backpropagation to minimize the loss. This process is repeated iteratively for a fixed number of epochs or until a convergence criterion is met. The process of updating the model's parameters continues iteratively until the model reaches a satisfactory level of accuracy on the training set.
+During training, the network makes predictions on a batch of input data and calculates the loss, which is a measure of how well the predictions match the actual targets. The optimizer then adjusts the weights of the network using backpropagation to minimize the loss. This process is repeated iteratively for a fixed number of epochs or until a convergence criterion is met. The process of updating the model's parameters continues iteratively until the model reaches a satisfactory level of accuracy on the training set.
 
 It's worth noting that training a language model (especially a LLM) can be a resource-intensive process, requiring significant computational power and time.
 
@@ -28,7 +28,7 @@ It's worth noting that training a language model (especially a LLM) can be a res
 
 Backpropagation is a process used to adjust the parameters of a model during training. It involves calculating the error between the model's predictions and the actual output and adjusting the parameters to minimize this error.
 
-The process starts by making a forward pass through the neural network, where input data is fed into the model, and output data is generated. The difference between the predicted output and the actual output is then calculated using a loss function. This loss value is then backpropagated through the network, starting from the last layer and moving backward towards the first layer.
+The process starts by making a forward pass through the neural network, where input data is fed into the model, and output predictions are generated. The difference between the predicted output and the actual targets is then calculated using a loss function. This loss value is then backpropagated through the network, starting from the last layer and moving backward towards the first layer.
 
 As it moves backward, each layer updates its weights based on how much it contributed to the final loss value. This process continues until all layers have updated their weights, resulting in a new set of parameters that hopefully improve the model's performance on future inputs.
 
@@ -36,9 +36,8 @@ As it moves backward, each layer updates its weights based on how much it contri
 
 Fine-tuning a language model involves taking a pre-trained language model and providing additional training using task-specific data sets moderated by humans. This process typically requires less data than training a model from scratch and can be done relatively quickly. Fine-tuning has become increasingly popular in recent years as more pre-trained models have become available.
 
-#### “Human in the loop” approach
-
-The "human in the loop" approach involves incorporating human feedback into machine learning models to improve their accuracy and performance. In the context of natural language processing, this might involve having humans review text generated by a model and provide feedback on its quality, which can then be used to fine-tune the model. Human in the loop approach is valuable because it can be used to reduce bias and errors and make usage of AI more trustworthy.
+#### “RLHF” approach
+The "Reinforcement Learning From Human Feedback" approach involves incorporating human feedback into machine learning models to improve their accuracy and performance. In the context of natural language processing, this might involve having humans review text generated by a model and provide feedback on its quality, which can then be used to fine-tune the model. This approach is valuable because it can be used to reduce bias and errors and make usage of AI more trustworthy.
 
 #### What does "inference" mean?
 
@@ -50,7 +49,7 @@ YES, especially for larger models with more parameters. To address this, some mo
 
 #### What is a vector?
 
-A vector is a mathematical object that has both magnitude and direction. In the context of natural language processing, vectors are often used to represent words or phrases in a way that captures their meaning and relationship to other words. This is typically done using techniques such as word embeddings, which map each word to a high-dimensional vector based on its co-occurrence with other words in a large corpus of text.
+A vector is a multi-dimensional mathematical object that has both magnitude and direction. In the context of natural language processing, vectors are often used to represent words or phrases in a way that captures their meaning and relationship to other words. This is typically done using techniques such as word embeddings, which map each word to a high-dimensional vector based on its co-occurrence with other words in a large corpus of text.
 
 #### What is Beam search?
 
