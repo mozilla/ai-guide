@@ -520,3 +520,8 @@ body.jp-Notebook {
 .jp-Notebook .jp-Cell:not(.jp-mod-active) .jp-OutputPrompt {
     display: none
 }
+
+.cm-editor.cm-s-jupyter .highlight pre {
+    overflow: auto;
+    white-space: pre-wrap
+}
