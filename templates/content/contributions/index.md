@@ -10,7 +10,7 @@ Mozilla's efforts in AI are more than just technical - they're a call to action 
 
 Our AI Guide is a living, breathing resource, rooted in collaboration and community input for experts and newcomers alike, and we invite you to build alongside us.
 
-[Join our community ->](https://discord.gg/3egbzTKhdk) 
+[Join our community →](https://discord.gg/3egbzTKhdk) 
 
 ### How do I contribute?
 Where the Guide needs your help:
