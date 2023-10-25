@@ -226,7 +226,11 @@
 
     img#sidebar-logo {
         /* @apply w-32 mt-5 sm:mt-14 pl-5 sm:pl-6 !important */
-        @apply w-32 mt-5 sm:mt-2
+        @apply mt-5 sm:mt-2 h-7
+    }
+
+    .nohover {
+        @apply no-underline hover:bg-transparent p-0 m-0
     }
 
     .sidebar-title {
