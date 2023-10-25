@@ -131,6 +131,7 @@
         color: var(--blue-base) !important; /* MH TODO: don't know why I can't use apply text-primary here... */
         @apply prose p-5 sm:max-w-3xl my-auto mx-auto;
         border: 1px solid var(--blue-base);
+        border-top: none;
         box-shadow: var(--shadow-std)
     }
 
@@ -184,8 +185,6 @@
         align-items: center;
         padding: 40px 0;
         box-shadow: var(--shadow-std);
-        
-        
     }
 
     #header-content {
@@ -361,6 +360,7 @@
     }
 
     #newsletter-section .inner {
+        border-top: 1px solid var(--blue-base);
         background-color: transparent;
         @apply text-white
     }
