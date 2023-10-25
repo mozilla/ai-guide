@@ -8,10 +8,13 @@
 </div>
 
 #### Getting started with code
-
-<div class="boxlinks">
-    <a href="" class="boxlink">Choosing ML Models ></a>
+<code>
+{% include "content/choosing-ml-models/ai-guide-pick-a-model-test-a-model.html" %}
+</code>
+<div>
+    <a class="button-next-page" href="/content/choosing-ml-models/index.html#evaluating-ml-model-results">Evaluating LM Results</a>
 </div>
+
 
 #### Why this guide? 
 Large language and image/video generation models are opening up new ways to create, plan and execute the things we do at work and home every day. 
