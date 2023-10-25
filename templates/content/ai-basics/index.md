@@ -56,14 +56,14 @@ Finally, the model generates a response, one token at a time, until it reaches a
 
 All these steps involve complex mathematical operations and transformations. But fundamentally, what the model is doing is learning patterns in the data it was trained on, and using those patterns to generate new text that fits within the same patterns.
 
-So, in essence, a Transformer-based LLM is a cleverly designed pattern recognition system that uses learned associations between words to generate human-like text. It's like having a scribe who has read everything ever written and can produce text on any topic in a style that mirrors the content it was trained on.
+So, in essence, a Transformer-based LLM is a cleverly designed pattern recognition system that uses learned associations between words to generate human-like text. It's like having a scribe who has read billions of bits of content and can produce text on any topic in a style that mirrors the content it was trained on.
 
 #### What are the pros & cons of using an LLM?
 
 Although LLMs have made it possible for computers to process human language ways that have been previously difficult, if not impossible, they are not without trade-offs:
 
 - Pros
-  - **Improved Accuracy**: LLMs are trained on large amounts of human-readable data (e.g. written text, code, and audio) and rely on state-of-the-art techniques to determine patterns within those data. The size and pattern recognition techniques (e.g. Transformers) improve the accuracy of predictions over previous systems.
+  - **Improved Token Prediction Accuracy**: LLMs are trained on large amounts of human-readable data (e.g. written text, code, and audio) and rely on state-of-the-art techniques to determine patterns within those data. The size and pattern recognition techniques (e.g. Transformers) improve the accuracy of predictions over previous systems.
   - **Efficiency**: With LLMs, tasks such as language translation and chatbots can be automated, freeing up time for humans to focus on more complex tasks.
   - **Language Generation**: LLMs can generate human-like language output, making them applicable for tasks such as content creation and copywriting.
 - Cons

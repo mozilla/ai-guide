@@ -1,5 +1,9 @@
 ## Language Models 101
 
+#### What's the difference between a "language model" and a "large language model"?
+
+A "Large Language Model" (LLM) is a type of "Language Model" (LM) with more parameters, which allows it to generate or understand text better. The term 'large' refers to the number of parameters the model has been trained on. usually, a LLM provides higher quality results than smaller LMs due to its ability to capture more complex patterns in the data.
+
 #### What do these numbers mean in the names of models?
 
 For example: "Vicuna-13B". The name of the model is Vicuna, and it has 13 billion parameters.
@@ -30,7 +34,7 @@ As it moves backward, each layer updates its weights based on how much it contri
 
 #### What does “fine-tuning” a language model mean?
 
-Fine-tuning a language model involves taking a pre-trained language model and providing additional training using task-specific data sets. This process typically requires less data than training a model from scratch and can be done relatively quickly. Fine-tuning has become increasingly popular in recent years as more pre-trained models have become available.
+Fine-tuning a language model involves taking a pre-trained language model and providing additional training using task-specific data sets moderated by humans. This process typically requires less data than training a model from scratch and can be done relatively quickly. Fine-tuning has become increasingly popular in recent years as more pre-trained models have become available.
 
 #### “Human in the loop” approach
 
@@ -42,15 +46,15 @@ Inference refers to the process of using a trained machine learning model to mak
 
 #### Is inference computationally expensive?
 
-YES, especially for larger models with more parameters. To address this, some models use techniques such as beam search or sampling to generate output text more efficiently. Additionally, some cloud providers offer pre-trained language models that can be accessed via APIs for a fee, which can help reduce the computational burden of running them locally.
+YES, especially for larger models with more parameters. To address this, some models use techniques such as Beam search or sampling to generate output text more efficiently. Additionally, some cloud providers offer pre-trained language models that can be accessed via APIs for a fee, which can help reduce the computational burden of running them locally.
 
 #### What is a vector?
 
 A vector is a mathematical object that has both magnitude and direction. In the context of natural language processing, vectors are often used to represent words or phrases in a way that captures their meaning and relationship to other words. This is typically done using techniques such as word embeddings, which map each word to a high-dimensional vector based on its co-occurrence with other words in a large corpus of text.
 
-#### What is beam search?
+#### What is Beam search?
 
-Beam search is an algorithm used to generate output sequences from a model during inference. It works by maintaining a set of the top k most likely sequences at each step of the generation process, where k is known as the beam width. The algorithm then continues generating new tokens for each sequence in the set until all sequences have reached an end-of-sequence token or a maximum length has been reached. At each step, the set of possible sequences is pruned based on their likelihood according to the model's predictions, resulting in a final set of top-k output sequences.
+Beam search is a search algorithm used to generate output sequences from a model during inference. It works by maintaining a set of the top k most likely sequences at each step of the generation process, where k is known as the Beam width. The algorithm then continues generating new tokens for each sequence in the set until all sequences have reached an end-of-sequence token or a maximum length has been reached. At each step, the set of possible sequences is pruned based on their likelihood according to the model's predictions, resulting in a final set of top-k output sequences.
 
 #### What is frequency?
 
@@ -72,7 +76,7 @@ Beam search is an algorithm used to generate output sequences from a model durin
 
 #### What is sampling?
 
-Sampling is another algorithm used to generate output sequences from a model during inference. Unlike beam search, which generates only the top-k most likely sequences at each step, sampling generates output tokens probabilistically based on the model's predicted probability distribution over all possible tokens at that step. This can lead to more diverse and creative output compared to beam search, but it can also result in less coherent or grammatical sentences if not properly controlled through techniques such as temperature scaling or nucleus sampling.
+Sampling is another algorithm used to generate output sequences from a model during inference. Unlike Beam search, which generates only the top-k most likely sequences at each step, sampling generates output tokens probabilistically based on the model's predicted probability distribution over all possible tokens at that step. This can lead to more diverse and creative output compared to Beam search, but it can also result in less coherent or grammatical sentences if not properly controlled through techniques such as temperature scaling or nucleus sampling.
 
 #### What is 'top_k' sampling?
 
