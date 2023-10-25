@@ -52,6 +52,11 @@ Built with: Hugging Face Transformers
 
 Hugging Face’s implementation of Transformers has proven to be a critical enabling technology for open source machine learning developers. It makes it easy to, often with just a few lines of code, execute a huge variety of models. HF’s site features literally thousands of models, many of which are useful in cases beyond the content of generative chatbots. With the transformers library, they are all within easy reach. However, transformers is a GPU-centric library; it does not offer the kind of CPU-based computational frugality of something like llama.cpp.
 
+##### [llm.rs](https://github.com/rustformers/llm)
+License: Apache 2.0 + MIT |
+
+Essentially a Rust implementation of llama.cpp, this young project leverages Rust’s unique advantages and already has a small ecosystem growing up around it.
+
 ##### [Text-generation-inference](https://github.com/huggingface/text-generation-inference)
 License: Apache 2.0 |
 Built with: transformers
@@ -135,6 +140,11 @@ License: MIT
 
 Created by a frustrated LangChain user as a simpler alternative, this project has some early buzz and is worth watching. It doesn’t offer nearly as much functionality as LangChain, but it’s arguably much easier to learn and use.
 
+##### [Guardrails AI](https://github.com/guardrails-ai/guardrails)
+License: Apache 2.0
+
+Guardrails adds AI safety and control mechanisms to your LLM, giving you the ability to validate model output formats and content, and to automatically (and invisibly to the end user) re-query the model when its responses don’t meet your expectations or needs.
+
 
 #### Front-ends
 These projects provide chatbot-style user interfaces on top of LLM inference engines.
@@ -144,8 +154,8 @@ License: MIT
 
 This project is an excellent carbon copy of the ChatGPT Web interface. It implements the OpenAI API, which means you can easily point it at most of the interference runtimes mentioned earlier in this document.
 
-<div class="text-right">
-    <a class="button-next-page" href="/content/ai-basics">AI Basics &rarr;</a>
+<div class="">
+    <a class="button-next-page" href="/content/ai-basics">AI Basics</a>
 </div>
 
 </section>

@@ -3,60 +3,188 @@
 @tailwind utilities;
 
 :root {
-    --btn-blue: #0060DF;
-    --btn-blue-hover: #170696;
-    --newsletter-bg: #1E2329;
-    --btn-green-hover: #2AC3A2;
-    --bg-content-gray: #363F4A;
+    --blue-base: #0F253A;
+    --shadow-std: 4px 4px 4px 0px rgba(0, 0, 0, 0.20);
+    --shadow-figure: 9.90625px 9.90625px 1.98125px 0px rgba(0, 0, 0, 0.15);
+    --border-std: 1px solid var(--blue-base);
+    --ff-montserrat: "Montserrat", system-ui, sans-serif;
+    --ff-cabin: "Cabin", system-ui, sans-serif;
 }
 
 @font-face {
-    font-family: "Space Grotesk";
-    src: url("../fonts/SpaceGrotesk-VariableFont_wght.ttf");
+    font-family: "Cabin";
+    src: url("../fonts/Cabin-VariableFont_wdth,wght.ttf");
 }
 
-.ff-sg {
-    font-family: "Space Grotesk";
+.ff-cabin {
+    font-family: var(--ff-cabin);
 }
 
 @font-face {
-    font-family: "Inter";
-    src: url("../fonts/Inter-VariableFont_slnt,wght.ttf")
+    font-family: "Montserrat";
+    src: url("../fonts/Montserrat-VariableFont_wght.ttf")
 }
 
-.ff-inter {
-    font-family: inter;
+.ff-montserrat {
+    font-family: var(--ff-montserrat);
 }
 
 @layer base {
-    html {
-        font-family: Inter, system-ui, sans-serif;
+    /* this hash is problematic - consider omitting */
+    .hash {
+        @apply text-base-300;
+        position: absolute;
+        display: inline-block;
+        transform: translateX(-1rem);
+        font-weight: normal;
+        /* TODO: margins too small for this currently */
     }
 
+    input[type="checkbox"] {
+        @apply accent-primary
+    }
+
+    html {
+        font-family: "Cabin", system-ui, sans-serif;
+        @apply bg-base-100 !important
+    }
+
+    .jp-RenderedMarkdown p, ul, li {
+        font-size: 1rem;
+        font-weight: normal; 
+        font-family: "Cabin", system-ui, sans-serif;
+    }
+
+    .jp-RenderedMarkdown strong {
+        font-weight: 550 
+    }
+
+    .jp-Editor {
+        @apply shadow-md
+    }
+
+    .jp-RenderedText, .jp-OutputArea-output {
+        @apply bg-slate-300
+    }
+
+
     h1,h2,h3,h4,h5,h6 {
-        font-family: "Space Grotesk", system-ui, sans-serif;
+        font-family: "Montserrat", system-ui, sans-serif;
+        @apply text-primary
     }
 
     body {
-        @apply dark:bg-base-100 my-0 top-0
+        @apply my-0 top-0
+    }
+
+    .btn {
+        box-shadow: 5px 5px 4px 0px rgba(0, 0, 0, 0.10);
+    }
+
+    .btn.btn-base {
+        @apply bg-primary text-primary-content hover:bg-primary-focus rounded-none
+    }
+
+    .btn::after {
+        content: '→';
+    }
+
+    div.inner .boxlinks, div.inner .imagelinks {
+        @apply my-8
+    }
+
+    div.inner a.boxlink {
+        @apply bg-success-content border-primary border-2 py-2 px-4 no-underline ml-4 first:ml-0;
+        box-shadow: var(--shadow-std);
+    }
+
+    div.inner .imagelinks {
+        /*
+        need this css via tailwind:
+        gap: 24px;
+        display: flex;
+        justify-content: space-between;
+        */
+        @apply md:flex md:justify-between md:gap-8
+    }
+
+    div.inner a.imagelink {
+        box-shadow: var(--shadow-std);
+        background: no-repeat url("../img/ai/ui/btn-section-lg.jpg");
+        background-size: cover;
+        border: 1px solid black;
+        font-family: var(--ff-montserrat);
+        font-weight: normal;
+        text-decoration: none;
+        text-transform: uppercase;
+        line-height: normal;
+        text-align: center;
+        transition: filter .25s;
+        @apply w-full text-lg flex mt-8 md:mt-0 md:w-[calc(50%-12px)] justify-center items-center md:text-2xl py-8 px-16
+    }
+
+    div.inner a.imagelink:hover {
+        filter: brightness(105%);
+    }
+
+    div.inner {
+        color: var(--blue-base) !important; /* MH TODO: don't know why I can't use apply text-primary here... */
+        @apply prose p-5 sm:max-w-3xl my-auto mx-auto;
+        border: 1px solid var(--blue-base);
+        border-top: none;
+        box-shadow: var(--shadow-std)
     }
 
     div#mobile_banner {
         @apply relative sm:static 
     }
 
+    #hamburger-btn, #hamburger-btn-2 {
+        @apply drawer-button lg:hidden bg-primary text-primary-content top-2 left-2 btn-square w-fit h-fit p-1 rounded-md !important
+    }
+
     #hamburger-btn {
-        @apply fixed drawer-button lg:hidden z-0 bg-primary text-primary-content top-2 left-2 btn-square w-fit h-fit p-1 rounded-md !important
+        @apply fixed z-0;
+    }
+
+    .drawer-toggle ~ .drawer-side #hamburger-btn-2 {
+        display: none;
+    }
+
+    .drawer-toggle:checked ~ .drawer-side #hamburger-btn-2 {
+        display: block !important;
+    }
+
+    #hamburger-btn-2 {
+        @apply fixed z-[999];
+    }
+
+    #linkbar {
+        box-shadow: var(--shadow-std);
+        border-bottom: var(--border-std);
+    }
+    
+    #linkbar .inner {
+        box-shadow: none;
+        border: 0;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    #linkbar div.inner a {
+        @apply no-underline uppercase bg-primary text-primary-content hover:bg-primary-focus pl-4 pr-4 py-2 ml-4 first:ml-0;
     }
 
     #header-bg {
         width: 100%;
-        /* aspect-ratio: 3 / 1; */
-        height: 305px;
+        background-position: bottom right;
+        background-repeat: no-repeat;
+        background-size: contain;
+        @apply bg-primary xl:w-[calc(100%-4rem)] md:bg-[url('../img/ai/ai-header-nodes.png')];
         display: flex;
-        background: url('/img/ai/ai-header-bg.jpg') no-repeat center right;
-        background-size: cover;
         align-items: center;
+        padding: 40px 0;
+        box-shadow: var(--shadow-std);
     }
 
     #header-content {
@@ -65,9 +193,11 @@
     }
 
     #header-title {
-        font-size: 4rem;
-        color: white;
-        font-weight: 500;
+        @apply uppercase font-medium text-4xl md:text-5xl lg:text-6xl xl:text-8xl text-primary-content;
+    }
+
+    #header-subtitle {
+        @apply text-lg md:text-2xl normal-case text-primary-content mt-0
     }
 
     main {
@@ -80,14 +210,14 @@
     }
 
     .drawer-open .drawer-side {
-        @apply bg-white dark:bg-black 
+        box-shadow: var(--shadow-std);
+        border-right: var(--border-std);
         /* @apply w-full */
     }
 
     .drawer-toggle:checked ~ .drawer-side > .drawer-overlay {
-        /* @apply bg-white bg-opacity-100 dark:bg-black dark:text-white text-black !important */
-        @apply dark:text-white text-black !important
-        /* @apply h-full  */
+        /* MH TODO: if we apply a non-standard background here it covers the button. We would need to add another perfectly overlaying button within the drawer and give it the same functionality as the base (unopened) layer */
+        @apply bg-primary-content !important;
     }
 
     .drawer-toggle:checked ~  #sidebar-close-btn {
@@ -96,11 +226,20 @@
 
     img#sidebar-logo {
         /* @apply w-32 mt-5 sm:mt-14 pl-5 sm:pl-6 !important */
-        @apply w-32 mt-5 sm:mt-14
+        @apply w-32 mt-5 sm:mt-2
+    }
+
+    .sidebar-title {
+        @apply uppercase text-4xl font-normal
+    }
+
+    img#footer-logo {
+        /* @apply w-32 mt-5 sm:mt-14 pl-5 sm:pl-6 !important */
+        @apply w-32
     }
 
     ul.menu {
-        @apply bg-white dark:bg-black mt-12 sm:mt-0 w-full sm:w-72  min-h-full
+        @apply bg-primary-content mt-12 sm:mt-0 w-full sm:w-72  min-h-full;
     }
 
     ul.menu > li {
@@ -121,21 +260,13 @@
         @apply text-gray-400 bg-transparent font-normal
     }
 
-    ul.menu > li.upcoming:hover,
-    ul.menu > li.upcoming:hover a {
-        cursor: default;
-        @apply text-gray-400 bg-transparent
+    ul.menu > li.upcoming {
+        @apply border-[1px] border-gray-400 mt-2
     }
 
-    ul.menu > li.upcoming .badge, ul.menu > li.upcoming a .badge {
-        @apply p-10 text-secondary border-2 border-secondary p-3 rounded-md dark:bg-black
-        
-    }
-    /* MH - not sure why tailwind adds some weird HSL value that overrides "text-accent" */
-    @media (prefers-color-scheme: dark){
-        ul.menu > li.upcoming .badge, ul.menu > li.upcoming a .badge {
-        color: #73FDAF !important; 
-        }
+
+    .menu :where(li ul):before {
+        @apply bg-transparent !important;
     }
 
     ul.menu > li:hover {
@@ -145,34 +276,21 @@
 
     ul.menu > li a {
         white-space: normal !important;
-        @apply text-black dark:text-white font-medium
-    }
-
-
-    ul.menu > li:hover summary  {
-        /* @apply text-white dark:text-secondary */
-        @apply dark:bg-neutral
-    }
-
-    ul.menu > li:hover summary a {
-        @apply dark:text-secondary
-    }
-
-    ul.menu > li:hover > details > summary::after {
-        @apply dark:text-secondary
     }
 
     ul.sub_menu {
-        @apply border-b-2 dark:border-neutral pb-2
+        @apply pb-2;
+        list-style-type: square !important;
+        /* MH TODO: list bullets not showing up, not sure why */
     }
 
     ul.sub_menu > li {
-        @apply leading-3 w-full
+        @apply leading-3;
         /* @apply w-full */
     }
 
-    ul.sub_menu > li:hover {
-        @apply bg-secondary dark:bg-neutral rounded-md
+    ul.sub_menu > li a:before {
+        content: "▪";
     }
     
 
@@ -180,21 +298,29 @@
         /* @apply w-1/2 */
         line-height: 1.5em;
         white-space: normal !important;
-        @apply w-full pl-6 font-normal
+        @apply w-full font-normal
         
     }
 
     ul.menu > li ul.sub_menu li:hover {
-        @apply bg-secondary dark:bg-neutral rounded-md
+        @apply bg-success-content rounded-none
     }
 
     ul.menu > li ul.sub_menu li:hover a {
-        @apply text-black dark:text-secondary
+        background-color: inherit;
     }
 
-    ul.menu li > details > summary:active {
-        @apply bg-secondary dark:bg-neutral
+    ul.menu li > details > summary {
+        @apply border-[1px] mt-2 border-primary rounded-none;
     }
+
+    ul.menu li > details > summary:hover {
+        @apply bg-success-content
+    }
+
+    /* ul.menu li > details > summary:active {
+        @apply bg-secondary dark:bg-neutral
+    } */
 
     
 
@@ -210,7 +336,7 @@
     
 
     footer {
-        @apply p-4 pt-2 sm:pt-10 sm:pb-10 mx-auto my-auto bg-neutral text-neutral-content text-xs
+        @apply p-4 pt-2 sm:pt-10 sm:pb-10 mx-auto my-auto bg-primary text-primary-content text-xs
     }
 
     footer nav {
@@ -224,27 +350,57 @@
     footer ul {
         @apply underline sm:max-w-3xl mx-auto my-auto
     }
+    #content a.button-next-page {
+        @apply btn rounded-none text-white font-medium pt-0 pb-0 pr-8 pl-8 no-underline bg-primary hover:bg-primary-focus
+    }
+
+    /* newsletter */
+    #newsletter-section {
+        @apply pt-6;
+    }
+
+    #newsletter-section .inner {
+        border-top: 1px solid var(--blue-base);
+        background-color: transparent;
+        @apply text-white
+    }
+
+    #newsletter-thanks {
+        @apply hidden
+    }
+
+    #newsletter-details {
+        @apply hidden
+    }
+
+    .email-checkbox {
+        @apply w-6 h-6;
+    }
+    
+    .email-submit {
+        border: none;
+    }
+
 }
 
-/* GENERAL */
-#content {
-    @apply bg-white dark:bg-base-200 
-}
+
 
 #content h2 {
-    @apply text-3xl font-medium mt-9 mb-5 text-inherit
+    @apply text-3xl font-medium mt-9 mb-5;
+    text-transform: uppercase;
 }
 
-/* blue bar above the page headers*/
-#content h2::before {
+/* blue bar above the section headers*/
+h4 {
+    text-transform: uppercase;
+    @apply text-xl font-medium mt-6 mb-3 text-primary
+}
+
+h4::before {
     content: '';
     height: 0.3125rem;
-    @apply border-t-4 border-primary my-auto w-16 mb-2 block;
-    border-color: #4579FF; /* MH: not sure why tailwind adds some weird HSL value that overrides our primary color */
-}
-
-#content h4 {
-    @apply text-xl font-medium mt-6 mb-3 text-primary
+    @apply border-t-4 border-primary my-auto w-16 block;
+    border-color: var(--blue-base);
 }
 
 #content h5, #content h5 a {
@@ -255,17 +411,11 @@
     @apply leading-6 font-normal text-inherit
 }
 
-#content a.button-next-page {
-    @apply btn text-white font-medium pt-0 pb-0 pr-8 pl-8 no-underline;
-    background-color: var(--btn-blue);
-}
 
-#content a.button-next-page:hover {
-    background-color: var(--btn-blue-hover);
-}
 
 .inner {
-    @apply prose p-5 md:pl-0 md:pr-0 sm:max-w-3xl text-black dark:text-white my-auto mx-auto
+    color: var(--blue-base);
+    @apply prose p-5 md:pl-0 md:pr-0 sm:max-w-3xl my-auto mx-auto dark:text-inherit
 }
 
 .inner code {
@@ -283,7 +433,7 @@
 }
 
 .card-body, .card-compact .card-body {
-    @apply text-black dark:text-white text-base;
+    @apply text-black;
 }
 
 .card.image-top {
@@ -318,6 +468,30 @@
     @apply md:mr-[5%] p-0;
 }
 
+.image-cards, .card.image-single figure {
+    @apply bg-info-content p-12;
+    box-shadow: 20px 20px 4px 0px rgba(0, 0, 0, 0.15) inset;
+    border: 1px solid black;
+}
+
+.card.image-single figure {
+    z-index: -1; /* MH - menu button shows up behind figure otherwise */
+}
+
+.card.image-single img {
+    max-width: 480px;
+}
+
+.image-cards .card:not(.image-single) figure, .card.image-single figure img {
+    border: 1px solid black;
+    box-shadow: var(--shadow-figure);
+}
+
+
+.image-cards .card-body p {
+    margin-top: 0;
+}
+
 /* state classes */
 
 .hidden {
@@ -326,39 +500,12 @@
 
 /* PAGE SPECIFIC */
 
-/* newsletter */
-#newsletter-section {
-    @apply py-6;
-    background-color: var(--newsletter-bg)
-}
-
-#newsletter-section .inner {
-    background-color: transparent;
-    @apply text-white
-}
-
-#newsletter-thanks {
-    @apply hidden
-}
-
-#newsletter-details {
-    @apply hidden
-}
 
 
 .collaboration-description {
     @apply hidden
 }
 
-.email-checkbox {
-    @apply w-6 h-6;
-}
-
-.email-submit {
-    border: none;
-    @apply text-neutral bg-secondary;
-}
-
-.email-submit:hover {
-    background-color: var(--btn-green-hover);
+body.jp-Notebook {
+    @apply bg-primary-content p-0 !important;
 }

@@ -1,5 +1,18 @@
 ## Introduction
 
+#### If you're new to AI
+
+<div class="imagelinks">
+    <a href="/content/ai-basics/" class="imagelink">AI Basics</a>
+    <a href="/content/llms-101/" class="imagelink">Language Models 101</a>
+</div>
+
+#### Getting started with code
+
+<div class="boxlinks">
+    <a href="" class="boxlink">Choosing ML Models ></a>
+</div>
+
 #### Why this guide? 
 Large language and image/video generation models are opening up new ways to create, plan and execute the things we do at work and home every day. 
 
@@ -14,6 +27,6 @@ But like many others, we also see the risk of real-world harm. We don’t have t
 
 Much will depend on how this technology is developed and deployed, but it will also depend on who does it. We believe that the open source community has a critical role to play in ensuring that AI develops in a way that is responsible, trustworthy, equitable, and safe. We hope that this guide contributes to mobilizing the open source community to join us in this important work.
 
-<div class="text-right">
-    <a class="button-next-page" href="/content/ai-basics">AI Basics &rarr;</a>
+<div>
+    <a class="button-next-page" href="/content/ai-basics">AI Basics</a>
 </div>

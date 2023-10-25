@@ -1,16 +1,30 @@
+
 <div class="drawer-side">
+  
     <label for="my-drawer-2" class="drawer-overlay"></label>
-    <!-- <button id="sidebar-close-btn" class="drawer-button">X</button> -->
-    
+    <!-- TODO: adding a div here is needed to provide a solid background color over underlying content, but this throws off alignment and layout of button -->
+    <label id='hamburger-btn-2' class="hamburger-btn" for="my-drawer-2">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>        
+    </label>
     <ul class="menu">
-      <li><a href="index.html"><img alt="Mozilla logo" class="dark:[filter:invert(1)]" id='sidebar-logo' src="/img/mozilla-only.png"/></a></li>
+      <li><a href="index.html"><img alt="Mozilla logo" class="" id='sidebar-logo' src="/img/mozilla-only.png"/></a></li>
+      <li><h2 class="sidebar-title">AI Guide</h2></li>
       {% include "content/introduction/_sidebar.html"%}
       {% include "content/ai-basics/_sidebar.html"%}
       {% include "content/llms-101/_sidebar.html"%}
       {% include "content/choosing-ml-models/_sidebar.html" %}
-      {% include "content/_upcoming.html" %}
       {% include "content/notable-projects/_sidebar.html" %}
-      <li class='mt-5 pt-2 border-t-2 border-t-gray-100'><a href="https://forms.gle/eYJ2s6avtCBXMUQH9" target='_blank' rel='noopener noreferrer'>❤️ Share Your Feedback ></a></li>
+      {% include "content/_upcoming.html" %}
+      
+      <li class='mt-5 pt-2 border-t-[1px] border-t-primary ff-cabin uppercase'>
+        <span>️❤️<a class="pl-0 text-base font-medium" href="/content/contributions/index.html">Contribution Guide</a></span>
+      </li>
+      <li class='mt-0 pt-2 ff-cabin uppercase'>
+        <span>️💬 <a class="pl-0 text-base font-medium" href="https://discord.gg/3egbzTKhdk">Join our Discord</a></span>
+      </li>
     </ul>
 
 </div>

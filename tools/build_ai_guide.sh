@@ -22,3 +22,14 @@ find $SOURCE_PATH -name "*.md" | while read -r file;
     echo 
     node tools/build_ai_guide_content_pages.js "${file}"
 done
+
+find $SOURCE_PATH -name "*.ipynb" | while read -r file;
+    do echo ">>>> Building notebook $file";
+    
+    NP="${file/$SOURCE_PATH/$WRITE_PATH}"
+    echo NEW_PATH=$(dirname "${NP}")
+    echo 
+
+    jupyter-nbconvert --to html --output-dir "${NEW_PATH}" "${file}" --CSSHTMLHeaderPreprocessor.style=nord
+    echo 
+done

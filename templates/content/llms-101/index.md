@@ -57,7 +57,7 @@ Beam search is an algorithm used to generate output sequences from a model durin
 <code>
 {% set slide = { "alt": "Frequency Parameter Visualization","title": "Frequency", "description": "<p>Frequency is a parameter used in language models to control how often a token can be repeated in the generated output. It works by penalizing the model for repeating tokens that have already been used, preventing the model from generating repetitive or nonsensical text. The higher this is set, the more that repetition of tokens present in the context will be penalized in suggestions.</p>", "image": "/img/ai/carousels/parameters/llm-05-frequency.jpg"}%}
 {% from "partials/image-cards/image-card.html" import imageCard %}
-{% set orientation = "image-right" %}
+{% set orientation = "image-single" %}
 {{ imageCard(slide, orientation,false) }}
 </code>
 
@@ -66,7 +66,7 @@ Beam search is an algorithm used to generate output sequences from a model durin
 <code>
 {% set slide = { "alt": "Temperature Parameter Visualization","title": "Temperature", "description": "<p>Temperature is a technique used in language models to control the level of randomness and creativity in the generated output during inference. It works by scaling the predicted probability distribution over possible tokens at each step by a temperature parameter, which controls how much the probabilities are 'softened' or spread out.</p><p>Lower temperatures result in more conservative and predictable output, while higher temperatures lead to more diverse and creative output. However, setting the temperature too high can also lead to nonsensical or ungrammatical sentences. Finding the optimal temperature for a given task or application often requires experimentation and fine-tuning.</p>", "image": "/img/ai/carousels/parameters/llm-03-temp.jpg"}%}
 {% from "partials/image-cards/image-card.html" import imageCard %}
-{% set orientation = "image-left" %}
+{% set orientation = "image-single" %}
 {{ imageCard(slide, orientation,false) }}
 </code>
 
@@ -85,10 +85,10 @@ This technique helps to focus the model on likely continuations and reduces the 
 <code>
 {% set slide = { "alt": "Top P Parameter Visualization","title": "Top P (Probability)", "description": "<p>Top-p sampling, also known as nucleus sampling, is a strategy where the model considers only the smallest set of top words whose cumulative probability exceeds a threshold 'p'. </p><p>Unlike top-k which considers a fixed number of words, top-p adapts based on the distribution of probabilities for the next word. This makes it more dynamic and flexible. It helps create diverse and sensible text by allowing less probable words to be selected when the most probable ones don't add up to 'p'.</p>", "image": "/img/ai/carousels/parameters/llm-04-top-p.jpg"}%}
 {% from "partials/image-cards/image-card.html" import imageCard %}
-{% set orientation = "image-right" %}
+{% set orientation = "image-single" %}
 {{ imageCard(slide, orientation,false) }}
 </code>
 
-<div class="text-right mt-10">
-    <a class="button-next-page" href="/content/choosing-ml-models">Choosing ML Models →</a>
+<div class="mt-10">
+    <a class="button-next-page" href="/content/choosing-ml-models">Choosing ML Models</a>
 </div>
