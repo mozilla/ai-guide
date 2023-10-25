@@ -8,12 +8,14 @@ However, with substantial corporate dollars being invested into AI R&D, it's unc
 
 Mozilla's efforts in AI are more than just technical - they're a call to action and unity across the currently fragmented open source AI Community. 
 
-Our AI Guide is an always-evolving beacon for emerging trends and a hub for experts and newcomers alike to share and grow knowledge, and we ask that you contribute. 
+Our AI Guide is a living, breathing resource, rooted in collaboration and community input for experts and newcomers alike, and we invite you to build alongside us.
 
+[Join our community ->](https://discord.gg/3egbzTKhdk) 
 
 ### How do I contribute?
 Where the Guide needs your help:
-1. [Submit content changes](https://github.com/mozilla/ai-guide/issues) to existing pages
-2. Create [new content](https://github.com/mozilla/ai-guide) via Python notebooks and submit a Github PR for review
-3. [Provide feedback](https://github.com/mozilla/ai-guide/issues) on audience, tone and other content suggestions
-4. [Share your thoughts](https://forms.gle/eYJ2s6avtCBXMUQH9) on the guide and our approach
+* [Submit content changes, typos or errors](https://github.com/mozilla/ai-guide/issues) to existing pages
+* [Suggest missing or new content](https://github.com/mozilla/ai-guide/issues) for the Guide
+* Fork the repo and create [new Python notebooks](https://github.com/mozilla/ai-guide), submit a Github PR for review
+* [Provide feedback](https://github.com/mozilla/ai-guide/issues) on audience, tone and other content suggestions
+* [Share your thoughts](https://forms.gle/eYJ2s6avtCBXMUQH9) on the guide and our approach
