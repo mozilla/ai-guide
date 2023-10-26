@@ -1,5 +1,3 @@
-# Mozilla AI GUIDE
-
 ![Mozilla AI Guide](/img/blog-header.png)
 
 Mozilla champions an open, accessible Internet where people have the reins. We welcome these recent amazing new AI breakthroughs.
