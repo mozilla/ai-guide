@@ -1,5 +1,21 @@
 # Mozilla AI GUIDE
 
+Mozilla champions an open, accessible Internet where people have the reins. We welcome these recent amazing new AI breakthroughs.
+
+However, with substantial corporate dollars being invested into AI R&D, it's unclear for both junior and senior engineers new to the scene to identify which paths are the ones that lead to sustainable open software. We've seen this story before.  
+
+Mozilla's efforts in AI are more than just technical - they're a call to action and unity across the currently fragmented open source AI Community. 
+
+Our AI Guide is a living, breathing resource, rooted in collaboration and community input for experts and newcomers alike, and we invite you to build alongside us.
+
+[Contribution Guide](https://ai-guide.future.mozilla.com/content/contributions/index.html)
+
+[Join our Discord →](https://discord.gg/3egbzTKhdk) 
+
+PRs are open. Email ai-guide@mozilla.com if you need to reach us.
+
+# Installation
+
 ## Getting Started
 
 This project is a Static webpage with HTML, CSS and JS. We use [Webpack](https://webpack.js.org/) to bundle everything to the `dist/` folder. This project also uses [Nunjucks Templates](https://mozilla.github.io/nunjucks/) to enable the use of templating in this project. To convert Nunjucks templates to HTML, we use the [html-bundler-webpack-plugin](https://github.com/webdiscus/html-bundler-webpack-plugin).
@@ -50,7 +66,7 @@ To run the server:
 `npx tailwindcss -w` 
 `npm run start`
 
-Go to `/index.html`
+Go to `/`
 
 ## Folder Hierarchy  
 
