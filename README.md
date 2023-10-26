@@ -8,7 +8,7 @@ Mozilla's efforts in AI are more than just technical - they're a call to action 
 
 Our AI Guide is a living, breathing resource, rooted in collaboration and community input for experts and newcomers alike, and we invite you to build alongside us.
 
-[Contribution Guide](https://ai-guide.future.mozilla.com/content/contributions/index.html)
+[Contribution Guide](https://ai-guide.future.mozilla.org/content/contributions/index.html)
 
 [Join our Discord →](https://discord.gg/3egbzTKhdk) 
 
