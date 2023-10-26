@@ -124,6 +124,10 @@ Built with: langchain
 
 LlamaIndex offers a robust set of integrations to data sources. This makes it easier to harvest the data that you want to provide to your chatbot, and to keep it updated. This project is built on top of LangChain (see below).
 
+##### [LanceDB](https://lancedb.github.io/lancedb/)
+Licensed: Apache
+
+LanceDB is a local high-performance vector database written in Rust. A hidden gem similar to SQLite. 
 
 
 #### Orchestration
