@@ -1,6 +1,7 @@
 <section id="notable-projects">
 
 ## Notable Projects 
+t satSubmit a project you love to <a href='mailto:ai-guide@mozilla.com'>ai-guide@mozilla.com</a>.
 
 #### Complete LLM Solutions
 These projects offer a full-stack chatbot solution, meaning that there is at least an inference run-time and a UI for interacting with it. Actual feature sets may vary rather wildly beyond that.
