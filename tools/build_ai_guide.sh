@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 SOURCE_PATH="templates/content"
 WRITE_PATH=$SOURCE_PATH # replace if you want to write to a different path
@@ -11,6 +11,13 @@ then
     echo "marked could not be found"
     echo "Installing marked..."
     npm install -g marked
+fi
+
+if ! command -v jupyter-nbconvert &> /dev/null
+then
+    echo "jupyter-nbconvert could not be found"
+    echo "Installing jupyter & jupyter-nbconvert..."
+    pip install jupyter
 fi
 
 find $SOURCE_PATH -name "*.md" | while read -r file; 

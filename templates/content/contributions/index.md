@@ -14,8 +14,8 @@ Our AI Guide is a living, breathing resource, rooted in collaboration and commun
 
 ### How do I contribute?
 Where the Guide needs your help:
-* [Submit content changes, typos or errors](https://github.com/mozilla/ai-guide/issues) to existing pages
-* [Suggest missing or new content](https://github.com/mozilla/ai-guide/issues) for the Guide
+* [Submit content changes, typos or errors](https://github.com/mozilla/ai-guide/issues/new?assignees=&labels=general&projects=&template=general-feedback.yml) to existing pages
+* [Suggest missing or new content](https://github.com/mozilla/ai-guide/issues/new?assignees=&labels=topics&projects=&template=topic-coverage.yml) for the Guide
 * Fork the repo and create [new Python notebooks](https://github.com/mozilla/ai-guide), submit a Github PR for review
-* [Provide feedback](https://github.com/mozilla/ai-guide/issues) on audience, tone and other content suggestions
-* [Share your thoughts](https://forms.gle/eYJ2s6avtCBXMUQH9) on the guide and our approach
+* [Provide feedback](https://github.com/mozilla/ai-guide/issues/new?assignees=&labels=general&projects=&template=general-feedback.yml) on audience, tone and other content suggestions
+* [Share other thoughts](https://forms.gle/eYJ2s6avtCBXMUQH9) on the guide and our approach

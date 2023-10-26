@@ -46,10 +46,10 @@ html += mapped.map(h => {
 }).join('\n');   
 html+="</ul></details></li>"
 
-console.log(html)
+// console.log(html)
 
 // replace the last element of the split_filename with _sidebar.html
-console.log(split_filename)
+// console.log(split_filename)
 base_path = split_filename.slice(0,-1).join('/')
 if (!fs.existsSync(base_path)){
     fs.mkdirSync(base_path, { recursive: true });
