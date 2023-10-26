@@ -1,5 +1,7 @@
 # Mozilla AI GUIDE
 
+![Mozilla AI Guide](/img/blog-header.png)
+
 Mozilla champions an open, accessible Internet where people have the reins. We welcome these recent amazing new AI breakthroughs.
 
 However, with substantial corporate dollars being invested into AI R&D, it's unclear for both junior and senior engineers new to the scene to identify which paths are the ones that lead to sustainable open software. We've seen this story before.  
