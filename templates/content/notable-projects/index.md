@@ -105,7 +105,6 @@ License: Apache 2.0
 
 Probably the most popular open source vector database, Chroma is used by a wide variety of opens source and commercial AI products. It has a robust feature set, is easy to use and deploy, and integrates with other popular tools (like LangChain; see below).
 
-
 ##### [Weviate](https://github.com/weaviate/weaviate)
 License: BSD 3-Clause
 
@@ -128,6 +127,11 @@ LlamaIndex offers a robust set of integrations to data sources. This makes it ea
 Licensed: Apache
 
 LanceDB is a local high-performance vector database written in Rust. A hidden gem similar to SQLite. 
+
+##### [Vectara-answer](https://github.com/vectara/vectara-answer)
+License: Apache
+
+This project provides an implementation of a question-answering user interface using Vectara. Vectara is a "RAG in a box" managed service, and using vectara-answer you can quickly build a modern and powerful user interface to create your app.
 
 
 #### Orchestration
