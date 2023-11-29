@@ -2,7 +2,7 @@
 
 #### What's the difference between a "language model" and a "large language model"?
 
-A "Large Language Model" (LLM) is a type of "Language Model" (LM) with more parameters, which allows it to generate or understand text better. The term 'large' refers to the number of parameters the model has been trained on. usually, a LLM provides higher quality results than smaller LMs due to its ability to capture more complex patterns in the data.
+A "Large Language Model" (LLM) is a type of "Language Model" (LM) with more parameters, which allows it to generate or understand text better. The term 'large' refers to the number of parameters the model has been trained on. Usually, a LLM provides higher quality results than smaller LMs due to its ability to capture more complex patterns in the data.
 
 #### What do these numbers mean in the names of models?
 

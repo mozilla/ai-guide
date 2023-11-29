@@ -21,7 +21,7 @@
   { "alt": "Embedding Visualization","title": "Embedding", "description": "<p>Next, each token is converted into a numerical representation through a process called embedding.</p>", "image": "/img/ai/carousels/how-llm-works/embedding.jpg"},
   { "alt": "Self-attention Visualization","title": "Self-attention", "description": "<p>Now comes the real magic of the Transformer architecture: self-attention mechanisms. These allow the model to weigh the importance of different words when predicting the next word in the sentence. Self attention mechanisms allow the model to create context-aware representations of each word.</p>", "image": "/img/ai/carousels/how-llm-works/self-attention.jpg"},
   { "alt": "Decoding Visualization","title": "Decoding", "description": "<p>The LLM Decoder will take the prior word sequence and contextual representation and use it to predict the next token in the sequence.</p>", "image": "/img/ai/carousels/how-llm-works/decoding.jpg"},
-  { "alt": "Output Visualization","title": "Output", "description": "<p>Finally, the model generates new tokens, and repeats until final response back.</p>", "image": "/img/ai/carousels/how-llm-works/output.jpg"}
+  { "alt": "Output Visualization","title": "Output", "description": "<p>Finally, the model generates new tokens, and repeats until the final response is complete.</p>", "image": "/img/ai/carousels/how-llm-works/output.jpg"}
 ]
 %}
 {{imageCards(slides,orientation)}}
@@ -30,7 +30,7 @@
 <p>All these steps involve complex mathematical operations and transformations. But fundamentally, what the model is doing is learning patterns in the data it was trained on, and using those patterns to generate new text that fits within the same patterns.</p>
 <p>So, in essence, a Transformer-based LLM is a cleverly designed pattern recognition system that uses learned associations between words to generate human-like text. It&#39;s like having a scribe who has read billions of bits of content and can produce text on any topic in a style or format that mirrors the content it was trained on.</p>
 <h4 id="what-are-the-pros--cons-of-using-an-llm">What are the pros &amp; cons of using an LLM?</h4>
-<p>Although LLMs have made it possible for computers to process human language ways that have been previously difficult, if not impossible, they are not without trade-offs:</p>
+<p>Although LLMs have made it possible for computers to process human language in ways that have been previously difficult, if not impossible, they are not without trade-offs:</p>
 <ul>
 <li>Pros<ul>
 <li><strong>Improved Token Prediction Accuracy</strong>: LLMs are trained on large amounts of human-readable data (e.g. written text, code, and audio) and rely on state-of-the-art techniques to determine patterns within those data. The size and pattern recognition techniques (e.g. Transformers) improve the accuracy of predictions over previous systems.</li>
@@ -55,10 +55,8 @@
 <li><strong>Embedding</strong>: Once the text is tokenized, these tokens are transformed into dense vectors of fixed size in a high-dimensional space through the embedding layer. These embeddings capture semantic information about the words. For example, in this space, &#39;king&#39; and &#39;queen&#39; would be closer to each other than &#39;king&#39; and &#39;apple&#39;. </li>
 <li><strong>Positional Encoding</strong>: The encoder processes the input sequence into a context-dependent representation that captures the meaning of the text. It uses a Transformer architecture which allows it to pay varying levels of &#39;attention&#39; to different parts of the input sequence at each step of the encoding process. The output of the encoder is a series of hidden states. </li>
 <li><strong>Encoder</strong>: The encoded input is passed through several layers (the exact number depends on the model architecture). Each layer consists of self-attention mechanisms and feed-forward neural networks. These layers allow the model to consider all parts of the input when generating each part of the output.</li>
-<li><strong>Decoder (if applicable)</strong>: The decoder generates output text token by token based on the hidden states from the encoder. In some models like GPT-3, the decoder is essentially the entire model. It also uses a Transformer architecture and attention mechanism to focus on the relevant parts of the input.</li>
-</ol>
-<p><strong>Attention Mechanism</strong>: This is a key part of both the encoder and decoder in a Transformer. It helps the model dynamically focus on different parts of the input sequence as it processes the data. It computes a weighted sum of input values (or &#39;query&#39;) based on their relevance (or &#39;attention scores&#39;) to the current &#39;key&#39; value.</p>
-<ol start="6">
+<li><strong>Decoder (if applicable)</strong>: The decoder generates output text token by token based on the hidden states from the encoder. In some models like GPT-3, the decoder is essentially the entire model. It also uses a Transformer architecture and attention mechanism to focus on the relevant parts of the input. </li>
+<li><strong>Attention Mechanism</strong>: This is a key part of both the encoder and decoder in a Transformer. It helps the model dynamically focus on different parts of the input sequence as it processes the data. It computes a weighted sum of input values (or &#39;query&#39;) based on their relevance (or &#39;attention scores&#39;) to the current &#39;key&#39; value.</li>
 <li><strong>Output Generation</strong>: Finally, the model generates the output text. This is done one token at a time, with the model deciding on the most likely next token based on the current state. The process continues until the model generates a termination token or reaches a preset maximum length.</li>
 </ol>
 <p>Each step in this process involves complex mathematical operations and transformations. But at a high-level, the goal is to convert text into a form that the model can understand, let the model process and generate a response, and then convert that response back into human-readable text.</p>
