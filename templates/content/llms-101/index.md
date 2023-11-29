@@ -18,7 +18,7 @@ Training a model involves exposing it to large amounts of data so that it can le
 
 #### How does a typical training run work?
 
-During a typical training run, the language model is fed with a large amount of text data and corresponding targets. Generally, the targets are “masked” words within a training sequence that the model needs to predict.  The model then uses its prediction errors these inputs to repeatedly update its parameters through an optimization algorithm like stochastic gradient descent (SGD) or Adam.
+During a typical training run, the language model is fed with a large amount of text data and corresponding targets. Generally, the targets are “masked” words within a training sequence that the model needs to predict.  The model then uses its prediction errors as compared against these inputs to repeatedly update its parameters through an optimization algorithm like stochastic gradient descent (SGD) or Adam.
 
 During training, the network makes predictions on a batch of input data and calculates the loss, which is a measure of how well the predictions match the actual targets. The optimizer then adjusts the weights of the network using backpropagation to minimize the loss. This process is repeated iteratively for a fixed number of epochs or until a convergence criterion is met. The process of updating the model's parameters continues iteratively until the model reaches a satisfactory level of accuracy on the training set.
 
@@ -49,7 +49,11 @@ YES, especially for larger models with more parameters. To address this, some mo
 
 #### What is a vector?
 
-A vector is a multi-dimensional mathematical object that has both magnitude and direction. In the context of natural language processing, vectors are often used to represent words or phrases in a way that captures their meaning and relationship to other words. This is typically done using techniques such as word embeddings, which map each word to a high-dimensional vector based on its co-occurrence with other words in a large corpus of text.
+In the context of natural language processing, a vector is a list of numbers used to represent a word or phrase in a way that captures its relationship to other words or phrases within a model. A key useful feature of these vectors is that similar things cluster together.
+
+Each vector in a model consists of the same list length, with every position in the list representing a semantically interesting feature discovered about the word or phrase through statistical analysis. While it's typically difficult to explain what these individual features might mean to a human, quantifying them allows vectors to be mathematically compared as coordinates in a high-dimensional space. In such a space, distance can approximate overall similarity in meaning between the words or phrases from which the vectors were derived. 
+
+Vectors are typically derived using techniques such as word embeddings, which maps each word to a high-dimensional vector based on its co-occurrence with other words in a large corpus of text.
 
 #### What is Beam search?
 

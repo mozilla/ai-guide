@@ -36,7 +36,7 @@ At its heart, a Transformer-based Large Language Model (LLM) is essentially a co
   { "alt": "Embedding Visualization","title": "Embedding", "description": "<p>Next, each token is converted into a numerical representation through a process called embedding.</p>", "image": "/img/ai/carousels/how-llm-works/embedding.jpg"},
   { "alt": "Self-attention Visualization","title": "Self-attention", "description": "<p>Now comes the real magic of the Transformer architecture: self-attention mechanisms. These allow the model to weigh the importance of different words when predicting the next word in the sentence. Self attention mechanisms allow the model to create context-aware representations of each word.</p>", "image": "/img/ai/carousels/how-llm-works/self-attention.jpg"},
   { "alt": "Decoding Visualization","title": "Decoding", "description": "<p>The LLM Decoder will take the prior word sequence and contextual representation and use it to predict the next token in the sequence.</p>", "image": "/img/ai/carousels/how-llm-works/decoding.jpg"},
-  { "alt": "Output Visualization","title": "Output", "description": "<p>Finally, the model generates new tokens, and repeats until final response back.</p>", "image": "/img/ai/carousels/how-llm-works/output.jpg"}
+  { "alt": "Output Visualization","title": "Output", "description": "<p>Finally, the model generates new tokens, and repeats until the final response is complete.</p>", "image": "/img/ai/carousels/how-llm-works/output.jpg"}
 ]
 %}
 {{imageCards(slides,orientation)}}
@@ -72,10 +72,8 @@ Large Language Models (LLMs) have unlocked a plethora of new behaviors that were
 3. **Positional Encoding**: The encoder processes the input sequence into a context-dependent representation that captures the meaning of the text. It uses a Transformer architecture which allows it to pay varying levels of 'attention' to different parts of the input sequence at each step of the encoding process. The output of the encoder is a series of hidden states. 
 4. **Encoder**: The encoded input is passed through several layers (the exact number depends on the model architecture). Each layer consists of self-attention mechanisms and feed-forward neural networks. These layers allow the model to consider all parts of the input when generating each part of the output.
 5. **Decoder (if applicable)**: The decoder generates output text token by token based on the hidden states from the encoder. In some models like GPT-3, the decoder is essentially the entire model. It also uses a Transformer architecture and attention mechanism to focus on the relevant parts of the input. 
-
-**Attention Mechanism**: This is a key part of both the encoder and decoder in a Transformer. It helps the model dynamically focus on different parts of the input sequence as it processes the data. It computes a weighted sum of input values (or 'query') based on their relevance (or 'attention scores') to the current 'key' value.
-
-6. **Output Generation**: Finally, the model generates the output text. This is done one token at a time, with the model deciding on the most likely next token based on the current state. The process continues until the model generates a termination token or reaches a preset maximum length.
+6. **Attention Mechanism**: This is a key part of both the encoder and decoder in a Transformer. It helps the model dynamically focus on different parts of the input sequence as it processes the data. It computes a weighted sum of input values (or 'query') based on their relevance (or 'attention scores') to the current 'key' value.
+7. **Output Generation**: Finally, the model generates the output text. This is done one token at a time, with the model deciding on the most likely next token based on the current state. The process continues until the model generates a termination token or reaches a preset maximum length.
 
 Each step in this process involves complex mathematical operations and transformations. But at a high-level, the goal is to convert text into a form that the model can understand, let the model process and generate a response, and then convert that response back into human-readable text.
 
