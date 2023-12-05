@@ -1,0 +1,26 @@
+<h2 id="running-llms-locally">Running LLMs Locally</h2>
+<h4 id="what-is-a-llamafile">What is a llamafile?</h4>
+<p>As of the now, the absolute best and easiest way to run open-source LLMs locally is to use Mozilla&#39;s new <a href="https://github.com/Mozilla-Ocho/llamafile">llamafile</a> project.</p>
+<p>llamafiles are executable files that run on six different operating systems (macOS, Windows, Linux, FreeBSD, OpenBSD and NetBSD). They bundle up a single model&#39;s weights along with an inference environment into <strong>A SINGLE FILE</strong> (so amazing!). </p>
+<p>You can choose between a &quot;server&quot; version (API plus web interface) or a &quot;command-line&quot; version (similar to Meta&#39;s original LLaMa interface on CLI). To learn more about this project, here&#39;s the <a href="https://github.com/Mozilla-Ocho/llamafile">README</a> and a <a href="https://simonwillison.net/2023/Nov/29/llamafile/">long post about it from Simon Willison</a>.</p>
+<p>For our work, we will be spending some time with a small 7B parameter model, <em>Mistral_7B</em>, which reportedly shows stellar performance for a 7B model. </p>
+<h4 id="installing-mistral_7b">Installing Mistral_7B</h4>
+<p>Let&#39;s grab the llamafile first from the creator of llamafile <a href="https://justine.lol">Justine Tunney</a>&#39;s <a href="https://huggingface.co/jartine/mistral-7b.llamafile">Huggingface</a>. We&#39;ll use the command line model to showcase some features.</p>
+<p>Download the model by <a href="https://huggingface.co/jartine/mistral-7b.llamafile/resolve/main/mistral-7b-instruct-v0.1-Q4_K_M-main.llamafile?download=true">tapping this link</a>.</p>
+<p>llamafiles are a combination of Justine&#39;s <a href="https://justine.lol/cosmopolitan/index.html">cosmopolitan</a> (native single-file executables on any platform), combined with the community&#39;s amazing work on <a href="https://github.com/ggerganov/llama.cpp">llama.cpp</a>, a C++ version of Meta&#39;s LLaMa that can run usably on CPUs instead of GPUs created by <a href="https://github.com/ggerganov/llama.cpp">ggerganov</a>. </p>
+<p>Mistral-7B is a model created by French startup <a href="https://mistral.ai/company/">Mistral AI</a>, with open weights and sources. Since it&#39;s based on the LLaMa architecture, we are able to run inference on it locally using llama.cpp, which then enables a llamafile. </p>
+<p>The model we&#39;re downloading is the <code>instruct</code>-tuned version. This model is tuned to respond by following a system prompt with instructions.</p>
+<p>To run, it&#39;s as simple as:</p>
+<pre><code>mv mistral-7b-instruct-v0.1-Q4_K_M-main.llama mistral-7b-instruct.llamafile 
+chmod +x mistral-7b-instruct.llamafile
+./mistral-7b-instruct.llamafile --interactive-first
+</code></pre>
+<p>This makes the llamafile executable, then kicks off the model with an interactive prompt. You&#39;ll see that the model is loaded into memory using a &#39;memory map&#39; - you&#39;ll need roughly 5GB of RAM to enable usable inference. A GPU is not mandatory since llama.cpp is designed to utilize all available CPUs to maximize performance.</p>
+<p>Interactive mode enables you to chat with the bot like you normally do with an LLM chat interface, but it&#39;s quite barebones. Using the <code>server</code> llamafile instead adds an option to use a self-hosted web UI with more features and OpenAI-compatible API at <a href="https://localhost:8080">https://localhost:8080</a></p>
+<h4 id="other-models">Other models</h4>
+<p>Here are other interesting llamafiles:</p>
+<ul>
+<li><a href="https://huggingface.co/jartine/llava-v1.5-7B-GGUF/resolve/main/llava-v1.5-7b-q4-server.llamafile?download=true">LLaVa v1.5 7B</a>: a compelling new multi-modal (takes image input) model</li>
+<li><a href="https://huggingface.co/jartine/wizardcoder-13b-python/blob/main/wizardcoder-python-13b-server.llamafile">WizardCoder 7B</a>: a code-generation model</li>
+</ul>
+<p>Our next section will help us compare open models for our particular use-case.</p>
