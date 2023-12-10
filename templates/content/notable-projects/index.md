@@ -163,4 +163,9 @@ This project is an excellent carbon copy of the ChatGPT Web interface. It implem
     <a class="button-next-page" href="/content/ai-basics">AI Basics</a>
 </div>
 
+<div class="mt-3">
+    or 
+    <a class="edit-this-page" href="https://github.com/mozilla/ai-guide/edit/main/templates/content/llms-101/index.md">contribute to this page on Github ></a>
+</div>
+
 </section>

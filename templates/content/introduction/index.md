@@ -35,3 +35,8 @@ Much will depend on how this technology is developed and deployed, but it will a
 <div>
     <a class="button-next-page" href="/content/ai-basics">AI Basics</a>
 </div>
+
+<div class="mt-3">
+    or 
+    <a class="edit-this-page" href="https://github.com/mozilla/ai-guide/edit/main/templates/content/introduction/index.md">contribute to this page on Github ></a>
+</div>

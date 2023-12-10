@@ -41,3 +41,7 @@ Here are other interesting llamafiles:
 - [WizardCoder 7B](https://huggingface.co/jartine/wizardcoder-13b-python/blob/main/wizardcoder-python-13b-server.llamafile): a code-generation model
 
 Our next section will help us compare open models for our particular use-case.
+
+<div class="mt-3">
+    <a class="edit-this-page" href="https://github.com/mozilla/ai-guide/edit/main/templates/content/running-llms-locally/index.md">contribute to this page on Github ></a>
+</div>

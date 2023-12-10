@@ -525,3 +525,7 @@ body.jp-Notebook {
     overflow: auto;
     white-space: pre-wrap
 }
+
+.edit-this-page {
+    text-align: right
+}
