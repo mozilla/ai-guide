@@ -259,13 +259,13 @@
         @apply ml-0 pl-0
     }
 
-    ul.menu > li.upcoming, ul.menu > li.upcoming a {
+    ul.menu > li.upcoming, ul.menu > li.upcoming a[disabled] {
         /* @apply opacity-50 */
-        @apply text-gray-400 bg-transparent font-normal
+        @apply bg-transparent font-normal
     }
 
     ul.menu > li.upcoming {
-        @apply border-[1px] border-gray-400 mt-2
+        @apply border-[1px] mt-2 border-primary rounded-none;
     }
 
 
