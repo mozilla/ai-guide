@@ -83,5 +83,5 @@ Each step in this process involves complex mathematical operations and transform
 
 <div class="mt-3">
     or 
-    <a class="edit-this-page" href="https://github.com/mozilla/ai-guide/edit/main/templates/content/ai-basics/index.md">contribute to this page on Github ></a>
+    <a class="edit-this-page" target="_"  href="https://github.com/mozilla/ai-guide/edit/main/templates/content/ai-basics/index.md">contribute to this page on Github ></a>
 </div>

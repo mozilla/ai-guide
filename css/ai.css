@@ -388,8 +388,6 @@
 
 }
 
-
-
 #content h2 {
     @apply text-3xl font-medium mt-9 mb-5;
     text-transform: uppercase;

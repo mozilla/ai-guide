@@ -102,5 +102,5 @@ This technique helps to focus the model on likely continuations and reduces the 
 
 <div class="mt-3">
     or 
-    <a class="edit-this-page" href="https://github.com/mozilla/ai-guide/edit/main/templates/content/llms-101/index.md">contribute to this page on Github ></a>
+    <a class="edit-this-page" target="_"  href="https://github.com/mozilla/ai-guide/edit/main/templates/content/llms-101/index.md">contribute to this page on Github ></a>
 </div>
