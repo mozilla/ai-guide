@@ -10,9 +10,11 @@
 <p>llamafiles are a combination of Justine&#39;s <a href="https://justine.lol/cosmopolitan/index.html">cosmopolitan</a> (native single-file executables on any platform), combined with the community&#39;s amazing work on <a href="https://github.com/ggerganov/llama.cpp">llama.cpp</a>, a C++ version of Meta&#39;s LLaMa that can run usably on CPUs instead of GPUs created by <a href="https://github.com/ggerganov/llama.cpp">ggerganov</a>. </p>
 <p>Mistral-7B is a model created by French startup <a href="https://mistral.ai/company/">Mistral AI</a>, with open weights and sources. Since it&#39;s based on the LLaMa architecture, we are able to run inference on it locally using llama.cpp, which then enables a llamafile. </p>
 <p>The model we&#39;re downloading is the <code>instruct</code>-tuned version. This model is tuned to respond by following a system prompt with instructions.</p>
-<p>To run, it&#39;s as simple as:</p>
+<p>To run, it&#39;s as simple as running these commands in your terminal:</p>
 <pre><code>mv mistral-7b-instruct-v0.1-Q4_K_M-main.llama mistral-7b-instruct.llamafile 
+
 chmod +x mistral-7b-instruct.llamafile
+
 ./mistral-7b-instruct.llamafile --interactive-first
 </code></pre>
 <p>This makes the llamafile executable, then kicks off the model with an interactive prompt. You&#39;ll see that the model is loaded into memory using a &#39;memory map&#39; - you&#39;ll need roughly 5GB of RAM to enable usable inference. A GPU is not mandatory since llama.cpp is designed to utilize all available CPUs to maximize performance.</p>

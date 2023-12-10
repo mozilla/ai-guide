@@ -296,6 +296,7 @@
     ul.sub_menu > li a:before {
         content: "▪";
     }
+
     
 
     ul.menu > li ul.sub_menu > li a {
@@ -415,8 +416,6 @@ h4::before {
     @apply leading-6 font-normal text-inherit
 }
 
-
-
 .inner {
     color: var(--blue-base);
     @apply prose p-5 md:pl-0 md:pr-0 sm:max-w-3xl my-auto mx-auto dark:text-inherit
@@ -424,6 +423,10 @@ h4::before {
 
 .inner code {
     padding: 0;
+}
+
+.inner pre {
+    background: #2E3440; color: #d8dee9
 }
 
 .inner .btn-colab {

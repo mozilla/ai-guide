@@ -22,10 +22,12 @@ Mistral-7B is a model created by French startup [Mistral AI](https://mistral.ai/
 
 The model we're downloading is the `instruct`-tuned version. This model is tuned to respond by following a system prompt with instructions.
 
-To run, it's as simple as:
+To run, it's as simple as running these commands in your terminal:
 ```
 mv mistral-7b-instruct-v0.1-Q4_K_M-main.llama mistral-7b-instruct.llamafile 
+
 chmod +x mistral-7b-instruct.llamafile
+
 ./mistral-7b-instruct.llamafile --interactive-first
 ```
 
