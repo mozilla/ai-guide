@@ -3,8 +3,8 @@
 #### If you're new to AI
 Read these two sections first. They will help you understand the current lay of the land, along with what all this new jargon means so that you're not completely lost.
 <div class="imagelinks">
-    <a href="/content/ai-basics/" class="imagelink">AI Basics</a>
-    <a href="/content/llms-101/" class="imagelink">Language Models 101</a>
+    <a href="/content/ai-basics/" class="imagelink">AI Basics &gt;</a>
+    <a href="/content/llms-101/" class="imagelink">Language Models 101 &gt;</a>
 </div>
 
 #### Getting started with code
