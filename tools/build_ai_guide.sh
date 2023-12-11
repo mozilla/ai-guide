@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 SOURCE_PATH="templates/content"
 WRITE_PATH=$SOURCE_PATH # replace if you want to write to a different path
@@ -37,6 +37,10 @@ find $SOURCE_PATH -name "*.ipynb" | while read -r file;
     echo NEW_PATH=$(dirname "${NP}")
     echo 
 
-    jupyter-nbconvert --to html --output-dir "${NEW_PATH}" "${file}" --CSSHTMLHeaderPreprocessor.style=nord
+    NEWNB="${file/.ipynb/-fixed.ipynb}"
+    OUTPUT_FILENAME=$(basename "${file/.ipynb/.html}")
+    jq -M 'del(.metadata.widgets)' "${file}" > "${NEWNB}"
+    jupyter-nbconvert --to html --output-dir "${NEW_PATH}" --output "${OUTPUT_FILENAME}" "${NEWNB}" --CSSHTMLHeaderPreprocessor.style=nord
+    rm "${NEWNB}"
     echo 
 done

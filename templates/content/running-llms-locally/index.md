@@ -44,6 +44,10 @@ Here are other interesting llamafiles:
 
 Our next section will help us compare open models for our particular use-case.
 
+<div class="mt-10">
+    <a class="button-next-page" href="/content/comparing-open-llms/index.html">Comparing Open LLMs</a>
+</div>
+
 <div class="mt-3">
     <a class="edit-this-page" target="_"  href="https://github.com/mozilla/ai-guide/edit/main/templates/content/running-llms-locally/index.md">contribute to this page on Github ></a>
 </div>
