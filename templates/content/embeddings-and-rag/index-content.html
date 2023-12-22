@@ -1,4 +1,43 @@
 <h1 id="embeddings--rag">Embeddings &amp; RAG</h1>
+<h2 id="what-are-embeddings">Embeddings</h2>
 <div class="mt-3">
-    <p>If you have experience with embeddings & RAG, please consider <a class="edit-this-page" target="_"  href="https://github.com/mozilla/ai-guide/edit/main/templates/content/embeddings-and-rag/index.md">contributing this section to the AI Guide.</a></p>
+    <p>If you have experience with embeddings, please consider <a class="edit-this-page" target="_"  href="https://github.com/mozilla/ai-guide/edit/main/templates/content/embeddings-and-rag/index.md">contributing this section to the AI Guide.</a></p>
+</div>
+
+<h2 id="what-is-rag">(RAG) Retrieval Augmented Generation</h2>
+<p>Large Language Models are pretrained on large datasets that makes them very valuable to us for general knowledge, and  whether its something like GPT or Bard, or if you are hosting your own LLM, making them more specialised and skillful in a certain domain can be accomplished by methods like fine tuning, or retraining, but these methods can be expensive and would need a good amount of processing time and iterating on the results of training or fine tuning can be also hard.</p>
+<p>So the question became, what is a way to benefit from the power of LLMs, while giving it real time access to a specific subject or context that will be an addition to its knowledge and guarantee that the results are always precise and within the borders of the subject discussed with the user</p>
+<p><a href="https://arxiv.org/abs/2005.11401">Retrieval Augmented Generation (RAG)</a> helped in introducing the concept of enriching LLMs with specific knowledge by utilizing the promopt context, which opened the possibility for focusing on improving and enhancing the context, and passing a piece of knowledge to the LLM, which allows the model to do what its best at with it, which is language tasks such as summarization, text generation, translation, classification, etc</p>
+<p>
+    <p><strong>Here&#39;s how it works on the surface:</strong></p>
+    <code>
+    {% from "partials/image-cards/image-cards.html" import imageCards %}
+    {% set orientation = "image-top" %}
+    {% set slides = [
+      { "alt": "[BEFORE] Straight to LLM Prompt","title": "[BEFORE] Straight to LLM Prompt", "description": "<p>the LLM depending on its pretrained knowledge, will try to answer your question</p>", "image": "/img/ai/carousels/rag/prompt_before_rag.jpg"},
+      { "alt": "[AFTER] Augmented Prompt","title": "[AFTER] Augmented Prompt", "description": "<p>The retrieved information is used to augment the LLM's understanding of photosynthesis, providing up-to-date and precise details.</p>", "image": "/img/ai/carousels/rag/prompt_after_rag.jpg"}
+    ]
+    %}
+    {{imageCards(slides,orientation)}}
+    </code>
+</p>
+<p>
+With LLMs being able to accept bigger context to work with, the RAG model is proven valuable in many use cases, as it allows the LLM to generate a response from a specific context, this makes the LLM more factual, and less likely to generate a response that is not related to the context.
+<h4>Other Benefits of RAG Model</h4>
+<ul>
+    <li>Brings more real time data to LLM to generate an answer from, instead of depending on the last time the LLM got trained</li>
+    <li>Fast testing and QA cycles, if the context is not of high quality, evaluations can be done quickly and the context can be enriched.</li>
+    <li>It is a cost effective solution.</li>
+</ul>
+ <p>
+    <code>
+        {% from "partials/image-cards/image-card.html" import imageCard %}
+        {% set orientation = "image-single" %}
+        {% set slide = { "alt": "RAG Model Architecture","title": "RAG Model Architecture", "description": "<p>Since the model is allowing us to solve for context, the options are endless, whether it is data saved in raw text or structured in a database, or an API call that we need, once the data is fetched, the next step would be to embed it with the users prompt.</p>", "image": "/img/ai/carousels/rag/rag_arch.jpg"} %}
+        {{imageCard(slide,orientation)}}
+        </code>
+ </p>
+<div class="mt-3">
+    or 
+    <a class="edit-this-page" target="_"  href="https://github.com/mozilla/ai-guide/edit/main/templates/content/ai-basics/index.md">contribute to this page on Github ></a>
 </div>
