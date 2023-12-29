@@ -3,9 +3,7 @@
 
 The goal of this guide is to help the curious reader understand the technical foundations, applications, and challenges of image generation. 
 
-This guide is neither a complete reference nor basic tutorial. It is meant to help you save time when getting started by providing an outline of the key ideas and linking high-quality reference material for further learning.
-
-The initial sections are meant to be read in order, and serve as a gradual introduction to the topic. The final section ([Diagrams and Details](#diagrams-and-details)) contains summarized explanations of key ideas. These will likely be most useful _after_ the reader has become acquainted with the source material (linked in the [Recommended References](#recommended-references) section). 
+This guide is neither a complete reference nor basic tutorial. It is the handbook the author wishes he had when he started. We hope it helpes you save time by outlining the key ideas and linking high-quality reference material for further learning.
 
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 
@@ -19,37 +17,21 @@ The initial sections are meant to be read in order, and serve as a gradual intro
 - [Technical Foundations](#technical-foundations)
    * [Prerequisites](#prerequisites)
    * [Stable Diffusion and Control Nets](#stable-diffusion-and-control-nets)
-   * [Stable Diffusion Inference Diagram](#stable-diffusion-inference-diagram)
-- [Recommended References](#recommended-references)
-- [Glossary](#glossary)
-- [Diagrams and Details ](#diagrams-and-details)
+   * [The entire pipeline](#the-entire-pipeline)
    * [Diffusion Model](#diffusion-model)
-   * [Autoencoder](#autoencoder)
-   * [Latent Diffusion Model](#latent-diffusion-model)
    * [Variational Autoencoder (VAE)](#variational-autoencoder-vae)
+   * [Latent Diffusion Model](#latent-diffusion-model)
    * [U-Net](#u-net)
    * [CLIP (Contrastive Language-Image Pretraining)](#clip-contrastive-language-image-pretraining)
    * [Text Encoder](#text-encoder)
    * [Control Net Conditioning Encoder](#control-net-conditioning-encoder)
-   * [Control Net Trainable Copy](#control-net-trainable-copy)
-   * [Low-Rank Adaptation (LoRA)](#low-rank-adaptation-lora)
-   * [Dreambooth](#dreambooth)
-   * [Textual Inversion](#textual-inversion)
-   * [The U-Net Architecture (continued)](#the-u-net-architecture-continued)
-      + [Overview](#overview)
-      + [Key Concepts](#key-concepts)
-   * [The Variational Autoencoder (VAE) (continued)](#the-variational-autoencoder-vae-continued)
-      + [Overview](#overview-1)
-      + [Key Concepts](#key-concepts-1)
-   * [Noise, Timesteps, Schedulers](#noise-timesteps-schedulers)
-      + [Overview](#overview-2)
-      + [Key Concepts](#key-concepts-2)
-   * [Text Encoder](#text-encoder-1)
-      + [Overview](#overview-3)
-      + [Key Concepts](#key-concepts-3)
-   * [Fine-Tuning Techniques](#fine-tuning-techniques)
-      + [Overview](#overview-4)
-      + [Key Concepts](#key-concepts-4)
+   * [Control Net Trainable Weights](#control-net-trainable-weights)
+   * [Alternative Methods of Fine-Tuning](#alternative-methods-of-fine-tuning)
+      + [Low-Rank Adaptation (LoRA)](#low-rank-adaptation-lora)
+      + [Dreambooth](#dreambooth)
+      + [Textual Inversion](#textual-inversion)
+- [Glossary](#glossary)
+- [Recommended References](#recommended-references)
 
 <!-- TOC end -->
 
@@ -58,7 +40,7 @@ The initial sections are meant to be read in order, and serve as a gradual intro
 
 Image generation refers to the process of creating images using pre-trained models.
 
-You've likely seen AI-generated images and [videos](https://www.youtube.com/watch?v=K10Ty0ZdbD8) online. Maybe you've generated your own images using applications like [`DALL-E`](https://openai.com/research/dall-e-3-system-card) or [`MidJourney`](https://www.midjourney.com/). This guide can help you dive deeper.
+You've likely seen AI-generated images and [videos](https://www.youtube.com/watch?v=K10Ty0ZdbD8 "target='_blank'") online. Maybe you've generated your own images using applications like [`DALL-E`](https://openai.com/research/dall-e-3-system-card) or [`MidJourney`](https://www.midjourney.com/). This guide can help you dive deeper.
 
 <figure>
 <!-- <img src="/img/image-models/pope_fake.jpg"> -->
@@ -85,23 +67,32 @@ This guide does not attempt to be complete or exhaustive. Rather, we hope that t
 
 [`Diffusion`](https://en.wikipedia.org/wiki/Diffusion) comes from the latin _diffundere_, meaning "to spread out". It is the familiar process of things moving from higher concentration to lower concentration. 
 
+<figure>
 <img src="/img/image-models/screenshot_007.png">
+<figcaption>Image from <a href="https://en.wikipedia.org/wiki/Diffusion">Wikipedia</a></figcaption>
+</figure>
 
 When purple dye is dropped into water, the dye _diffuses_ until the entire mixture has a uniform purple hue. That is, until distribution of molecules from the purple dye is [uniformly random](https://en.wikipedia.org/wiki/Continuous_uniform_distribution).
 
+<figure>
 <img src="/img/image-models/purple_diffusion.png">
+<figcaption>Image from <a href="https://en.wikipedia.org/wiki/Diffusion">Wikipedia</a></figcaption>
+</figure>
 
 `Diffusion models` are based on an analogous process. 
 
 First, we collect images that look like what we want our model to generate. Each image is like a drop of "purple dye", rich in information and decidedly non-random. 
 
+<figure>
 <img src="/img/image-models/screenshot_010.png">
+<figcaption>Images downloaded from <a href="https://duckduckgo.com/">DuckDuckGo</a>.</figcaption>
+</figure>
 
 Next, we add increasing levels of [noise](https://en.wikipedia.org/wiki/Gaussian_noise) to each image. We continue this diffusion process until the information has been "systematically destroyed". (That is, until the image has become uniform random noise.)
 
 <figure>
 <img src="/img/image-models/screenshot_011.png">
-<figcaption>Forward-diffusion (noising)</figcaption>
+<figcaption>Forward-diffusion (noising) (<a href="https://github.com/johnshaughnessy/jupyter-notebooks/blob/main/code/diffusion024.ipynb">source</a>)</figcaption>
 </figure>
 
 Noisy images are paired with their originals to form a training data set. We use this data set to train a model to recover the _original_ image given a noisy image. In other words, the model attempts to [remove the noise](https://en.wikipedia.org/wiki/Noise_reduction) we added. 
@@ -112,7 +103,7 @@ After training the model, we can use it to generate _new_ images: If we start wi
 
 <figure>
 <img src="/img/image-models/screenshot_012.png">
-<figcaption>Reverse-diffusion (denoising)</figcaption>
+<figcaption>Reverse-diffusion (denoising) (<a href="https://github.com/johnshaughnessy/jupyter-notebooks/blob/main/code/diffusion002.ipynb">demo</a>)</figcaption>
 </figure>
 
 We'll discuss diffusion models in more detail in the [Technical Foundations](#technical-foundations) section. First, let's consider some of the challenges we encounter when working with diffusion models. 
@@ -146,7 +137,7 @@ Like any AI model, generative image models reflect biases in their training data
 
 <figure>
 <img src="/img/image-models/screenshot_002.png">
-<figcaption>Searching for a Pixel Art model on Civit AI</figcaption>
+<figcaption>Searching for a pixel art model on <a href="https://civitai.com">Civit AI</a></figcaption>
 </figure>
 
 <!-- TOC --><a name="conditioning-and-control"></a>
@@ -160,12 +151,12 @@ The real power of diffusion models comes from our ability to _condition_ on vari
 
 <figure>
 <img src="/img/image-models/screenshot_013.png">
-<figcaption>Text-to-Image powered by GLIDE</figcaption>
+<figcaption>Text-to-Image powered by GLIDE (<a href="https://arxiv.org/abs/2112.10741">source</a>)</figcaption>
 </figure>
 
 <figure>
 <img src="/img/image-models/screenshot_014.png">
-<figcaption>Inpainting powered by GLIDE</figcaption>
+<figcaption>Inpainting powered by GLIDE (<a href="https://arxiv.org/abs/2112.10741">source</a>)</figcaption>
 </figure>
 
 
@@ -173,21 +164,21 @@ Fine-tuning and transfer learning via techniques like [**Dreambooth**](https://a
 
 <figure>
 <img src="/img/image-models/screenshot_015.png">
-<figcaption>A model trained to output a specific subject via Dreambooth</figcaption>
+<figcaption>A model trained to output a specific subject via Dreambooth (<a href="https://arxiv.org/abs/2208.12242">source</a>)</figcaption>
 </figure>
 
 In some cases, style-transfer can even be achieved _without_ fine-tuning, as shown by [**Style Aligned**](https://arxiv.org/abs/2312.02133)
 
 <figure>
 <img src="/img/image-models/screenshot_016.png">
-<figcaption>Style Aligned models can output consistent style without requiring fine-tuning</figcaption>
+<figcaption>Style Aligned models can output consistent style without requiring fine-tuning. (<a href="https://arxiv.org/abs/2312.02133">source</a>)</figcaption>
 </figure>
 
-[**Control Nets**](https://arxiv.org/abs/2302.05543) are complementary models that, once trained, allow the output of a diffusion model can be _conditioned_ on (i.e. controlled by) skeletal animation poses, depth maps, segmentation maps, canny edges, and more. `Control Nets` showed how to go beyond text conditioning and opened up a huge number of previously infeasible use-cases for image generation.
+[**Control Nets**](https://arxiv.org/abs/2302.05543) are complementary models that, once trained, allow the output of a diffusion model to be _conditioned_ on (i.e. controlled by) [skeletal animation poses](https://en.wikipedia.org/wiki/Skeletal_animation), [depth maps](https://en.wikipedia.org/wiki/Depth_map), [segmentation maps](https://en.wikipedia.org/wiki/Image_segmentation), [canny edges](https://en.wikipedia.org/wiki/Canny_edge_detector), and more. `Control Nets` showed how to go beyond text conditioning and opened up a huge number of previously infeasible use-cases for image generation.
 
 <figure>
 <img src="/img/image-models/screenshot_017.png">
-<figcaption>Control Nets augment pre-trained models to allow fine-grained control</figcaption>
+<figcaption>Control Nets augment pre-trained models to allow fine-grained control. (<a href="https://arxiv.org/abs/2302.05543">source</a>)</figcaption>
 </figure>
 
 <!-- TOC --><a name="consistency-for-video"></a>
@@ -214,7 +205,7 @@ Image generation requires significant compute and memory resources. Since entire
 
 Depending on the use case, it may be best prioritize inference speed over image quality, or vice versa.
 
-If a model is too large to fit into GPU memory, **quantization** allows us to lower the memory requirements: If a model made up of 32-bit floats is too large, you can convert all the 32-bit floats to 16-bit floats, 8-bit floats, or even 4-bit floats. Downsizing floats reduces precision, but may allow models to run on less powerful hardward. Quantization of `float32` models to `float16` reduces memory requirements considerably without appreciable reduction in image quality.
+If a model is too large to fit into GPU memory, **quantization** allows us to lower the memory requirements: If a model made up of 32-bit floats is too large, you can convert all the 32-bit floats to 16-bit floats, 8-bit floats, or even 4-bit floats. Downsizing floats reduces precision, but may allow models to run on less powerful hardware. Quantization of `float32` models to `float16` reduces memory requirements considerably without appreciable reduction in image quality.
 
 [Tom ("TheBloke") Jobbins](https://huggingface.co/TheBloke) has released over 3000 models on Hugging Face. He uploads variants of popular models: quantized, fine-tuned, and with different file formats. He helps developers onboard into AI and run models on a wide variety of hardware. In August 2023, [a16z awarded Tom a grant](https://a16z.com/supporting-the-open-source-ai-community/) for his contributions to open source. 
 
@@ -226,22 +217,27 @@ Performance considerations affect everything from training, inference, and offer
 <!-- TOC --><a name="technical-foundations"></a>
 # Technical Foundations
 
-There are many ways to generate images, which can make it difficult to learn the technical details. Different researchers and applications come up with their own unique implementations and architectures, making several important decisions along the way.
-
-It helps to learn a few _specific_ end-to-end examples, rather than trying to learn general principles. This way, you can create a solid foundation in your mind and iteratively learn the variations and decisions that each implementation introduces.
+There are many ways to generate images, which can make it difficult to learn the technical details. It helps to learn a _specific_ example end-to-end, rather than trying to learn abstract general principles. 
 
 We will focus on `Stable Diffusion`, a popular, open-source, and extensible model for image generation. We will also cover `Control Nets`, the flexible way of adding various conditioning to a stable diffusion model's outputs.
 
 <!-- TOC --><a name="prerequisites"></a>
 ## Prerequisites
 
-Before diving into Stable Diffusion, let's cover a few important aspects of all neural networks.
+Before diving into the details of Stable Diffusion, we recommend familiarizing yourself with the following topics, which this guide will not cover:
 
-- **Inputs, Outputs, Loss, Parameters, and Layers/Blocks**: These are the building blocks of any neural network models. **Inputs** are tensors we feed into the model. **Outputs** are what the model produces. **Loss** is a measure used (during training) to quantify how far the model outputs differ from the desired output. Loss is used to update a model's **parameters**. Parameters are arranged into **layers**, and layers into **blocks**. Each layer and block serves some purpose within the architecture of the neural net. 
-
-- **Training, Inference, and Fine-tuning**: These are the three main phases in the lifecycle of a neural network. **Training** involves learning from data to create a "base" or "foundation" model. **Inference** is using the model to make predictions (i.e. to feed some input to the model and let it generate an output). **Fine-tuning** is an optional training step that adjusts a pre-trained model to specific tasks or datasets.
-
-- **Model Architectures**: A model _architecture_ refers to the particular configuration of layers, blocks, or even whole neural nets within a larger system. Different architectures excel at different tasks. We'll discuss a few types of models that are used in a Stable Diffusion pipeline.
+| Term                    | Description                                                                                                                                                                    |
+|-------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Tensors**             | Multidimensional arrays of numbers, used as the basic data structure in neural networks to represent inputs, outputs, weights, etc.                                            |
+| **Inputs**              | Tensors fed into a neural network model. They represent the data the model will process.                                                                                       |
+| **Outputs**             | The results produced by a neural network model when given an input.                                                                                                            |
+| **Loss**                | A measure used during training to quantify how far a model's outputs are from the desired output. It guides the updating of the model's parameters.                            |
+| **Parameters**          | The internal variables of a model that are adjusted during training to minimize loss. These include weights and biases in the network.                                         |
+| **Layers/Blocks**       | Organizational units of parameters within a neural network. Layers are composed of neurons and perform specific functions, while blocks are groups of layers working together. |
+| **Training**            | The phase in which a neural network learns from data to create a foundational model. It involves adjusting parameters to minimize loss.                                        |
+| **Inference**           | The phase where a trained neural network model is used to make predictions or generate outputs based on new inputs.                                                            |
+| **Fine-tuning**         | An optional training phase that adjusts a pre-trained model to specific tasks or datasets, refining its performance.                                                           |
+| **Model Architectures** | The specific configuration of layers, blocks, or neural networks within a larger system, defining the structure and behavior of the model.                                     |
 
 <!-- TOC --><a name="stable-diffusion-and-control-nets"></a>
 ## Stable Diffusion and Control Nets
@@ -250,35 +246,35 @@ Stable Diffusion and Control Net have several components that work together to g
 
 <figure>
 <img src="/img/image-models/screenshot_019.png">
-<figcaption>The architecture of Latent Diffusion Models, with conditioning</figcaption>
+<figcaption>The architecture of Latent Diffusion Models, with conditioning (<a href="https://arxiv.org/abs/2112.10752">source</a>)</figcaption>
 </figure>
 
 <figure>
 <img src="/img/image-models/screenshot_018.png">
-<figcaption>How Control Nets augment Stable Diffusion's U-Net</figcaption>
+<figcaption>How Control Nets augment Stable Diffusion's U-Net (<a href="https://arxiv.org/abs/2302.05543">source</a>)</figcaption>
 </figure>
 
-Our goal is to eventually understand these diagrams. 
+By the end of this guide article, we hope you are able to understand these diagrams (and the text) from the original research papers.
 
-We will start with a simplified diagram showing the entire architecture. Then we will examine the individual components until we know each component does and how it is trained. 
+We will start with a diagram showing the entire architecture at a high level. Then we will examine the individual components until we know each component does and how it is trained. 
 
-By the end of the article, we hope to understand the diagrams (and text) of the original research papers.
+As you read, you may refer to the [glossary](#glossary) for definitions of key terms and the [recommended references](#recommended-references) for more complete explanations. It will likely help to read through the glossary at least once before continuing. 
 
-<!-- TOC --><a name="stable-diffusion-inference-diagram"></a>
-## Stable Diffusion Inference Diagram
+<!-- TOC --><a name="the-entire-pipeline"></a>
+## The entire pipeline
 
-Let's examine the entire Stable Diffusion pipeline, including text conditioning and a Control Net trained on Canny edge maps.
+Let's examine the entire Stable Diffusion pipeline, including text conditioning and a Control Net trained on [Canny edge maps](https://en.wikipedia.org/wiki/Canny_edge_detector).
 
 <figure>
 <img src="/img/image-models/screenshot_020.png">
-<figcaption>Images generated by Stable Diffusion with a Control Net trained on Canny edge maps, further conditioned by text prompts.</figcaption>
+<figcaption>Images generated by Stable Diffusion with a Control Net trained on Canny edge maps, further conditioned by text prompts. (<a href="https://arxiv.org/abs/2302.05543">source</a>)</figcaption>
 </figure>
 
 The following diagram illustrates the data flow in Stable Diffusion with a Control Net. Refer to the glossary and followup sections for more details about each component.
 
 <figure>
 <img src="/img/image-models/stable_diffusion_inference_diagram.png">
-<figcaption>Data flow diagram of Stable Diffusion with Control Net integration.</figcaption>
+<figcaption>Data flow diagram of Stable Diffusion with Control Net integration. [<a href="/img/image-models/stable_diffusion_inference_diagram.png" target="_blank">Open in new tab</a>]</figcaption>
 </figure>
 
 **Inputs and Outputs**
@@ -293,92 +289,80 @@ The following diagram illustrates the data flow in Stable Diffusion with a Contr
 5. **Iterative Reverse Diffusion**: A scheduler adjusts the predicted noise - subtracting a portion of it and adding new noise to the latent. The updated noisy latent, now recombined, re-enters the U-Net for further processing. This loop continues, incrementing the timestep and updating positional encoding each iteration, until a predefined number of steps is reached.
 6. **Final Image Generation with VAE Decoder**: The process ends with the VAE decoder transforming the denoised latent into the final image. Notice that the VAE encoder is not required for this (noise-to-image) task, though it was needed during training and would be needed for image-to-image tasks.
 
-At this point, in order to deepend your understanding of the pipeline, I recommend reviewing the [recommended references](#recommended-references) (if you haven't already). The remainder of this guide consists of a [glossary](#glossary) defining key terms and summaries of the key concepts (in ["Diagrams and Details"](#diagrams-and-details)).
+In the following sections, we'll inspect the Stable Diffusion pipeline in more detail, providing simple diagrams and brief explanations of each component. 
 
-<!-- TOC --><a name="recommended-references"></a>
-# Recommended References
-
-These resources provide a deeper understanding of the concepts discussed. Of the many resources online, the author found these to be the most helpful and illuminating.
-
-- Diffusion Models: [Research Paper](https://arxiv.org/abs/1503.03585)
-- Latent Diffusion Models: [Research Paper](https://arxiv.org/abs/2112.10752)
-- U-Net: [Research Paper](https://arxiv.org/abs/1505.04597), [Explainer Video](https://www.youtube.com/watch?v=NhdzGfB1q74)
-- Convolution: [Grant Sanderson's video "But what is a convolution?"](https://www.youtube.com/watch?v=KuXjwB4LzSA)
-- CLIP: [Website](https://openai.com/research/clip), [Research Paper](https://arxiv.org/abs/2103.00020)
-- Variational Auto-Encoder: [Research Paper](https://arxiv.org/abs/1312.6114), [Explainer Video](https://www.youtube.com/watch?v=9zKuYvjFFS8)
-- Stable Diffusion: [Explainer Video](https://www.youtube.com/watch?v=sFztPP9qPRc)
-- ResNets: [Explainer Video 1](https://www.youtube.com/watch?v=o_3mboe1jYI), [Explainer Video 2](https://www.youtube.com/watch?v=Q1JCrG1bJ-A)
-- Low-Rank Adaptations: [Research Paper](https://arxiv.org/abs/2106.09685)
-- Control Nets: [Research Paper](https://arxiv.org/abs/2302.05543), [Paper Readthrough Video](https://www.youtube.com/watch?v=Mp-HMQcB_M4), [Note on zero-convolutions](https://github.com/lllyasviel/ControlNet/blob/ed85cd1e25a5ed592f7d8178495b4483de0331bf/docs/faq.md)
-- History of diffusion models: [deepsense.ai blog post](https://deepsense.ai/the-recent-rise-of-diffusion-based-models/)
-
-<!-- TOC --><a name="glossary"></a>
-# Glossary
-
-It will help to collect definitions several key terms, specifically in the context of their use in Stable Diffusion.
-
-| Term                                 | Definition                                                                                                                                                                       |
-|--------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Diffusion Model**                  | A model trained to generate images via reverse diffusion.                                                                                                                        |
-| **Forward Diffusion**                | Gradually adding noise to an image, step by step, "systematically destroying" the information.                                                                                   |
-| **Reverse Diffusion**                | Removing noise from an image, step by step, until a coherent image remains.                                                                                                      |
-| **Conditioning**                     | Using alternative data sources (like text, canny-edges, etc) to alter the generated output of a diffusion model.                                                                 |
-| **Autoencoder**                      | A model composed of a downsizing encoder and upsizing decoder. The space between the encoder and decoder is the latent space.                                                    |
-| **Latent Space**                     | A low-dimensional space of tensors.                                                                                                                                              |
-| **Pixel Space**                      | A high-dimensional space of (image) tensors (with shape `height x width x num_channels`).                                                                                        |
-| **Latent Diffusion Model**           | A type of diffusion model that operates in a low-dimensional (and thus, more performant) latent space.                                                                           |
-| **Stable Diffusion**                 | A set of implementations of latent diffusion models, like SD 1.4, SD 1.5, SDXL, and SDXL Turbo.                                                                                  |
-| **Latents**                          | Tensors in latent space. High-dimensional data (images, text, canny-edges, etc) are converted to latents for processing.                                                         |
-| **Variational Autoencoder**          | An autoencoder ensuring any random noise in latent space will decode to reasonable-looking images.                                                                               |
-| **VAE Encoder**                      | Converts images to latents.                                                                                                                                                      |
-| **VAE Decoder**                      | Converts latents to images.                                                                                                                                                      |
-| **U-Net**                            | Core model of Stable Diffusion, receiving image latents and predicting their noise. Composed of an encoder and decoder, skilled at processing spatial hierarchies within images. |
-| **U-Net Encoder**                    | The first half of the U-Net, downsizing images to capture semantic information.                                                                                                  |
-| **U-Net Decoder**                    | The second half of the U-Net, upsizing images and recovering details lost by the encoder, augmented with semantic information.                                                   |
-| **CLIP**                             | Contrastive language-image pretraining for creating text encoders whose embeddings are close to their associated image embeddings.                                               |
-| **Text Encoder**                     | Converts text to latents, usually trained via CLIP.                                                                                                                              |
-| **Control Net**                      | An architecture augmenting stable diffusion models for additional input conditioning.                                                                                            |
-| **Control Net Conditioning Encoder** | Converts image conditioning data (like canny edge maps) into latent space for a control net.                                                                                     |
-| **Control Net Trainable Copy**       | A trainable copy of the Stable Diffusion's U-Net Encoder, connected via "Zero Convolutions" for additional input conditioning without altering the main U-Net.                   |
-| **Low-Rank Adaptation**              | A technique for efficiently fine-tuning large models by modifying only a small, low-rank subset of their parameters, enhancing model performance or adapting it to new tasks.    |
-| **Dreambooth**                       | A specialized training procedure that personalizes generative models, like diffusion models, to generate content reflecting specific subjects or styles in the training data.    |
-| **Textual Inversion**                | A process of adapting language models to understand and generate text or concepts not covered in their original training, by using specific, targeted training examples.         |
-
-
-<!-- TOC --><a name="diagrams-and-details"></a>
-# Diagrams and Details 
-
-This section of the guide offers brief explanations and simplified diagrams (inputs and outputs) of the various components involved in a Stable Diffusion pipeline. 
-
-It is recommended to consult the [recommended resources](#recommended-resources) for better explanations of each of these topics. This section should hopefully serve as a useful reminder and summary of the core concepts.
+The [recommended resources](#recommended-resources) contains more complete explanations of each component. 
 
 <!-- TOC --><a name="diffusion-model"></a>
 ## Diffusion Model
 
 <figure>
 <img src="/img/image-models/diffusion_model_diagram.png">
-<figcaption></figcaption>
+<figcaption>The data flow diagram for a diffusion model.</figcaption>
 </figure>
 
-**Input**: Randomly generated noise, (optionally) with non-random conditioning.
+**Input**: Randomly generated noise (optionally combined with non-random "conditioning" inputs like text, canny edge maps, etc).
 
 **Output**: A coherent generated image, produced from several iterative reverse diffusion steps.
 
-**Training**: The training process for a diffusion model involves learning to denoise images. Once the model is able to reconstructing the original images from noisy inputs, we use it to generate new images from pure (or conditioned) noise.
+**Training**: The training process for a diffusion model involves learning to denoise images. Once the model can reconstruct original images from noisy inputs, we use it to generate _new_ images from (pure or conditioned) noise.
 
-<!-- TOC --><a name="autoencoder"></a>
-## Autoencoder
+**Clarification**: The term "diffusion model" does not refer to a _specific_ architecture or arrangement of layers/blocks. It simply means that somewhere in the model, a reverse diffusion process is iteratively removing noise from feature maps.
+
+**Further Clarification**: The diagram shows that the output of a diffusion model is a denoised _image_, but the diffusion process may output data that is not technically an _image_. The component of Stable Diffusion that is actually responsible for the diffusion process is its U-Net. As we'll see, Stable Diffusion's U-Net does not output denoised _images_. Instead, it outputs denoised _latents_, which are converted to images via its VAE Decoder.
+
+<!-- TOC --><a name="variational-autoencoder-vae"></a>
+## Variational Autoencoder (VAE)
 
 <figure>
-<img src="/img/image-models/autoencoder_diagram.png">
-<figcaption></figcaption>
+<img src="/img/image-models/variational_autoencoder_diagram.png">
+<figcaption>The data flow diagram for a VAE.</figcaption>
 </figure>
 
-**Input**: Original data that needs to be represented in a compressed form.
+**Input**: High-dimensional data.
 
-**Output**: Reconstructed data, which is the decompressed version of the data from the latent space.
+**Output**: (Reconstructed) high-dimensional data.
 
-**Description**: An autoencoder consists of two main parts: an encoder and a decoder. The encoder compresses the input data into a lower-dimensional latent space. The decoder then reconstructs the data from this latent space, aiming to produce an output as close as possible to the original input. Autoencoders are used for tasks like data denoising, dimensionality reduction, and feature learning.
+**Description**: The VAE is an autoencoder, which means it is trained to compress and then decompress its inputs. It is made of two halfs: an encoder and a decoder. The encoder is a compressor. The decoder is a decompressor. 
+
+When we feed images to the encoder, we get (lossily compressed, low-dimensional) "latents". 
+When we feed latents into the decoder, we get back (high-dimensional) images.
+
+Suppose we feed an image to the encoder to get a latent, and then feed that latent to the decoder to get an output image. The output image will be a slightly-worse version of the input image (since we sent it through a lossy compression / decompression pipeline). 
+
+Suppose I wanted to send you a bunch of images, and wanted to save time and money on bandwidth. I would compress the images with the VAE encoder before sending them.
+
+<figure>
+<img src="/img/image-models/variational_autoencoder_diagram4.png">
+<figcaption>Compressing images into latents before sending.</figcaption>
+</figure>
+
+Assuming you already had the VAE decoder installed on your device, you would decode the latents before displaying the images. There may be some compression artifacts, but if the VAE is well-trained then they should not be noticable.
+
+<figure>
+<img src="/img/image-models/variational_autoencoder_diagram3.png">
+<figcaption>Decompressing images before displaying.</figcaption>
+</figure>
+
+So, what's the point of having the VAE in the stable diffusion pipeline? 
+
+The VAE exists because it's too computationally expensive to work in the high-dimensional "pixel space" where images live. It's better (i.e. more efficient) to work in lower dimensions. 
+
+The VAE Encoder converts high-dimensional images into latents during training or Image-to-Image tasks. Other inputs (text, canny edge maps, positional encodings) are converted to the same latent space (but not via the VAE Encoder) so that the latents can be combined before (and during) the reverse diffusion process.
+
+<figure>
+<img src="/img/image-models/variational_autoencoder_diagram5.png">
+<figcaption>Various inputs are converted to latents and the combined before being passed to the reverse diffusion process.</figcaption>
+</figure>
+
+Working in latent space allows us to solve a less computationally expensive problem. Instead of generating a good _image_ via reverse diffusion, we need only generate a good _latent_. 
+
+We convert good latents to good images by sending the latents through the VAE decoder.
+
+<figure>
+<img src="/img/image-models/variational_autoencoder_diagram2.png">
+<figcaption>We only need the VAE Decoder during inference. We use it to decode a low-dimensional, denoised latent into an image.</figcaption>
+</figure>
 
 <!-- TOC --><a name="latent-diffusion-model"></a>
 ## Latent Diffusion Model
@@ -388,25 +372,11 @@ It is recommended to consult the [recommended resources](#recommended-resources)
 <figcaption></figcaption>
 </figure>
 
-**Input**: Latent noise, a lower-dimensional representation compared to full-resolution noise.
+**Input**: Random noise latent (optionally combined with with non-random conditioning latents from text, canny edge maps, etc).
 
-**Output**: A generated latent image, which is a lower-dimensional representation of the desired output image.
+**Output**: A generated (denoised) latent, which can be sent through the VAE decoder to be converted to an image.
 
-**Description**: The Latent Diffusion Model operates in a latent space, which is a compressed, lower-dimensional representation of the image data. This approach allows for more efficient processing and generation of images. The model learns to convert latent noise into a coherent latent image, which can then be transformed into a high-resolution image using other model components like decoders.
-
-<!-- TOC --><a name="variational-autoencoder-vae"></a>
-## Variational Autoencoder (VAE)
-
-<figure>
-<img src="/img/image-models/variational_autoencoder_diagram.png">
-<figcaption></figcaption>
-</figure>
-
-**Input**: Original data for encoding into a latent representation.
-
-**Output**: Reconstructed data, aimed to be as close to the original input as possible.
-
-**Description**: A Variational Autoencoder is a type of autoencoder that introduces randomness in its encoding process. The encoder outputs a mean (μ) and variance (σ) for the latent representation. A random variable (ε) is then used to sample from this distribution, ensuring that the latent space can decode to a variety of similar but slightly different outputs. This characteristic makes VAEs particularly useful for generating new data that resembles the training data.
+**Summary**: Given the explanations in the previous sections, we can now see that a latent diffusion model is simply a diffusion model that operates in latent space. The term "Latent Diffusion Model" does not imply a specific architecture: only that an iterative reverse diffusion process happens in a low-dimensional latent space. 
 
 <!-- TOC --><a name="u-net"></a>
 ## U-Net
@@ -416,11 +386,29 @@ It is recommended to consult the [recommended resources](#recommended-resources)
 <figcaption></figcaption>
 </figure>
 
-**Input**: Image latents, which are lower-dimensional representations of images.
+**Input**: Noisy image latents.
 
-**Output**: Predicted image latents, mirroring the type and format of the input.
+**Output**: Predictions of latent noise.
 
-**Description**: The U-Net architecture is integral to the Stable Diffusion model. It consists of an encoder, which compresses the image latents, and a decoder, which reconstructs the latents back to their original form. The U-Net's structure enables it to efficiently process and understand spatial hierarchies within images. This makes it highly effective for tasks like image segmentation, denoising, and super-resolution.
+**Terminology**: When writing about Latent Diffusion Models, it's common to use the words "image", "latent", and "feature map" interchangably. This can be confusing, since the difference between pixel space and latent space is a critical innovation. However, the specific types of models that operate in latent space are usually not specifically limited to latents, images, or any _particular_ type of input. So when discussing U-Nets, for example, the usual term to describe its inputs and outputs is "_image_", even though in our case, we'd think of them as "_latents_" or "_latent images_**.
+
+
+**Description**: Stable Diffusion's U-Net is the central component in the reverse diffusion process. The U-Net is a _specific_ network architecture whose structure enables it to efficiently process and understand spatial hierarchies within images. This makes it highly effective for tasks like image segmentation, denoising, and super-resolution. 
+
+In this case,  Stable Diffusion's U-Net is fed latents and predicts which parts of its input are noise. A scheduler determines how to update the noisy input latent given the U-Net's prediction. This process continues iteratively until a predefined number of steps is reached. We call the final output of the U-Net the "denoised latent" and can convert it to an image via the VAE Decoder.
+
+<figure>
+<img src="/img/image-models/screenshot_008.png">
+<figcaption>The name "U"-Net comes from the "U" shape of its data flow diagram. (<a href="https://arxiv.org/abs/1505.04597">source</a>**</figcaption>
+</figure>
+
+**Clarification**: Like an auto-encoder, a U-Net has a down-sampling "encoder", an up-sampling "decoder", and a low-dimensional "bottleneck" in-between. However, in general U-Nets and autoencoders are not the same. U-Nets are trained on a variety of tasks, whereas the term "autoencoder" refers to a two-sided networked trained to predict its own inputs. The terms "encoder" and "decoder** appear in several types of networks.
+
+**Key Concepts**: A few key concepts explain why the U-Net is a good choice for image processing tasks.
+
+- **Convolution Layers**: These layers apply a convolution operation to the input, capturing local dependencies and learning features from the data. In [_But what is a convolution_](https://www.youtube.com/watch?v=KuXjwB4LzSA), Grant Sanderson provides an excellent visual explanation of convolutions. 
+- **Downsampling and Upsampling**: Downsampling reduces the spatial dimensions (height and width) of the image, helping the model to abstract and learn higher-level features. Upsampling, conversely, increases the spatial dimensions, aiding in reconstructing the finer details of the image. 
+- **Residual Connections**: These connect layers of equal resolution in the downsampling and upsampling paths, allowing the model to preserve high-resolution features throughout the network. As with residual networks, these connections allow us to train deeper networked (networks with more layers) by alleviating the [vanishing gradient problem](https://en.wikipedia.org/wiki/Vanishing_gradient_problem).
 
 <!-- TOC --><a name="clip-contrastive-language-image-pretraining"></a>
 ## CLIP (Contrastive Language-Image Pretraining)
@@ -432,9 +420,9 @@ It is recommended to consult the [recommended resources](#recommended-resources)
 
 **Input**: Text and corresponding images.
 
-**Output**: Text and image embeddings that are closely aligned in the embedding space.
+**Output**: Text encoder and image encoder whose embeddings that are closely aligned in the embedding space.
 
-**Description**: CLIP involves two encoders - one for text and one for images. The text encoder converts text inputs into embeddings, while the image encoder does the same for images. The core idea of CLIP is to train these encoders in a contrastive learning framework so that the embeddings of text and images that are semantically related are closer in the embedding space. This makes CLIP highly effective for tasks like zero-shot classification, where the model can recognize objects it hasn't explicitly been trained on.
+**Description**: CLIP involves two encoders - one for text and one for images. The text encoder converts text inputs into embeddings, while the image encoder does the same for images. The core idea of CLIP is to train these encoders in a contrastive learning framework so that the embeddings of text and images that are semantically related are closer in the embedding space. In Stable Diffusion, we use a CLIP Text Encoder to convert text prompts to latents, and then condition our diffusion process on the text latents (by combining text latents with noise and other conditioning inputs).
 
 <!-- TOC --><a name="text-encoder"></a>
 ## Text Encoder
@@ -448,7 +436,7 @@ It is recommended to consult the [recommended resources](#recommended-resources)
 
 **Output**: Latent representations of the text.
 
-**Description**: A Text Encoder is a model that converts raw text into a latent, typically lower-dimensional, representation. These text latents are used in various applications, including natural language processing tasks and models like CLIP, where text embeddings need to be closely aligned with image embeddings for effective cross-modal learning. The text encoder is usually trained to capture the semantic essence of the input text, making it valuable for tasks like text classification, sentiment analysis, and more.
+**Description**: The Text Encoder (from CLIP) converts text prompts into a latents as described above. In Stable Diffusion, the text embeddings (latents) are used during the reverse diffusion process to _condition_ the output. It's what allows us to do Text-to-Image tasks where the generated image is guided by a text prompt.
 
 <!-- TOC --><a name="control-net-conditioning-encoder"></a>
 ## Control Net Conditioning Encoder
@@ -458,28 +446,33 @@ It is recommended to consult the [recommended resources](#recommended-resources)
 <figcaption></figcaption>
 </figure>
 
-**Input**: Image conditioning data, such as Canny edge maps or other processed image forms.
+**Input**: Image conditioning data, such as Canny edge maps.
 
-**Output**: Latent space representation of the conditioning data.
+**Output**: Conditioning Latents.
 
-**Description**: The Control Net Conditioning Encoder is part of a control net system that processes additional image conditioning data into a latent representation. This encoder transforms specific forms of image data, like edge maps, into a format compatible with the model's latent space, enhancing the model's understanding and manipulation of image features. This component is crucial for models that require fine-grained control over image generation or modification.
+**Description**: With Control Net, we want to condition the output of our diffusion process on canny edge maps, depth maps, segmentation maps or other types of data. But these data are not latents. For each control net (trained for a particular type of conditioning), we also create a small encoder network to transform our conditioning inputs into latent space, so that they can be properly combined with the other inputs.
 
-<!-- TOC --><a name="control-net-trainable-copy"></a>
-## Control Net Trainable Copy
+<!-- TOC --><a name="control-net-trainable-weights"></a>
+## Control Net Trainable Weights
 
 <figure>
 <img src="/img/image-models/control_net_trainable_copy_diagram.png">
 <figcaption></figcaption>
 </figure>
 
-**Input**: Various additional inputs, including text and images.
+**Input**: Conditioning Latents.
 
-**Output**: Enhanced image latents, incorporating additional input features.
+**Output**: Influences for the Stable Diffusion UNet.
 
-**Description**: The Control Net Trainable Copy is a unique component in the Stable Diffusion architecture. It is a trainable copy of the U-Net Encoder, connected to the original Stable Diffusion's U-Net via Zero Convolutions. This setup allows the model to integrate additional inputs (like text or specific image features) into the generation process without altering the original, high-quality U-Net weights. This mechanism is key for adapting the model to new conditions or features while maintaining the integrity of the original model's capabilities.
+**Description**: The central idea behind Control Nets is to create a trainable copy of Stable Diffusion's U-Net, connect the copy to the original via residual connections and "zero convolutions", and then train the copy with a dataset of conditional inputs/targets (while leaving the original U-Net weights alone). This idea is best explained by the [recommended references](#recommended-references), especially the original, well-written, very-readable [research paper](https://arxiv.org/abs/2302.05543).
+
+<!-- TOC --><a name="alternative-methods-of-fine-tuning"></a>
+## Alternative Methods of Fine-Tuning
+
+Control Nets are not the only method of achieving a desired output. Nor are they exclusive. The following sections summarize a few additional ways to fine-tune a Stable Diffusion model.
 
 <!-- TOC --><a name="low-rank-adaptation-lora"></a>
-## Low-Rank Adaptation (LoRA)
+### Low-Rank Adaptation (LoRA)
 
 <figure>
 <img src="/img/image-models/low_rank_adaptation_diagram.png">
@@ -493,7 +486,7 @@ It is recommended to consult the [recommended resources](#recommended-resources)
 **Description**: Low-Rank Adaptation (LoRA) is a technique for fine-tuning pre-trained models in a parameter-efficient manner. Instead of updating all parameters, LoRA focuses on adapting a small subset, typically through low-rank matrices. This approach allows for efficient and targeted modifications of the model, often used to adapt large models to specific tasks or datasets without the computational cost of full model retraining.
 
 <!-- TOC --><a name="dreambooth"></a>
-## Dreambooth
+### Dreambooth
 
 <figure>
 <img src="/img/image-models/dreambooth_diagram.png">
@@ -507,7 +500,7 @@ It is recommended to consult the [recommended resources](#recommended-resources)
 **Description**: Dreambooth is a technique used to fine-tune a pretrained generative model so that it can generate images containing specific characteristics of a given target. This is done by training the model with a set of target images, along with a reference class that the targets belong to. The result is a model capable of creating new images that maintain the essence of the target images, allowing for personalized or targeted image generation.
 
 <!-- TOC --><a name="textual-inversion"></a>
-## Textual Inversion
+### Textual Inversion
 
 <figure>
 <img src="/img/image-models/textual_inversion_diagram.png">
@@ -520,78 +513,51 @@ It is recommended to consult the [recommended resources](#recommended-resources)
 
 **Description**: Textual Inversion is a process where a pretrained language model is adapted to understand a new concept by training it with a set of images and associated text prompts. This method allows the model to incorporate a specific, often niche, concept into its understanding and generation capabilities. As a result, the model becomes more versatile in generating text that accurately reflects the new concept, enhancing its applicability to specialized or personalized tasks.
 
-<!-- TOC --><a name="the-u-net-architecture-continued"></a>
-## The U-Net Architecture (continued)
+<!-- TOC --><a name="glossary"></a>
+# Glossary
 
-<!-- TOC --><a name="overview"></a>
-### Overview
-The U-Net architecture, originally designed for biomedical image segmentation, has become a cornerstone in image generation models. It is constructed from a series of downsampling an upsampling layers connected via skip connections, which allows it to process images with an awareness of spatial hierarchies. Its name comes from the "U" shape of its data flow diagram:
+It will help to collect definitions of several key terms, specifically in the context of their use in Stable Diffusion.
 
-<img src="/img/image-models/screenshot_008.png">
+| Term                                 | Definition                                                                                                                                                                |
+|--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Autoencoder**                      | A neural network with an encoder that compresses data into a latent space and a decoder that reconstructs the data from this compressed form.                             |
+| **CLIP**                             | A method for training text encoders to produce embeddings that closely match associated image embeddings, used in various AI models for text-to-image tasks.              |
+| **Conditioning**                     | A process in diffusion models where external data (like text or edge maps) guides the generation of outputs, influencing the final image characteristics.                 |
+| **Control Net**                      | An additional network in stable diffusion models for enhanced input conditioning, allowing for more specific control over the generated outputs.                          |
+| **Control Net Conditioning Encoder** | Part of a control net, this component converts additional input data (e.g., edge maps) into a format compatible with the diffusion model's latent space.                  |
+| **Control Net Trainable Copy**       | A duplicate of the U-Net Encoder in Stable Diffusion that can be trained separately for added input conditioning, connected to the main encoder via zero convolutions.    |
+| **Diffusion Model**                  | A type of generative model that creates images by gradually reversing a process of adding noise to an image, ultimately revealing a coherent image.                       |
+| **Dreambooth**                       | A training method used to personalize generative models, enabling them to produce content that reflects specific subjects or styles found in the training data.           |
+| **Forward Diffusion**                | The process of incrementally adding noise to an image, progressively obscuring the original content, used in diffusion models.                                            |
+| **Latent Diffusion Model**           | A diffusion model variant that operates in a compressed, low-dimensional latent space, offering improved performance compared to traditional high-dimensional models.     |
+| **Latent Space**                     | A compressed, lower-dimensional representation of data, used in models like autoencoders and diffusion models for efficient data processing.                              |
+| **Latents**                          | Data representations in the latent space, typically compressed forms of higher-dimensional data like images or text.                                                      |
+| **Low-Rank Adaptation**              | A method for fine-tuning large models by altering only a small subset of their parameters, allowing for effective model improvements or adaptations with minimal changes. |
+| **Pixel Space**                      | The high-dimensional space representing images, characterized by dimensions such as height, width, and number of color channels.                                          |
+| **Reverse Diffusion**                | The step-by-step process of removing noise from an image in a diffusion model, gradually restoring it to a coherent form.                                                 |
+| **Stable Diffusion**                 | A suite of latent diffusion models known for efficient and high-quality image generation, including versions like SD 1.4, SD 1.5, SDXL, and SDXL Turbo.                   |
+| **Text Encoder**                     | A component that converts text into a latent representation, often used in conjunction with CLIP for text-to-image generation tasks.                                      |
+| **Textual Inversion**                | A technique to adapt language models to understand and generate specific text or concepts not covered in their initial training, using targeted examples.                 |
+| **U-Net**                            | A central model in Stable Diffusion, consisting of an encoder and decoder, that predicts the noise in image latents, adept at processing spatial hierarchies in images.   |
+| **U-Net Decoder**                    | The part of the U-Net that upscales and restores image details, using semantic information from the encoder to enhance image quality.                                     |
+| **U-Net Encoder**                    | The component of the U-Net that downscales images, capturing essential semantic information and preparing it for the decoding process.                                    |
+| **VAE Decoder**                      | The decoder part of a Variational Autoencoder, responsible for reconstructing images or data from compressed latent representations.                                      |
+| **VAE Encoder**                      | The encoder component of a Variational Autoencoder, which compresses input data into a latent representation.                                                             |
+| **Variational Autoencoder**          | A type of autoencoder that ensures random noise in the latent space can be decoded into plausible images, often used in generative tasks.                                 |
 
-<!-- TOC --><a name="key-concepts"></a>
-### Key Concepts
-- **Inputs and Outputs**: U-Nets take images as input and produce images (of the same height and width) as output. Their output might be segementation maps, canny edge maps, or whatever else they're trained to produce.
-- **Convolution Layers**: These layers apply a convolution operation to the input, capturing local dependencies and learning features from the data. In [_But what is a convolution_](https://www.youtube.com/watch?v=KuXjwB4LzSA), Grant Sanderson provides an _excellent_ visual explanation of convolutions. 
-- **Downsampling and Upsampling**: Downsampling reduces the spatial dimensions (height and width) of the image, helping the model to abstract and learn higher-level features. Upsampling, conversely, increases the spatial dimensions, aiding in reconstructing the finer details of the image. 
-- **Residual Connections**: These connect layers of equal resolution in the downsampling and upsampling paths, allowing the model to preserve high-resolution features throughout the network. As with residual networks, these connections help alleviate the vanishing gradient problem, allowing deeper networks to be trained more effectively.
+<!-- TOC --><a name="recommended-references"></a>
+# Recommended References
 
-<!-- TOC --><a name="the-variational-autoencoder-vae-continued"></a>
-## The Variational Autoencoder (VAE) (continued)
+These resources provide a deeper understanding of the concepts discussed. Of the many resources online, the author found these to be the most helpful and illuminating.
 
-<!-- TOC --><a name="overview-1"></a>
-### Overview
-U-Nets are a great start, but training and inference on high-dimensional RGB images is too computationally expensive. We need a way to simplify.
-
-Enter the auto-encoder. Autoencoders learn to encode data into a low-dimensional "latent space" and then decode from this space back to the original data. Unlike traditional _entropy-based_ compression, autoencoders' lossy compression algorithm is trained specifically for the data in their training set. 
-
-An autoencoder is naturally broken into two halves: the encoder and the decoder. Once we have a trained autoencoder, we can use the encoder to compress high-resolution images into latent space and we can use the decoder to "decompress" tensors from the latent space back to high-resolution images.
-
-We will embed a U-Net between the encoder and decoder of the VAE, so that the U-Net operates entirely in the latent space. (In other words, we do not directly feed high-resolution images to the U-Net during training or inference. We pre-process each image using the VAE's encoder.)
-
-For our purposes, the "variational" part of VAEs is not a particularly important detail. _Variational_ auto-encoders ensure that the latent space of our auto-encoder has certain desireable properties, like having each dimension of the latent space correspond to "human-interpretable" changes to the images, and using fewer total dimensions when possible. 
-
-<!-- TOC --><a name="key-concepts-1"></a>
-### Key Concepts
-- **Latent Space Representation**: VAEs compress input data into a lower-dimensional space, capturing the essence of the data in a more compact form.
-- **Reconstruction Loss**: The VAE's loss function ensures that the decoded data matches the original input as closely as possible.
-- **KL Divergence**: The VAE's loss function also regularizes the encoding space so that encodings follow a desired distribution (typically a Gaussian).
-
-<!-- TOC --><a name="noise-timesteps-schedulers"></a>
-## Noise, Timesteps, Schedulers
-
-<!-- TOC --><a name="overview-2"></a>
-### Overview
-In diffusion models, noise plays a central role in transforming images. Timesteps and schedulers manage how noise is added and removed, influencing the model's efficiency and the quality of generated images.
-
-<!-- TOC --><a name="key-concepts-2"></a>
-### Key Concepts
-- **Gaussian Noise**: This is the type of noise typically added to images in diffusion models. It follows a Gaussian (or normal) distribution.
-- **Timesteps**: These represent discrete steps in the noise addition or removal process. Each timestep corresponds to a certain level of noise in the image.
-- **Schedulers**: These algorithms determine the progression and pattern of timesteps, impacting the trade-off between image fidelity and computational requirements.
-
-<!-- TOC --><a name="text-encoder-1"></a>
-## Text Encoder
-
-<!-- TOC --><a name="overview-3"></a>
-### Overview
-Text encoders in image generation models convert textual descriptions into a format that the model can use to guide the image generation process. 
-
-<!-- TOC --><a name="key-concepts-3"></a>
-### Key Concepts
-- **Embeddings**: The text encoder converts text into a dense vector representation, capturing the semantic meaning in a form suitable for the model.
-- **Conditioning**: The embeddings are used to condition the image generation process, aligning the output with the textual description.
-- **CLIP**: A specific type of text encoder that aligns text and image representations, facilitating more accurate text-to-image generation.
-
-<!-- TOC --><a name="fine-tuning-techniques"></a>
-## Fine-Tuning Techniques
-
-<!-- TOC --><a name="overview-4"></a>
-### Overview
-Fine-tuning involves adjusting a pre-trained model to better suit specific needs or styles. This can be done through various methods, each targeting different aspects of the model.
-
-<!-- TOC --><a name="key-concepts-4"></a>
-### Key Concepts
-- **Dreambooth & Textual Inversion**: Techniques for personalizing models to generate images in a specific style or of a specific subject.
-- **Low-Rank Adaptations**: Modifying a small subset of the model's parameters to fine-tune its outputs without the need for extensive retraining.
-
+- Stable Diffusion: [Explainer Video](https://www.youtube.com/watch?v=sFztPP9qPRc), [fast.ai course lesson 9](https://course.fast.ai/Lessons/lesson9.html), [fast.ai diffusion-nbs](https://github.com/fastai/diffusion-nbs)
+- Control Nets: [Research Paper](https://arxiv.org/abs/2302.05543), [Paper Readthrough Video](https://www.youtube.com/watch?v=Mp-HMQcB_M4), [Note on zero-convolutions](https://github.com/lllyasviel/ControlNet/blob/ed85cd1e25a5ed592f7d8178495b4483de0331bf/docs/faq.md)
+- Diffusion Models: [Research Paper](https://arxiv.org/abs/1503.03585)
+- Latent Diffusion Models: [Research Paper](https://arxiv.org/abs/2112.10752)
+- U-Net: [Research Paper](https://arxiv.org/abs/1505.04597), [Explainer Video](https://www.youtube.com/watch?v=NhdzGfB1q74)
+- Convolution: [Grant Sanderson's video "But what is a convolution?"](https://www.youtube.com/watch?v=KuXjwB4LzSA)
+- CLIP: [Website](https://openai.com/research/clip), [Research Paper](https://arxiv.org/abs/2103.00020)
+- Variational Auto-Encoders: [Research Paper](https://arxiv.org/abs/1312.6114), [Explainer Video](https://www.youtube.com/watch?v=9zKuYvjFFS8)
+- ResNets: [Explainer Video 1](https://www.youtube.com/watch?v=o_3mboe1jYI), [Explainer Video 2](https://www.youtube.com/watch?v=Q1JCrG1bJ-A)
+- Low-Rank Adaptations: [Research Paper](https://arxiv.org/abs/2106.09685)
+- History of diffusion models: [deepsense.ai blog post](https://deepsense.ai/the-recent-rise-of-diffusion-based-models/)
