@@ -1,9 +1,7 @@
 <!-- TOC --><a name="image-generation-guide"></a>
 # Image Generation Guide
 
-The goal of this guide is to help the curious reader understand the technical foundations, applications, and challenges of image generation. 
-
-This guide is neither a complete reference nor basic tutorial. It is the handbook the author wishes he had when he started. We hope it helpes you save time by outlining the key ideas and linking high-quality reference material for further learning.
+The goal of this guide is to help the curious reader understand the technical foundations, applications, and challenges of image generation. We cover the key ideas and link to high-quality reference material for further learning.
 
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 
@@ -59,8 +57,6 @@ This guide does not attempt cover all topics. We omit or gloss over:
 - Training details like hyperparameters, loss functions, and benchmarks
 - Environment setup, getting started, and hardware considerations
 - Neural Network fundamentals (e.g. stochastic gradient descent)
-
-This guide does not attempt to be complete or exhaustive. Rather, we hope that the specific topics covered provide a solid foundation for further learning.
 
 <!-- TOC --><a name="what-are-diffusion-models"></a>
 # What are diffusion models?
