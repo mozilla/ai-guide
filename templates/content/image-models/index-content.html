@@ -265,7 +265,7 @@
 <p>The following diagram illustrates the data flow in Stable Diffusion with a Control Net. Refer to the glossary and followup sections for more details about each component.</p>
 <figure>
 <img src="/img/image-models/stable_diffusion_inference_diagram.png">
-<figcaption>Data flow diagram of Stable Diffusion with Control Net integration. [<a href="/img/image-models/stable_diffusion_inference_diagram.png" target="_blank">Open in new tab</a>]</figcaption>
+<figcaption>Data flow diagram of Stable Diffusion with Control Net integration.</figcaption>
 </figure>
 
 <p><strong>Inputs and Outputs</strong></p>
@@ -360,7 +360,7 @@ When we feed latents into the decoder, we get back (high-dimensional) images.</p
 <p>In this case,  Stable Diffusion&#39;s U-Net is fed latents and predicts which parts of its input are noise. A scheduler determines how to update the noisy input latent given the U-Net&#39;s prediction. This process continues iteratively until a predefined number of steps is reached. We call the final output of the U-Net the &quot;denoised latent&quot; and can convert it to an image via the VAE Decoder.</p>
 <figure>
 <img src="/img/image-models/screenshot_008.png">
-<figcaption>The name "U"-Net comes from the "U" shape of its data flow diagram. (<a href="https://arxiv.org/abs/1505.04597">source</a>**</figcaption>
+<figcaption>The name "U"-Net comes from the "U" shape of its data flow diagram. (<a href="https://arxiv.org/abs/1505.04597">source</a>)</figcaption>
 </figure>
 
 <p><strong>Clarification</strong>: Like an auto-encoder, a U-Net has a down-sampling &quot;encoder&quot;, an up-sampling &quot;decoder&quot;, and a low-dimensional &quot;bottleneck&quot; in-between. However, in general U-Nets and autoencoders are not the same. U-Nets are trained on a variety of tasks, whereas the term &quot;autoencoder&quot; refers to a two-sided networked trained to predict its own inputs. The terms &quot;encoder&quot; and &quot;decoder** appear in several types of networks.</p>
