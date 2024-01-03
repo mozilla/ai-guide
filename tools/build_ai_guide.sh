@@ -10,7 +10,14 @@ if ! command -v marked &> /dev/null
 then
     echo "marked could not be found"
     echo "Installing marked..."
-    npm install -g marked
+    npm install -g marked@^6.0.0
+
+    if ! command -v marked &> /dev/null
+    then
+        echo "Failed to install marked@^6.0.0."
+        echo "Please install marked@^6.0.0 and try again"
+        exit 1
+    fi
 fi
 
 if ! command -v jupyter-nbconvert &> /dev/null
@@ -18,6 +25,27 @@ then
     echo "jupyter-nbconvert could not be found"
     echo "Installing jupyter & jupyter-nbconvert..."
     pip install jupyter
+
+    if ! command -v jupyter-nbconvert &> /dev/null
+    then
+        echo "Failed to install jupyter-nbconvert."
+        echo "Please install jupyter & jupyter-nbconvert and try again"
+        exit 1
+    fi
+fi
+
+if ! command -v jq &> /dev/null
+then
+    echo "jq could not be found"
+    echo "Installing jq..."
+    apt-get install -y jq
+
+    if ! command -v jq &> /dev/null
+    then
+        echo "Failed to install jq."
+        echo "Please install jq and try again"
+        exit 1
+    fi
 fi
 
 find $SOURCE_PATH -name "*.md" | while read -r file; 
