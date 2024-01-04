@@ -388,8 +388,18 @@
 
 }
 
+#content h1 {
+    @apply text-4xl font-medium mt-9 mb-5;
+    text-transform: uppercase;
+}
+
 #content h2 {
     @apply text-3xl font-medium mt-9 mb-5;
+    text-transform: uppercase;
+}
+
+#content h3 {
+    @apply text-2xl font-medium mt-9 mb-5;
     text-transform: uppercase;
 }
 
