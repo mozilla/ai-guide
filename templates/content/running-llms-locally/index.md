@@ -14,7 +14,7 @@ For our work, we will be spending some time with a small 7B parameter model, _Mi
 
 Let's grab the llamafile first from the creator of llamafile [Justine Tunney](https://justine.lol)'s [Huggingface](https://huggingface.co/jartine/mistral-7b.llamafile). We'll use the command line model to showcase some features.
 
-Download the model by [tapping this link](https://huggingface.co/jartine/mistral-7b.llamafile/resolve/main/mistral-7b-instruct-v0.1-Q4_K_M-main.llamafile?download=true).
+Download the model (4.4GB) by [tapping this link](https://huggingface.co/jartine/mistral-7b.llamafile/resolve/main/mistral-7b-instruct-v0.1-Q4_K_M.llamafile?download=true).
 
 llamafiles are a combination of Justine's [cosmopolitan](https://justine.lol/cosmopolitan/index.html) (native single-file executables on any platform), combined with the community's amazing work on [llama.cpp](https://github.com/ggerganov/llama.cpp), a C++ version of Meta's LLaMa that can run usably on CPUs instead of GPUs created by [ggerganov](https://github.com/ggerganov/llama.cpp). 
 
