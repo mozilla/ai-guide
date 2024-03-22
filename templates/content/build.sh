@@ -13,5 +13,5 @@ fi
 
 find $root_path -name "*.md" | while read -r file; 
     do echo "Building $file"; 
-    marked -o "${file%.md}.html" "$file";
+    marked -o "${file%.md}-content.html" "$file";
 done
